@@ -1,17 +1,17 @@
-type stylingSlides = {
+type StylingSlides = {
     samples: 'graphic';
     colors: string,
     styles: string,
     images: 'image',
 }
 
-type creatingObj = {
+type CreatingObj = {
     pasteText: 'text',
     pasteFugire: 'graphic',
     pasteImage: 'image',
 }
 
-type workWithText = {
+type WorkWithText = {
     changingFont: 'text',
     changingStyle: 'text',
     changingSize: BigInt,
@@ -19,9 +19,16 @@ type workWithText = {
     changingAlignment: string,
 }
 
-type export = {
-    export: 'File',
+type Exporting = {
+    exportFile: File,
 }
 
-type editor = Array<stylingSlides|creatingObj|workWithText>
+type Importing = {
+    importFile: File,
+}
 
+type Editor = Array<StylingSlides|CreatingObj|WorkWithText|Exporting|Importing>
+
+type PopUpWindow = {
+    deletingObj: что тут?,
+}
