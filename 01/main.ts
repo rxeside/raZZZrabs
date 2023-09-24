@@ -1,57 +1,6 @@
-type TextStyleType = {
-    isBold: boolean,
-    isItalic: boolean,
-    isUnderline: boolean,
-    color: string,
-    opacity: number,
-    fontSize: number,
-    fontFamily: string,
-}
-
-type VerticalAlign = {
-    top: boolean,
-    center: boolean,
-    bottom: boolean,
-}
-
-type HorizontalAlign = {
-    left: boolean,
-    center: boolean,
-    right: boolean,
-}
-
-type TextBlock = Array<TextStyleType|VerticalAlign|HorizontalAlign>
-
-type ImageBlock = {
-    data: string,
-}
-
-type PrimitiveElement = {
-    circle: boolean,
-    triangle: boolean,
-    rectangle: boolean,
-}
-
-type PrimitivesType = {
-    element: PrimitiveElement,
-    color: string,
-}
-
-type ShapeBlock = {
-    primitives: PrimitivesType,
-}
-
-
-
-type ElementContent = Array<TextBlock|ImageBlock|ShapeBlock>
-
-type BorderStyleType = {
-    solid: boolean,
-    doted: boolean,
-    dashed: boolean,
-    double: boolean,
-    inset: boolean,
-    outset: boolean,    
+type Dot = {
+    x: number,
+    y: number,
 }
 
 type BorderType = {
@@ -59,16 +8,10 @@ type BorderType = {
     width: number,
     opacity: number,
     round: number,
-    borderStyle: BorderStyleType,
+    borderStyle: 'solid'|'doted'|'dashed'|'doubled'|'insert'|'outset',
 }
 
-type Dot = {
-    x: number,
-    y: number,
-}
-
-type SlideElement = {
-    content: ElementContent,
+type BaseBlock = {
     startDot: Dot,
     width: number,
     height: number,
@@ -78,23 +21,59 @@ type SlideElement = {
     elementID: number,
 }
 
+type OutlineType = {
+    bold: boolean,
+    italic: boolean,
+    underline: boolean,
+}
+
+type TextBlock = {
+    value: string,
+    color: string,
+    fontSize: number,
+    verticalAlign: 'top'|'center'|'bottom',
+    horizontal: 'left'|'center'|'right',
+    outline: OutlineType,    
+}
+
+type ShapeBlock = {
+    primitives: 'circle'|'triangle'|'rectangle',
+    color: string,
+}
+
+type ImageType = {
+    data: string,
+}
+
+type ImageBlock = {
+    image: ImageType,
+}
+
+type BackgroundType = {
+    color: string,
+    image: ImageType,
+}
+
+type SlideElement = Array<TextBlock|ImageBlock|ShapeBlock>
+
 type Slide = {
     slideObjects: SlideElement[],
     slideID: number,
-}
-
-type StateCheck = {
-    slideNumber: number,
-    elementNumber: number,
+    slideBackground: BackgroundType,
 }
 
 type SlideHistory = {
     lastSave: Slide[],
 }
 
+type SlideSelection = {
+    slideID: number,
+    elementID: number,
+}
+
 type Page = {
-    slide: Slide[],
+    slides: Slide[],
     slideHistory: SlideHistory,
-    stateCheck: StateCheck,
+    stateCheck: SlideSelection,
     title: string,
 }
