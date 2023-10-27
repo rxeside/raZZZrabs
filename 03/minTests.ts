@@ -1,22 +1,17 @@
-import {
-  Page,
-  Slide,
-  BackgroundType,
-} from "./main";
-
+import { Page, Slide, BackgroundType } from "./main";
 
 const defaultSlideBackground: BackgroundType = {
   color: {
     hex: "#FFFFFF",
     opacity: 1,
-  }
-} 
+  },
+};
 
-const defaultSlideInfo : Slide ={
-    slideObjects: [],
-    slideID: "1",
-    slideBackground: defaultSlideBackground
-}
+const defaultSlideInfo: Slide = {
+  slideObjects: [],
+  slideID: "1",
+  slideBackground: defaultSlideBackground,
+};
 
 const minPage: Page = {
   slides: [defaultSlideInfo],

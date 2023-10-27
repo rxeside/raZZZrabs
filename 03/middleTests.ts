@@ -6,24 +6,22 @@ import {
   Slide,
   ShapeBlock,
   BorderType,
-  ColorType
+  ColorType,
 } from "./main";
 
-
-const shapeBlockColor : ColorType = {
+const shapeBlockColor: ColorType = {
   hex: "#FF032A",
-  opacity: 0
-}
+  opacity: 0,
+};
 
-const shapeBlockBorder : BorderType= {
+const shapeBlockBorder: BorderType = {
   color: {
-      hex: "#000000",
-      opacity: 0,
-    },
-    width: 1,
-    borderStyle: BorderStyleType.SOLID
-}
-
+    hex: "#000000",
+    opacity: 0,
+  },
+  width: 1,
+  borderStyle: BorderStyleType.SOLID,
+};
 
 const shapeBlock: ShapeBlock = {
   startDot: {
@@ -41,18 +39,19 @@ const shapeBlock: ShapeBlock = {
 };
 
 const midSlide: Slide = {
-  slideObjects: [{
-    elements: [shapeBlock],
-  }],
+  slideObjects: [
+    {
+      elements: [shapeBlock],
+    },
+  ],
   slideID: "1",
   slideBackground: {
     color: {
       hex: "#FF00FF",
-      opacity: 0.1
+      opacity: 0.1,
     },
   },
 };
-
 
 const midPage: Page = {
   slides: [midSlide],

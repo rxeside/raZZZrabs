@@ -21,33 +21,41 @@ import {
 } from "./main";
 
 const presentationMaker: Page = {
-  slides: [{
-    slideObjects: [],
-    slideID: "1",
-    slideBackground: {
-      color: {
-        hex: "#FFFFFF",
-        opacity: 1,
+  slides: [
+    {
+      slideObjects: [],
+      slideID: "1",
+      slideBackground: {
+        color: {
+          hex: "#FFFFFF",
+          opacity: 1,
+        },
       },
     },
-  }],
-  slideHistory: [{
-    lastSave: [{
-      slides: [{
-        slideObjects: [],
-        slideID: "1",
-        slideBackground: {
-          color: {
-            hex: "#FFFFFF",
-            opacity: 1,
-          },
+  ],
+  slideHistory: [
+    {
+      lastSave: [
+        {
+          slides: [
+            {
+              slideObjects: [],
+              slideID: "1",
+              slideBackground: {
+                color: {
+                  hex: "#FFFFFF",
+                  opacity: 1,
+                },
+              },
+              selection: {
+                slideId: "1",
+              },
+            },
+          ],
         },
-        selection: {
-          slideId: "1",
-        }, 
-      }]
-    }],
-  }],
+      ],
+    },
+  ],
   selection: {
     slideID: "1",
     elementID: "",
@@ -81,6 +89,5 @@ const shape: ShapeBlock = {
   elementType: ElementType.SHAPE,
 };
 console.log(shape);
-
 
 console.log(presentationMaker);

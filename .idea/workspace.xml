@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Add labs" />
+    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Add labs">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/03/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/worker.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,11 +51,13 @@
     "git-widget-placeholder": "master",
     "last_opened_file_path": "C:/iSpring/Frontend/raZZZrabs/01",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "settings.javascript.linters.tslint",
     "ts.external.directory.path": "C:\\iSpring\\Frontend\\raZZZrabs\\02\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -75,7 +82,7 @@
       <workItem from="1698210986603" duration="31000" />
       <workItem from="1698249195388" duration="2249000" />
       <workItem from="1698251499804" duration="1884000" />
-      <workItem from="1698304435949" duration="3960000" />
+      <workItem from="1698304435949" duration="6664000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена 2 лаба">
       <option name="closed" value="true" />

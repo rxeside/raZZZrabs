@@ -148,5 +148,5 @@ export {
   BaseBlock,
   BorderType,
   Dot,
-  ColorType
+  ColorType,
 };
