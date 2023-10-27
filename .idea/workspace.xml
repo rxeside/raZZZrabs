@@ -5,10 +5,239 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Add labs">
+      <change afterPath="$PROJECT_DIR$/actual_project/.prettierrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/syles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/03/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/03/node_modules/eslint-plugin-prettier/worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/.stylelintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/.stylelintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/maxTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/maxTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/middleTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/middleTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/minTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/minTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/cjs/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/cjs/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/esm/index.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/esm/index.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/css-functions-list/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/flat-cache/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/flat-cache/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/known-css-properties/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/known-css-properties/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/known-css-properties/data/all.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/known-css-properties/data/all.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/known-css-properties/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/known-css-properties/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/reference/properties.js" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/reference/properties.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/alpha-value-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/annotation-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-empty-line-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-name-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-name-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-name-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-no-vendor-prefix/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-property-required-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-semicolon-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/at-rule-semicolon-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-closing-brace-empty-line-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-closing-brace-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-closing-brace-newline-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-closing-brace-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-closing-brace-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-no-empty/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-opening-brace-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-opening-brace-newline-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-opening-brace-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/block-opening-brace-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/color-function-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/color-hex-alpha/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/color-hex-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/color-hex-length/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/color-named/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/color-no-hex/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/color-no-invalid-hex/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/comment-empty-line-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/comment-no-empty/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/comment-pattern/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/comment-whitespace-inside/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/comment-word-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/custom-media-pattern/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/custom-property-empty-line-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/custom-property-no-missing-var-function/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/custom-property-pattern/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-bang-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-bang-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-no-duplicate-custom-properties/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-no-duplicate-properties/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-no-redundant-longhand-properties/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-no-redundant-longhand-properties/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-no-redundant-longhand-properties/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-no-shorthand-property-overrides/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-semicolon-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-semicolon-newline-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-semicolon-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-semicolon-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-single-line-max-declarations/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-block-trailing-semicolon/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-colon-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-colon-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-colon-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-empty-line-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-no-important/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-max-values/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-unit-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-unit-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-value-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-value-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-value-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-value-no-unknown/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/declaration-property-value-no-unknown/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/font-family-name-quotes/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/font-family-no-duplicate-names/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/font-family-no-missing-generic-family-keyword/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/font-weight-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-calc-no-unspaced-operator/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-comma-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-comma-newline-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-comma-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-comma-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-linear-gradient-no-nonstandard-direction/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-max-empty-lines/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-name-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-no-unknown/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-no-unknown/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-parentheses-newline-inside/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-parentheses-space-inside/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-url-no-scheme-relative/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-url-quotes/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-url-scheme-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-url-scheme-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/function-whitespace-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/hue-degree-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/import-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/indentation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/keyframe-block-no-duplicate-selectors/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/keyframe-declaration-no-important/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/keyframe-selector-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/keyframes-name-pattern/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/length-zero-no-unit/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/linebreaks/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/max-empty-lines/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/max-line-length/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/max-nesting-depth/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/max-nesting-depth/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/max-nesting-depth/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-colon-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-colon-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-no-vendor-prefix/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-unit-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-value-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-name-value-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-parentheses-space-inside/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-range-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-range-operator-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-feature-range-operator-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-query-list-comma-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-query-list-comma-newline-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-query-list-comma-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-query-list-comma-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/media-query-no-invalid/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/named-grid-areas-no-invalid/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-descending-specificity/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-duplicate-at-import-rules/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-duplicate-selectors/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-empty-first-line/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-empty-source/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-eol-whitespace/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-extra-semicolons/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-invalid-double-slash-comments/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-invalid-position-at-import-rule/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-irregular-whitespace/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-missing-end-of-source-newline/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-unknown-animations/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/no-unknown-custom-properties/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/number-leading-zero/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/number-max-precision/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/number-no-trailing-zeros/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/property-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/property-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/property-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/property-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/property-no-vendor-prefix/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/rule-empty-line-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/rule-selector-property-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-anb-no-unmatchable/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-attribute-brackets-space-inside/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-attribute-name-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-attribute-operator-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-attribute-operator-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-attribute-operator-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-attribute-operator-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-attribute-quotes/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-class-pattern/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-class-pattern/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-class-pattern/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-combinator-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-combinator-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-combinator-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-combinator-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-descendant-combinator-no-non-space/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-id-pattern/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-list-comma-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-list-comma-newline-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-list-comma-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-list-comma-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-attribute/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-class/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-combinators/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-compound-selectors/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-empty-lines/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-id/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-pseudo-class/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-specificity/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-specificity/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-specificity/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-type/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-max-universal/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-nested-pattern/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-no-qualifying-type/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-no-vendor-prefix/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-not-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-class-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-class-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-class-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-class-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-class-parentheses-space-inside/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-element-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-element-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-element-colon-notation/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-element-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-pseudo-element-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-type-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/selector-type-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/shorthand-property-no-redundant-values/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/string-no-newline/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/string-quotes/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/time-min-milliseconds/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/unicode-bom/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/unit-allowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/unit-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/unit-disallowed-list/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/unit-no-unknown/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/value-keyword-case/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/value-list-comma-newline-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/value-list-comma-newline-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/value-list-comma-space-after/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/value-list-comma-space-before/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/value-list-max-empty-lines/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/lib/rules/value-no-vendor-prefix/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/node_modules/stylelint/types/stylelint/index.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/node_modules/stylelint/types/stylelint/index.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/testData.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +311,7 @@
       <workItem from="1698210986603" duration="31000" />
       <workItem from="1698249195388" duration="2249000" />
       <workItem from="1698251499804" duration="1884000" />
-      <workItem from="1698304435949" duration="6664000" />
+      <workItem from="1698304435949" duration="8283000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена 2 лаба">
       <option name="closed" value="true" />

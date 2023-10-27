@@ -7,21 +7,21 @@ import {
   ShapeBlock,
   BorderType,
   ColorType,
-} from "./main";
+} from './main'
 
 const shapeBlockColor: ColorType = {
-  hex: "#FF032A",
+  hex: '#FF032A',
   opacity: 0,
-};
+}
 
 const shapeBlockBorder: BorderType = {
   color: {
-    hex: "#000000",
+    hex: '#000000',
     opacity: 0,
   },
   width: 1,
   borderStyle: BorderStyleType.SOLID,
-};
+}
 
 const shapeBlock: ShapeBlock = {
   startDot: {
@@ -31,12 +31,12 @@ const shapeBlock: ShapeBlock = {
   width: 30,
   height: 30,
   scale: 1,
-  elementID: "1",
+  elementID: '1',
   primitiveType: PrimitiveType.CIRCLE,
   color: shapeBlockColor,
   border: shapeBlockBorder,
   elementType: ElementType.SHAPE,
-};
+}
 
 const midSlide: Slide = {
   slideObjects: [
@@ -44,14 +44,14 @@ const midSlide: Slide = {
       elements: [shapeBlock],
     },
   ],
-  slideID: "1",
+  slideID: '1',
   slideBackground: {
     color: {
-      hex: "#FF00FF",
+      hex: '#FF00FF',
       opacity: 0.1,
     },
   },
-};
+}
 
 const midPage: Page = {
   slides: [midSlide],
@@ -59,10 +59,10 @@ const midPage: Page = {
     lastSave: [midSlide],
   },
   selection: {
-    slideID: "1",
-    elementID: "1",
+    slideID: '1',
+    elementID: '1',
   },
-  title: "Sample Presentation",
-};
+  title: 'Sample Presentation',
+}
 
-console.log(midPage, shapeBlock);
+console.log(midPage, shapeBlock)
