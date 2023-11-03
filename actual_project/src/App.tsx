@@ -1,15 +1,18 @@
 import React from 'react'
 import './App.css'
-import { PageComponent } from './data/PageView'
-import { maxPage } from './tests/maxTests'
+import { Page } from "./types/types.ts";
 
-function App() {
+type AppProps = {
+  page: Page;
+};
+
+function App({ page }: AppProps) {
   return (
-    <div className="App">
-      <h1>{maxPage.title}</h1>
-      <PageComponent page={maxPage}></PageComponent>
+    <div className="app">
+      <Header presentationName={page.title} />
+      <Editor presentation={page} />
     </div>
-  )
+  );
 }
 
 export default App

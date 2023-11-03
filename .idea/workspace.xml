@@ -4,35 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Add labs">
-      <change afterPath="$PROJECT_DIR$/04/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/.stylelintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/public/logo192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/public/logo512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/public/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/public/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/App.test.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/data/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/react-app-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/reportWebVitals.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/setupTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/tests/maxTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/tests/middleTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/src/tests/minTests.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/04/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Editor/Editor.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Header/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Slide/Slide.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/ToolBar/ToolBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Workspace/SlideBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/other/Image/Image.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/other/SlideElement/SlideElement.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/01/Диаграмма.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/01/Диаграмма.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/data/PageView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/data/SlidesView.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,29 +58,33 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/iSpring/Frontend/raZZZrabs/04/src/tests",
+    "last_opened_file_path": "C:/iSpring/Frontend/raZZZrabs/actual_project/src/components/other/SlideElement",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\stylelint",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettier.import.notification.dismissed": "true",
-    "settings.editor.selected.configurable": "settings.javascript.linters.tslint",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
     "ts.external.directory.path": "C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\other\SlideElement" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\04\src\tests" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\04\src\data" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\04" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\04\node_modules" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\04\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\model" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\04\src\data" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\04" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\02" />
@@ -113,7 +102,11 @@
       <workItem from="1698210986603" duration="31000" />
       <workItem from="1698249195388" duration="2249000" />
       <workItem from="1698251499804" duration="1884000" />
-      <workItem from="1698304435949" duration="11822000" />
+      <workItem from="1698304435949" duration="11886000" />
+      <workItem from="1698707621425" duration="35000" />
+      <workItem from="1698710671438" duration="615000" />
+      <workItem from="1698909463525" duration="802000" />
+      <workItem from="1698952984064" duration="8669000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена 2 лаба">
       <option name="closed" value="true" />
@@ -187,5 +180,9 @@
     <MESSAGE value="Delete all" />
     <MESSAGE value="Add labs" />
     <option name="LAST_COMMIT_MESSAGE" value="Add labs" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
