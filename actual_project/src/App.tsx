@@ -1,18 +1,17 @@
 import React from 'react'
 import './App.css'
-import { Page } from "./types/types.ts";
+import Header from './components/Header/Header'
 
-type AppProps = {
-  page: Page;
-};
+// type AppProps = {
+//   page: Page;
+// };
 
-function App({ page }: AppProps) {
+function App() {
   return (
     <div className="app">
-      <Header presentationName={page.title} />
-      <Editor presentation={page} />
+      <Header />
     </div>
-  );
+  )
 }
 
 export default App

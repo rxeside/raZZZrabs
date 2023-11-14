@@ -1,27 +1,19 @@
-import "./ToolBar.css";
-import Button from "../other/Button/Button.tsx";
-import Input from "../other/Input/Input.tsx";
-import Select from "../other/Select/Select.tsx";
-import { fontOptions } from "../../constants/ToolBar.ts";
-
+import Button from '../common/Button/Button'
 function ToolBar() {
   return (
-    <div className="tool-bar">
-      <Button icon={"undo"} />
-      <Button icon={"redo"} />
-      <Button text={"Тема"} />
-      <Button icon={"category"} />
-      <Button icon={"insert_text"} />
-      <Button icon={"image"} />
-      <Select options={fontOptions} className={"font__select"} />
-      <Button icon={"remove"} />
-      <Input defaultValue={11} className={"size-shrift__input"} />
-      <Button icon={"add"} />
-      <Button icon={"format_bold"} />
-      <Button icon={"format_italic"} />
-      <Button icon={"format_underlined"} />
+    <div className="info-bar">
+      <Button icon={'plus'} />
+      <Button icon={'triangle'} />
+      <Button icon={'prev-arrow'} />
+      <Button icon={'next-arrow'} />
+      <Button icon={'zoom'} />
+      <Button icon={'cursor'} />
+      <Button icon={'text-align'} />
+      <Button icon={'images'} />
+      <Button icon={'primitives'} />
+      <Button icon={'line'} />
     </div>
-  );
+  )
 }
 
-export default ToolBar;
+export default ToolBar

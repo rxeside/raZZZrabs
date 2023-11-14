@@ -1,16 +1,17 @@
-import "./Header.css";
-import ToolBar from "../ToolBar/ToolBar.tsx";
+import InfoBar from '../InfoBar/InfoBar'
+import ToolBar from '../ToolBar/ToolBar'
 
-type HeaderProps = {
-  presentationName: string;
-};
+// type HeaderProps = {
+//   presentationName: string;
+// };
 
-function Header({ presentationName }: HeaderProps) {
+function Header() {
   return (
     <div className="header">
+      <InfoBar />
       <ToolBar />
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header

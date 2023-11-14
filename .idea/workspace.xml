@@ -4,20 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Editor/Editor.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Header/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Slide/Slide.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/ToolBar/ToolBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/Workspace/SlideBar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/other/Image/Image.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/other/SlideElement/SlideElement.tsx" afterDir="false" />
+    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Add labs">
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/cursor.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/images.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/line.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/next-arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/plus.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/prev-arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/primitives.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/text-align.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/triangle.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/public/static/img/zoom.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/InfoBar/InfoBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/BaseBlock/BaseBlock.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/BaseBlock/BaseBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/Button/Button.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/Button/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/ImageBlock/ImageBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/ShapeBlock/ShapeBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/TextBlock/TextBlock.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/Component 2ToolBar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/Component 3ToolBar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/Component 4ToolBar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/Component 5ToolBar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/Polygon 1ToolBar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/UnionToolBar.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/plus.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/static/img/zoom.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01/Диаграмма.drawio" beforeDir="false" afterPath="$PROJECT_DIR$/01/Диаграмма.drawio" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/.prettierrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/.prettierrc.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actual_project/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/data/PageView.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/data/SlidesView.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/Editor/Editor.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/Header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/Slide/Slide.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/Slide/Slide.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/ToolBar/ToolBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/ToolBar/ToolBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/Workspace/SlideBar.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/other/Image/Image.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/other/SlideElement/SlideElement.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/model/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/model/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +56,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="tsconfig.json" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -58,7 +84,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/iSpring/Frontend/raZZZrabs/actual_project/src/components/other/SlideElement",
+    "last_opened_file_path": "C:/iSpring/Frontend/raZZZrabs/actual_project/src/components/common",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.stylelint": "true",
@@ -69,25 +95,25 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "prettier.import.notification.dismissed": "true",
-    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
     "ts.external.directory.path": "C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\other\SlideElement" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\04\src\tests" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\04\src\data" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\04" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\04\node_modules" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\common" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\public\static\img" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\ToolBar" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\common" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\public\static\img" />
+      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\InfoBar" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\model" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\04\src\data" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\04" />
-      <recent name="C:\iSpring\Frontend\raZZZrabs\02" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -107,6 +133,9 @@
       <workItem from="1698710671438" duration="615000" />
       <workItem from="1698909463525" duration="802000" />
       <workItem from="1698952984064" duration="8669000" />
+      <workItem from="1698994016941" duration="1552000" />
+      <workItem from="1698995620444" duration="1884000" />
+      <workItem from="1699522330412" duration="15226000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена 2 лаба">
       <option name="closed" value="true" />

@@ -1,35 +1,43 @@
-import "./Slide.css";
-import Block from "../common/Block/Block.tsx";
-import { CSSProperties } from "react";
-import { Slide as TSlide } from "../../model/main.ts";
-import classNames from "classnames";
+import { CSSProperties } from 'react'
+import BaseBlock from '../common/BaseBlock/BaseBlock'
+import { Slide as TSlide } from '../../model/main'
 
 type SlideProps = {
-  slide: TSlide;
-  isSelectedSlide: boolean;
-  className?: string;
-};
+  slide: TSlide
+  isSelectedSlide: boolean
+  className?: string
+}
 
 function Slide({ slide, isSelectedSlide, className }: SlideProps) {
   const style: CSSProperties = {
     background: slide.background,
-  };
+  }
 
-  let classSlideSelect: string = "";
-  if (isSelectedSlide) {
-    classSlideSelect = "slide__select";
+  function setClassName(
+    slide: TSlide,
+    isSelectedSlide: boolean,
+    className?: string,
+  ) {
+    if (slide) {
+      return 'slide'
+    }
+    if (className) {
+      return className
+    }
+    if (isSelectedSlide) {
+      return 'slide__select'
+    }
+    return ''
   }
 
   return (
     <div
-      className={classNames("slide", className, classSlideSelect)}
+      className={setClassName(slide, isSelectedSlide, className)}
       style={style}
     >
-      {slide.objects.map((object) => (
-        <Block key={object.id} {...object} />
+      {slide.slideObjects.map((object) => (
+        <BaseBlock key={object.elements} {...object} />
       ))}
     </div>
-  );
+  )
 }
-
-export default Slide;

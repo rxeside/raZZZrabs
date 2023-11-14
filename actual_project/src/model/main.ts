@@ -37,6 +37,11 @@ enum BorderStyleType {
   NONE = 'none',
 }
 
+type Size = {
+  height: number
+  width: number
+}
+
 type ColorType = {
   hex: string
   opacity: number
@@ -65,9 +70,8 @@ type Dot = {
 
 type BaseBlock = {
   startDot: Dot
-  width: number
-  height: number
-  scale: number
+  size: Size
+  scale?: number
   elementID: string
 }
 
@@ -79,26 +83,35 @@ type BorderType = {
 }
 
 type TextBlock = BaseBlock & {
-  value: string
-  color: ColorType
-  fontSize: number
-  verticalAlign: VerticalAlignType
-  horizontalAlign: HorizontalAlignType
-  outline: OutlineType
-  border?: BorderType
   elementType: ElementType.TEXT
+  data: {
+    value: string
+    color: ColorType
+    fontSize: number
+    verticalAlign: VerticalAlignType
+    horizontalAlign: HorizontalAlignType
+    outline: OutlineType
+    border?: BorderType
+    size: Size
+  }
 }
 
 type ImageBlock = BaseBlock & {
-  image: ImageType
-  border?: BorderType
   elementType: ElementType.IMAGE
+  data: {
+    image: ImageType
+    border?: BorderType
+    size: Size
+  }
 }
 
 type ShapeBlock = BaseBlock & {
-  primitiveType: PrimitiveType
-  color: ColorType
-  border?: BorderType
+  data: {
+    primitiveType: PrimitiveType
+    color: ColorType
+    border?: BorderType
+    size: Size
+  }
   elementType: ElementType.SHAPE
 }
 
@@ -138,6 +151,7 @@ export {
   type SlideSelection,
   type SlideHistory,
   type Slide,
+  type Size,
   type SlideElement,
   type BackgroundType,
   type ImageBlock,
