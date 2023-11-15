@@ -1,5 +1,4 @@
-import { BorderType, ColorType, PrimitiveType, Size } from "../../../model/main";
-
+import { BorderType, ColorType, PrimitiveType, Size } from '../../../model/main'
 
 type PrimitiveProps = {
   data: {
@@ -22,9 +21,9 @@ function calculateTriangleCoordinates(width: number, height: number): string {
 }
 
 function Primitive({ data }: PrimitiveProps) {
-  const { size, primitiveType } = data;
-  const centerX = size.width / 2;
-  const centerY = size.height / 2;
+  const { size, primitiveType } = data
+  const centerX = size.width / 2
+  const centerY = size.height / 2
 
   return (
     <svg width={size.width} height={size.height}>

@@ -38,13 +38,21 @@ const shapeBlockRectangle: ShapeBlock = {
     x: 76,
     y: 24,
   },
-  width: 30,
-  height: 30,
   scale: 1,
-  elementID: '1',
-  primitiveType: PrimitiveType.RECTANGLE,
-  color: rectanglecolor,
-  border: rectangleBorder,
+  id: '1',
+  size: {
+    width: 30,
+    height: 30,
+  },
+  data: {
+    primitiveType: PrimitiveType.RECTANGLE,
+    color: rectanglecolor,
+    border: rectangleBorder,
+    size: {
+      width: 30,
+      height: 30,
+    },
+  },
   elementType: ElementType.SHAPE,
 }
 
@@ -58,12 +66,20 @@ const shapeBlockTriangle: ShapeBlock = {
     x: 54,
     y: 48,
   },
-  width: 100,
-  height: 150,
+  size: {
+    width: 100,
+    height: 150,
+  },
   scale: 1.5,
-  elementID: '2',
-  primitiveType: PrimitiveType.TRIANGLE,
-  color: triangleColor,
+  id: '2',
+  data: {
+    primitiveType: PrimitiveType.TRIANGLE,
+    color: triangleColor,
+    size: {
+      width: 100,
+      height: 150,
+    },
+  },
   elementType: ElementType.SHAPE,
 }
 
@@ -86,13 +102,21 @@ const shapeBlockCircle: ShapeBlock = {
     x: 12,
     y: 256,
   },
-  width: 175,
-  height: 100,
+  size: {
+    width: 175,
+    height: 100,
+  },
   scale: 1,
-  elementID: '1',
-  primitiveType: PrimitiveType.CIRCLE,
-  color: circleColor,
-  border: circleBorder,
+  id: '1',
+  data: {
+    primitiveType: PrimitiveType.CIRCLE,
+    color: circleColor,
+    border: circleBorder,
+    size: {
+      width: 175,
+      height: 100,
+    },
+  },
   elementType: ElementType.SHAPE,
 }
 
@@ -107,19 +131,27 @@ const textBlock: TextBlock = {
     x: 100,
     y: 100,
   },
-  width: 250,
-  height: 100,
   scale: 1,
-  value: 'Съешь ещё этих мягких французских булок, да выпей чаю',
-  color: {
-    hex: '#FF0000',
-    opacity: 0,
+  size: {
+    width: 250,
+    height: 100,
   },
-  fontSize: 16,
-  verticalAlign: VerticalAlignType.TOP,
-  horizontalAlign: HorizontalAlignType.RIGHT,
-  outline: textBolockOutline,
-  elementID: '3',
+  data: {
+    value: 'Съешь ещё этих мягких французских булок, да выпей чаю',
+    color: {
+      hex: '#FF0000',
+      opacity: 0,
+    },
+    fontSize: 16,
+    verticalAlign: VerticalAlignType.TOP,
+    horizontalAlign: HorizontalAlignType.RIGHT,
+    outline: textBolockOutline,
+    size: {
+      width: 250,
+      height: 100,
+    },
+  },
+  id: '3',
   elementType: ElementType.TEXT,
 }
 
@@ -143,12 +175,20 @@ const imageBase64Block: ImageBlock = {
     x: 23,
     y: 47,
   },
-  width: 640,
-  height: 480,
+  size: {
+    width: 640,
+    height: 480,
+  },
   scale: 1,
-  elementID: '4',
-  image: imageBase64BlockDataType,
-  border: imageBase64BlockBorder,
+  id: '4',
+  data: {
+    image: imageBase64BlockDataType,
+    border: imageBase64BlockBorder,
+    size: {
+      width: 640,
+      height: 480,
+    },
+  },
   elementType: ElementType.IMAGE,
 }
 
@@ -172,12 +212,20 @@ const imageUrlBlock: ImageBlock = {
     x: 56,
     y: 100,
   },
-  width: 1920,
-  height: 1080,
+  size: {
+    width: 1920,
+    height: 1080,
+  },
   scale: 2,
-  elementID: '6',
-  image: imageUrlBlockDataType,
-  border: imageUrlBlockBorder,
+  id: '6',
+  data: {
+    image: imageUrlBlockDataType,
+    border: imageUrlBlockBorder,
+    size: {
+      width: 1920,
+      height: 1080,
+    },
+  },
   elementType: ElementType.IMAGE,
 }
 
@@ -193,11 +241,7 @@ const firstSlideBackground: BackgroundType = {
 }
 
 const firstSlide: Slide = {
-  slideObjects: [
-    {
-      elements: [shapeBlockRectangle, imageUrlBlock],
-    },
-  ],
+  slideObjects: [shapeBlockRectangle, imageUrlBlock],
   slideID: '1',
   slideBackground: firstSlideBackground,
 }
@@ -210,11 +254,7 @@ const secondSlideBackground: BackgroundType = {
 }
 
 const secondSlide: Slide = {
-  slideObjects: [
-    {
-      elements: [shapeBlockCircle, shapeBlockTriangle],
-    },
-  ],
+  slideObjects: [shapeBlockCircle, shapeBlockTriangle],
   slideID: '2',
   slideBackground: secondSlideBackground,
 }
@@ -226,11 +266,7 @@ const thirdSlideBackground: BackgroundType = {
   },
 }
 const thirdSlide: Slide = {
-  slideObjects: [
-    {
-      elements: [imageBase64Block, textBlock],
-    },
-  ],
+  slideObjects: [imageBase64Block, textBlock],
   slideID: '3',
   slideBackground: thirdSlideBackground,
 }

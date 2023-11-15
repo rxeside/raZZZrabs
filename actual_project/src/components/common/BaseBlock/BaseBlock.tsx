@@ -13,7 +13,6 @@ import Text from '../TextBlock/TextBlock'
 type BlockProps = TextBlock | ImageBlock | ShapeBlock
 
 function BaseBlock({ startDot, size, elementType, data }: BlockProps) {
-
   const style: CSSProperties = {
     left: startDot.x,
     top: startDot.y,

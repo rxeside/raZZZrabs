@@ -72,7 +72,7 @@ type BaseBlock = {
   startDot: Dot
   size: Size
   scale?: number
-  elementID: string
+  id: string
 }
 
 type BorderType = {
@@ -115,12 +115,13 @@ type ShapeBlock = BaseBlock & {
   elementType: ElementType.SHAPE
 }
 
-type SlideElement = {
-  elements: Array<TextBlock | ImageBlock | ShapeBlock>
-}
+// type SlideElement = {
+//   elements:
+//   elementID: string
+// }
 
 type Slide = {
-  slideObjects: SlideElement[]
+  slideObjects: Array<TextBlock | ImageBlock | ShapeBlock>
   slideID: string
   slideBackground: BackgroundType
 }
@@ -152,7 +153,6 @@ export {
   type SlideHistory,
   type Slide,
   type Size,
-  type SlideElement,
   type BackgroundType,
   type ImageBlock,
   type ImageType,

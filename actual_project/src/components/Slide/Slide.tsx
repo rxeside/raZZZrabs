@@ -9,9 +9,7 @@ type SlideProps = {
 }
 
 function Slide({ slide, isSelectedSlide, className }: SlideProps) {
-  const style: CSSProperties = {
-    background: slide.background,
-  }
+  const style: CSSProperties = {}
 
   function setClassName(
     slide: TSlide,
@@ -30,14 +28,20 @@ function Slide({ slide, isSelectedSlide, className }: SlideProps) {
     return ''
   }
 
+  if (slide.slideBackground.color) {
+    style.background = slide.slideBackground.color.hex
+  }
+
   return (
     <div
       className={setClassName(slide, isSelectedSlide, className)}
       style={style}
     >
       {slide.slideObjects.map((object) => (
-        <BaseBlock key={object.elements} {...object} />
+        <BaseBlock key={object.id} {...object} />
       ))}
     </div>
   )
 }
+
+export default Slide

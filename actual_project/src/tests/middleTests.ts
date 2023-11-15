@@ -28,22 +28,26 @@ const shapeBlock: ShapeBlock = {
     x: 23,
     y: 47,
   },
-  width: 30,
-  height: 30,
+  size: {
+    width: 30,
+    height: 30,
+  },
   scale: 1,
-  elementID: '1',
-  primitiveType: PrimitiveType.CIRCLE,
-  color: shapeBlockColor,
-  border: shapeBlockBorder,
+  id: '1',
+  data: {
+    primitiveType: PrimitiveType.CIRCLE,
+    color: shapeBlockColor,
+    border: shapeBlockBorder,
+    size: {
+      width: 30,
+      height: 30,
+    },
+  },
   elementType: ElementType.SHAPE,
 }
 
 const midSlide: Slide = {
-  slideObjects: [
-    {
-      elements: [shapeBlock],
-    },
-  ],
+  slideObjects: [shapeBlock],
   slideID: '1',
   slideBackground: {
     color: {
