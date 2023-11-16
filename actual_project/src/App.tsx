@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
 import Header from './components/Header/Header'
-import SlideBar from './components/SlideBar/SlideBar'
 import { Page } from './model/main'
+import SlideBar from './components/SlideBar/SlideBar'
 
 type AppProps = {
   page: Page

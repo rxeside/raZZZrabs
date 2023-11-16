@@ -1,0 +1,14 @@
+.info-bar {
+  display: flex;
+  flex-direction: row;
+  margin-left: 72px;
+  padding-left: 0px;
+}
+
+.button__text {
+  border: 0;
+  background: none;
+  font-family: Roboto;
+  font-size: 16px;
+  color: rgb(98 98 98 / 100%);
+}

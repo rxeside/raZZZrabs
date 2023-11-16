@@ -1,0 +1,32 @@
+.slide-bar {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 20px 0;
+  border-right: 1px solid #c4c7c5;
+  gap: 15px;
+  overflow-y: auto;
+  width: 100px;
+}
+
+.slide-bar__element {
+  display: flex;
+}
+
+.slide-bar__index {
+  color: #1f1f1f;
+  font:
+    500 normal 28px/1 Roboto,
+    sans-serif;
+}
+
+.slide-bar__wrapper {
+  width: calc(1366px * 0.3);
+  height: calc(768px * 0.3);
+  margin-left: 20px;
+}
+
+.slide-bar__slide {
+  overflow: hidden;
+  transform: scale(0.3);
+  transform-origin: 0 0;
+}

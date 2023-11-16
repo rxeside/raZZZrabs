@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  width: 44px;
+  height: 39px;
+  margin-left: 35px;
+  margin-top: 15px;
+}
+
+.logo-and-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.presentation-name {
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 18px;
+  margin-top: 25px;
+  margin-left: 7px;
+  color: rgb(98 98 98 / 100%);
+  border: none;
+}
+
+.presentation-name:hover {
+  outline: 0;
+}
+
+.presentation-name:focus {
+  outline: 0;
+}

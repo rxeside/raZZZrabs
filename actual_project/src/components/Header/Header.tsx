@@ -1,6 +1,7 @@
 import InfoBar from '../InfoBar/InfoBar'
 import ToolBar from '../ToolBar/ToolBar'
 import Input from '../common/Input/Input'
+import './Header.css'
 
 type HeaderProps = {
   presentationName: string
@@ -9,7 +10,17 @@ type HeaderProps = {
 function Header({ presentationName }: HeaderProps) {
   return (
     <div className="header">
-      <Input defaultValue={presentationName} />
+      <div className="logo-and-name">
+        <img
+          className={'logo'}
+          alt={'logo'}
+          src={'../../static/img/logo.svg'}
+        />
+        <Input
+          defaultValue={presentationName}
+          className={'presentation-name'}
+        />
+      </div>
       <InfoBar />
       <ToolBar />
     </div>

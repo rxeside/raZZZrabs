@@ -1,3 +1,4 @@
+import './SlideBar.css'
 import Slide from '../Slide/Slide'
 import { Slide as TSlide } from '../../model/main'
 

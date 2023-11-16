@@ -193,7 +193,7 @@ const imageBase64Block: ImageBlock = {
 }
 
 const imageUrlBlockDataType: ImageType = {
-  data: 'https://yandex.ru/images/search?from=tabbar&img_url=https%3A%2F%2Fscontent-hel2-1.cdninstagram.com%2Fv%2Ft51.2885-15%2Fe35%2F117264615_682271212356294_5046271238849355793_n.jpg%3F_nc_ht%3Dscontent-hel2-1.cdninstagram.com%26_nc_cat%3D106%26_nc_ohc%3DVKOO-llUDSYAX9UKwHK%26oh%3D7409760017f71b4f3341538b48a2f4d5%26oe%3D5F560A57&lr=41&pos=9&rpt=simage&text=w126%20sec',
+  data: 'https://i.pinimg.com/originals/5a/5d/80/5a5d80a47be07cc0a7ae51d036e3c1d5.jpg',
   type: ImageTypeVariation.URL,
 }
 
@@ -216,7 +216,7 @@ const imageUrlBlock: ImageBlock = {
     width: 1920,
     height: 1080,
   },
-  scale: 2,
+  scale: 0.5,
   id: '6',
   data: {
     image: imageUrlBlockDataType,
