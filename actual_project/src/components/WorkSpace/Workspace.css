@@ -1,0 +1,7 @@
+.workspace {
+  transform: scale(0.8);
+  background-color: rgb(244 244 244 / 100%);
+  width: 1169px;
+  height: 770px;
+  position: static;
+}

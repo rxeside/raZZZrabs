@@ -54,7 +54,6 @@ type ImageType = {
 
 type BackgroundType = {
   color: ColorType
-  image?: ImageType
 }
 
 type OutlineType = {

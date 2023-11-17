@@ -8,7 +8,7 @@ type SlideProps = {
 }
 
 function Slide({ slide, className }: SlideProps) {
-  const style: CSSProperties = {}
+  const styleVar: CSSProperties = {}
 
   function setClassName(slide: TSlide, className?: string) {
     if (slide && !className) {
@@ -21,12 +21,27 @@ function Slide({ slide, className }: SlideProps) {
     return ''
   }
 
-  if (slide.slideBackground.color) {
-    style.background = slide.slideBackground.color.hex
+  function setBackground(slide: TSlide, style: CSSProperties) {
+    if (
+      slide.slideBackground.color.hex &&
+      !slide.slideBackground.color.opacity
+    ) {
+      style.backgroundColor = slide.slideBackground.color.hex
+    } else if (
+      slide.slideBackground.color.opacity &&
+      slide.slideBackground.color.hex
+    ) {
+      style.opacity = slide.slideBackground.color.opacity
+      style.backgroundColor = slide.slideBackground.color.hex
+    }
+    return style
   }
 
   return (
-    <div className={setClassName(slide, className)} style={style}>
+    <div
+      className={setClassName(slide, className)}
+      style={setBackground(slide, styleVar)}
+    >
       {slide.slideObjects.map((object) => (
         <BaseBlock key={object.id} {...object} />
       ))}
