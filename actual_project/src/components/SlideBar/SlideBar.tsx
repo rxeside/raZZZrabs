@@ -1,25 +1,40 @@
 import './SlideBar.css'
 import Slide from '../Slide/Slide'
-import { Slide as TSlide } from '../../model/main'
+import {
+  Slide as TSlide,
+  SlideSelection as TSlideSelection,
+} from '../../model/main'
 
 type SlideBarProps = {
-  selectSlides: TSlide[]
+  selectSlide: TSlideSelection
   slides: TSlide[]
 }
 
-function SlideBar({ selectSlides, slides }: SlideBarProps) {
+function SlideBar({ selectSlide, slides }: SlideBarProps) {
+  function isSelectedSlide(selection: TSlideSelection, slide: TSlide) {
+    if (slide.slideID == selection.slideID) {
+      return true
+    }
+    return false
+  }
+
+  function setClassSelected(bool: boolean) {
+    if (bool) {
+      return 'slide-bar__wrapper_selected'
+    }
+    return 'slide-bar__wrapper'
+  }
+
   return (
     <div className="slide-bar">
       {slides.length > 0 &&
-        slides.map((slide, index) => (
+        slides.map((slide) => (
           <div key={slide.slideID} className="slide-bar__element">
-            <div className="slide-bar__index">{index + 1}</div>
-            <div className="slide-bar__wrapper">
-              <Slide
-                isSelectedSlide={selectSlides.includes(slide)}
-                slide={slide}
-                className="slide-bar__slide"
-              />
+            <div className="slide-bar__index">{slide.slideID}</div>
+            <div
+              className={setClassSelected(isSelectedSlide(selectSlide, slide))}
+            >
+              <Slide slide={slide} className="slide-bar__slide" />
             </div>
           </div>
         ))}

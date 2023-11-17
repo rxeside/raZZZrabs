@@ -12,7 +12,7 @@ function App({ page }: AppProps) {
   return (
     <div className="app">
       <Header presentationName={page.title} />
-      <SlideBar selectSlides={page.slides} slides={page.slides} />
+      <SlideBar selectSlide={page.selection} slides={page.slides} />
     </div>
   )
 }

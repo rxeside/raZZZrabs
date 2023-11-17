@@ -4,26 +4,19 @@ import { Slide as TSlide } from '../../model/main'
 
 type SlideProps = {
   slide: TSlide
-  isSelectedSlide: boolean
   className?: string
 }
 
-function Slide({ slide, isSelectedSlide, className }: SlideProps) {
+function Slide({ slide, className }: SlideProps) {
   const style: CSSProperties = {}
 
-  function setClassName(
-    slide: TSlide,
-    isSelectedSlide: boolean,
-    className?: string,
-  ) {
-    if (slide) {
+  function setClassName(slide: TSlide, className?: string) {
+    if (slide && !className) {
       return 'slide'
-    }
-    if (className) {
+    } else if (className && !slide) {
       return className
-    }
-    if (isSelectedSlide) {
-      return 'slide__select'
+    } else if (className && slide) {
+      return className
     }
     return ''
   }
@@ -33,10 +26,7 @@ function Slide({ slide, isSelectedSlide, className }: SlideProps) {
   }
 
   return (
-    <div
-      className={setClassName(slide, isSelectedSlide, className)}
-      style={style}
-    >
+    <div className={setClassName(slide, className)} style={style}>
       {slide.slideObjects.map((object) => (
         <BaseBlock key={object.id} {...object} />
       ))}
