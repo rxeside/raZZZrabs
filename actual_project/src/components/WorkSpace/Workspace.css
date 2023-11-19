@@ -1,7 +1,19 @@
 .workspace {
-  transform: scale(0.8);
+  width: calc(100% - 14.3%);
+  height: 576px;
   background-color: rgb(244 244 244 / 100%);
-  width: 1169px;
-  height: 770px;
-  position: static;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  border-top: 1px solid #a6a6a6;
+}
+
+.slide {
+  width: 860px;
+  height: 484px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 }

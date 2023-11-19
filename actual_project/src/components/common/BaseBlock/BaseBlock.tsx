@@ -12,12 +12,13 @@ import Text from '../TextBlock/TextBlock'
 
 type BlockProps = TextBlock | ImageBlock | ShapeBlock
 
-function BaseBlock({ startDot, size, elementType, data }: BlockProps) {
+function BaseBlock({ startDot, size, elementType, data, scale }: BlockProps) {
   const style: CSSProperties = {
     left: startDot.x,
     top: startDot.y,
-    height: size.height,
-    width: size.width,
+    height: 'calc(' + scale + ' * ' + size.height + ')',
+    width: 'calc(' + scale + ' * ' + size.width + ')',
+    transform: 'scale(' + scale + ')',
   }
 
   return (
