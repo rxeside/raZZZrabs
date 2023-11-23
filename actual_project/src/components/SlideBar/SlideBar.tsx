@@ -6,14 +6,16 @@ import {
 } from '../../model/main'
 
 type SlideBarProps = {
-  selectSlide: TSlideSelection
+  selectSlide: TSlideSelection | null
   slides: TSlide[]
 }
 
 function SlideBar({ selectSlide, slides }: SlideBarProps) {
-  function isSelectedSlide(selection: TSlideSelection, slide: TSlide) {
-    if (slide.slideID == selection.slideID) {
-      return true
+  function isSelectedSlide(selection: TSlideSelection | null, slide: TSlide) {
+    if (selection != null) {
+      if (slide.slideID == selection.slideID) {
+        return true
+      }
     }
     return false
   }

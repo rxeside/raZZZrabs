@@ -7,7 +7,7 @@ import {
 
 type WorkspaceProps = {
   slides: TSlide[]
-  selectSlide: TSlideSelection
+  selectSlide: TSlideSelection | null
 }
 
 function Workspace({ slides, selectSlide }: WorkspaceProps) {
@@ -15,7 +15,7 @@ function Workspace({ slides, selectSlide }: WorkspaceProps) {
     <div className="workspace">
       {slides.length > 0 &&
         slides.map((slide) => {
-          if (selectSlide.slideID === slide.slideID) {
+          if (selectSlide != null && selectSlide.slideID === slide.slideID) {
             return (
               <Slide
                 slide={slide}

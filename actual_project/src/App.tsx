@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './App.css'
 import Header from './components/Header/Header'
-import { Page } from './model/main'
 import SlideBar from './components/SlideBar/SlideBar'
 import Workspace from './components/WorkSpace/Workspace'
+import { PageContext } from './context/page'
 
-type AppProps = {
-  page: Page
-}
+function App() {
+  const { page } = useContext(PageContext)
 
-function App({ page }: AppProps) {
   return (
     <div className="app">
       <Header presentationName={page.title} />

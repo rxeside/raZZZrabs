@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { maxPage } from './tests/maxTests'
+import PageProvider from './context/page'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <App page={maxPage} />
+    <PageProvider>
+      <App />
+    </PageProvider>
   </React.StrictMode>,
 )
 
