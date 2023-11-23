@@ -10,15 +10,30 @@ import Image from '../ImageBlock/ImageBlock'
 import Shape from '../ShapeBlock/ShapeBlock'
 import Text from '../TextBlock/TextBlock'
 
-type BlockProps = TextBlock | ImageBlock | ShapeBlock
+type BlockProps = (TextBlock | ImageBlock | ShapeBlock) & {
+  elementSelect?: string
+}
 
-function BaseBlock({ startDot, size, elementType, data, scale }: BlockProps) {
+function BaseBlock({
+  startDot,
+  size,
+  elementType,
+  data,
+  scale = 1,
+  id,
+  elementSelect,
+}: BlockProps) {
+  const newHeight: number = scale * size.height
+  const newWidth: number = scale * size.width
+
   const style: CSSProperties = {
     left: startDot.x,
     top: startDot.y,
-    height: 'calc(' + scale + ' * ' + size.height + ')',
-    width: 'calc(' + scale + ' * ' + size.width + ')',
+    height: newHeight,
+    width: newWidth,
     transform: 'scale(' + scale + ')',
+    outline: elementSelect === id ? '2px solid rgb(0 146 192 / 100%)' : 0,
+    overflow: 'hidden',
   }
 
   return (

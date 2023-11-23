@@ -5,9 +5,10 @@ import { Slide as TSlide } from '../../model/main'
 type SlideProps = {
   slide: TSlide
   className?: string
+  elementSelect?: string
 }
 
-function Slide({ slide, className }: SlideProps) {
+function Slide({ slide, className, elementSelect }: SlideProps) {
   const styleVar: CSSProperties = {}
 
   function setClassName(slide: TSlide, className?: string) {
@@ -55,7 +56,7 @@ function Slide({ slide, className }: SlideProps) {
       style={setBackground(slide, styleVar)}
     >
       {slide.slideObjects.map((object) => (
-        <BaseBlock key={object.id} {...object} />
+        <BaseBlock key={object.id} {...object} elementSelect={elementSelect} />
       ))}
     </div>
   )

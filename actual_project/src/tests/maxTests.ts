@@ -209,15 +209,15 @@ const imageUrlBlockBorder: BorderType = {
 
 const imageUrlBlock: ImageBlock = {
   startDot: {
-    x: 0,
+    x: 300,
     y: 100,
   },
   size: {
     width: 1920,
     height: 1080,
   },
-  scale: 0.2,
-  id: '6',
+  scale: 0.4,
+  id: '2',
   data: {
     image: imageUrlBlockDataType,
     border: imageUrlBlockBorder,
@@ -273,7 +273,7 @@ const maxPage: Page = {
     lastSave: [firstSlide, secondSlide, thirdSlide],
   },
   selection: {
-    slideID: '2',
+    slideID: '1',
     elementID: '2',
   },
   title: 'Sample Presentation',

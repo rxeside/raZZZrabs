@@ -16,7 +16,13 @@ function Workspace({ slides, selectSlide }: WorkspaceProps) {
       {slides.length > 0 &&
         slides.map((slide) => {
           if (selectSlide.slideID === slide.slideID) {
-            return <Slide slide={slide} className="slide" />
+            return (
+              <Slide
+                slide={slide}
+                className="slide"
+                elementSelect={selectSlide.elementID}
+              />
+            )
           }
           return null
         })}

@@ -70,3 +70,5 @@ const midPage: Page = {
 }
 
 console.log(midPage, shapeBlock)
+
+export { midPage }
