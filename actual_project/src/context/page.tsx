@@ -1,5 +1,6 @@
 import { PropsWithChildren, createContext, useState } from 'react'
 import { Page } from '../model/main'
+import { maxPage } from '../tests/maxTests'
 
 type PageContextType = {
   page: Page
@@ -17,12 +18,7 @@ export const PageContext = createContext<PageContextType>({
 })
 
 function PageProvider({ children }: PropsWithChildren) {
-  const [page, setPage] = useState<Page>({
-    selection: null,
-    title: 'New presentation',
-    slideHistory: null,
-    slides: [],
-  })
+  const [page, setPage] = useState<Page>(maxPage)
 
   const handleSetPage = (newPage: Page) => {
     setPage({ ...newPage })
