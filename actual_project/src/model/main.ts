@@ -126,8 +126,8 @@ type Slide = {
 }
 
 type SlideSelection = {
-  slideID?: string
-  elementID?: string[]
+  slideID: string | null
+  elementIDS: string[] | null
 }
 
 type SlideHistory = {
@@ -137,7 +137,7 @@ type SlideHistory = {
 type Page = {
   slides: Slide[]
   slideHistory: SlideHistory | null
-  selection: SlideSelection | null
+  selection: SlideSelection
   title: string
 }
 

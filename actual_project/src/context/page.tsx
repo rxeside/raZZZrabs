@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useState } from 'react'
-import { Page } from '../model/main'
+import { Page, SlideSelection as TSelection } from '../model/main'
 import { maxPage } from '../tests/maxTests'
 
 type PageContextType = {
@@ -7,9 +7,14 @@ type PageContextType = {
   setPage: (newPage: Page) => void
 }
 
+const newSelection: TSelection = {
+  elementIDS: [],
+  slideID: '',
+}
+
 export const PageContext = createContext<PageContextType>({
   page: {
-    selection: null,
+    selection: newSelection,
     title: '',
     slides: [],
     slideHistory: null,

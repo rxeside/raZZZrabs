@@ -64,7 +64,7 @@ const midPage: Page = {
   },
   selection: {
     slideID: '1',
-    elementID: ['1'],
+    elementIDS: ['1'],
   },
   title: 'Sample Presentation',
 }

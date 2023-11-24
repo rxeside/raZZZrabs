@@ -5,7 +5,7 @@ import { Slide as TSlide } from '../../model/main'
 type SlideProps = {
   slide: TSlide
   className?: string
-  elementSelect?: string[]
+  elementSelect: string[] | null
 }
 
 function Slide({ slide, className, elementSelect }: SlideProps) {

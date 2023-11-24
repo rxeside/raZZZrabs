@@ -1,31 +1,16 @@
 import './Workspace.css'
 import Slide from '../Slide/Slide'
-import {
-  Slide as TSlide,
-  SlideSelection as TSlideSelection,
-} from '../../model/main'
+import { Slide as TSlide } from '../../model/main'
 
 type WorkspaceProps = {
-  slides: TSlide[]
-  selectSlide: TSlideSelection | null
+  slide: TSlide
+  selectSlide: string[] | null
 }
 
-function Workspace({ slides, selectSlide }: WorkspaceProps) {
+function Workspace({ slide, selectSlide }: WorkspaceProps) {
   return (
     <div className="workspace">
-      {slides.length > 0 &&
-        slides.map((slide) => {
-          if (selectSlide != null && selectSlide.slideID === slide.slideID) {
-            return (
-              <Slide
-                slide={slide}
-                className="slide"
-                elementSelect={selectSlide.elementID}
-              />
-            )
-          }
-          return null
-        })}
+      <Slide slide={slide} className="slide" elementSelect={selectSlide} />
     </div>
   )
 }

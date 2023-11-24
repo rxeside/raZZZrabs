@@ -36,7 +36,11 @@ function SlideBar({ selectSlide, slides }: SlideBarProps) {
             <div
               className={setClassSelected(isSelectedSlide(selectSlide, slide))}
             >
-              <Slide slide={slide} className="slide-bar__slide" />
+              <Slide
+                slide={slide}
+                className="slide-bar__slide"
+                elementSelect={null}
+              />
             </div>
           </div>
         ))}

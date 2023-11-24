@@ -151,7 +151,7 @@ const textBlock: TextBlock = {
       height: 100,
     },
   },
-  id: '3',
+  id: '2',
   elementType: ElementType.TEXT,
 }
 
@@ -180,7 +180,7 @@ const imageBase64Block: ImageBlock = {
     height: 480,
   },
   scale: 1,
-  id: '4',
+  id: '1',
   data: {
     image: imageBase64BlockDataType,
     border: imageBase64BlockBorder,
@@ -274,7 +274,7 @@ const maxPage: Page = {
   },
   selection: {
     slideID: '2',
-    elementID: ['1', '2'],
+    elementIDS: ['1'],
   },
   title: 'Sample Presentation',
 }
