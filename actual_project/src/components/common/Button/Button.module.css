@@ -17,11 +17,21 @@
   background: #44474614;
 }
 
-.button__icon {
+.buttonIcon {
+  cursor: pointer;
   font-size: 20px;
+  border: 0;
+  background: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
 }
 
-.button__text {
+.buttonText {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  color: rgb(98 98 98 / 100%);
   padding: 1px 8px;
   font:
     500 normal 14px/1 Roboto,

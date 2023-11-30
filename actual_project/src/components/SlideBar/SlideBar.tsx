@@ -1,4 +1,4 @@
-import './SlideBar.css'
+import classes from './SlideBar.module.css'
 import Slide from '../Slide/Slide'
 import {
   Slide as TSlide,
@@ -22,23 +22,23 @@ function SlideBar({ selectSlide, slides }: SlideBarProps) {
 
   function setClassSelected(bool: boolean) {
     if (bool) {
-      return 'slide-bar__wrapper_selected'
+      return classes.slideBarWrapperSelected
     }
-    return 'slide-bar__wrapper'
+    return classes.slideBarWrapper
   }
 
   return (
-    <div className="slide-bar">
+    <div className={classes.slideBar}>
       {slides.length > 0 &&
         slides.map((slide) => (
-          <div key={slide.slideID} className="slide-bar__element">
-            <div className="slide-bar__index">{slide.slideID}</div>
+          <div key={slide.slideID} className={classes.slideBarElement}>
+            <div className={classes.slideBarIndex}>{slide.slideID}</div>
             <div
               className={setClassSelected(isSelectedSlide(selectSlide, slide))}
             >
               <Slide
                 slide={slide}
-                className="slide-bar__slide"
+                className={classes.slideBarSlide}
                 elementSelect={null}
               />
             </div>

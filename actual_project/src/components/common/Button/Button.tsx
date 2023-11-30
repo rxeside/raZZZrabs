@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react'
-import './Button.css'
+import classes from './Button.module.css'
 
 type ButtonProps = {
   text?: string
@@ -13,10 +13,10 @@ function Button({ text, icon, onClick }: ButtonProps) {
 
   function setClassName(isIconButton: boolean, isTextButton: boolean) {
     if (isIconButton) {
-      return 'button__icon'
+      return classes.buttonIcon
     }
     if (isTextButton) {
-      return 'button__text'
+      return classes.buttonText
     }
     return ''
   }
@@ -29,12 +29,12 @@ function Button({ text, icon, onClick }: ButtonProps) {
     >
       {isIconButton && (
         <img
-          className="button__icon material-symbols-outlined"
+          className={classes.buttonIcon + ' ' + classes.materialsymbolsoutlined}
           src={'../../static/img/' + icon + '.svg'}
           alt={icon}
         ></img>
       )}
-      {isTextButton && <span className="button__text">{text}</span>}
+      {isTextButton && <span className={classes.buttonText}>{text}</span>}
     </button>
   )
 }

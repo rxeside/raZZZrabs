@@ -1,11 +1,11 @@
-.info-bar {
+.infoBar {
   display: flex;
   flex-direction: row;
   margin-left: 72px;
   padding-left: 0;
 }
 
-.button__text {
+.buttonText {
   border: 0;
   background: none;
   font-family: Roboto;

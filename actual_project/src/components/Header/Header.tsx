@@ -1,28 +1,29 @@
 import InfoBar from '../InfoBar/InfoBar'
 import ToolBar from '../ToolBar/ToolBar'
 import Input from '../common/Input/Input'
-import './Header.css'
+import classes from './Header.module.css'
 
 type HeaderProps = {
   presentationName: string
+  onAddSlide: () => void
 }
 
-function Header({ presentationName }: HeaderProps) {
+function Header({ presentationName, onAddSlide }: HeaderProps) {
   return (
-    <div className="header">
-      <div className="logo-and-name">
+    <div className={classes.header}>
+      <div className={classes.logoAndName}>
         <img
-          className={'logo'}
+          className={classes.logo}
           alt={'logo'}
           src={'../../static/img/logo.svg'}
         />
         <Input
           defaultValue={presentationName}
-          className={'presentation-name'}
+          className={classes.presentationName}
         />
       </div>
       <InfoBar />
-      <ToolBar />
+      <ToolBar onAddSlide={onAddSlide} />
     </div>
   )
 }

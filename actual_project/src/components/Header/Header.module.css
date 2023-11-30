@@ -13,12 +13,12 @@
   margin-top: 15px;
 }
 
-.logo-and-name {
+.logoAndName {
   display: flex;
   flex-direction: row;
 }
 
-.presentation-name {
+.presentationName {
   font-family: Roboto;
   font-style: normal;
   font-size: 18px;
@@ -28,10 +28,10 @@
   border: none;
 }
 
-.presentation-name:hover {
+.presentationName:hover {
   outline: 0;
 }
 
-.presentation-name:focus {
+.presentationName:focus {
   outline: 0;
 }
