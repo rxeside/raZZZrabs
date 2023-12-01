@@ -3,16 +3,17 @@ import classes from './ToolBar.module.css'
 
 interface ToolBarProps {
   onAddSlide: () => void
+  onRemoveSlide: () => void
 }
 
-function ToolBar({ onAddSlide }: ToolBarProps) {
+function ToolBar({ onAddSlide, onRemoveSlide }: ToolBarProps) {
   // const handleAddSlide = () => {
   //   addSlide()
   // }
   return (
     <div className={classes.toolBar}>
       <Button icon={'plus'} onClick={onAddSlide} />
-      <Button icon={'triangle'} />
+      <Button icon={'triangle'} onClick={onRemoveSlide} />
       <div className={classes.v1}></div>
       <Button icon={'prev-arrow'} />
       <Button icon={'next-arrow'} />

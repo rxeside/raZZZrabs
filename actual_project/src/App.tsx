@@ -4,23 +4,26 @@ import Header from './components/Header/Header'
 import SlideBar from './components/SlideBar/SlideBar'
 import Workspace from './components/WorkSpace/Workspace'
 import { PageContext } from './context/page'
-import { useAddSlide } from './hooks/useAddNewSlide'
+import useSlideManagement from './hooks/useSlideManager'
+
 function App() {
   const { page } = useContext(PageContext)
-  const slide = page.slides.find(function (slide) {
+  const { slides, addSlide, removeSlide } = useSlideManagement() // Используйте ваш хук
+
+  const slide = slides.find(function (slide) {
     if (slide.slideID == page.selection.slideID) {
       return slide
     }
     return null
   })
 
-  const SlidesFromPage = page.slides
-
-  const { slides, addSlide } = useAddSlide({ slideList: SlidesFromPage }) // Destructure addSlide from the hook
-
   return (
     <div className="app">
-      <Header presentationName={page.title} onAddSlide={addSlide} />
+      <Header
+        presentationName={page.title}
+        onAddSlide={addSlide}
+        onRemoveSlide={() => removeSlide(page.selection.slideID as string)}
+      />
       <div className="editor">
         <SlideBar selectSlide={page.selection} slides={slides} />
         {slide && (

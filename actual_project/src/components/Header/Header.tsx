@@ -6,9 +6,10 @@ import classes from './Header.module.css'
 type HeaderProps = {
   presentationName: string
   onAddSlide: () => void
+  onRemoveSlide: () => void
 }
 
-function Header({ presentationName, onAddSlide }: HeaderProps) {
+function Header({ presentationName, onAddSlide, onRemoveSlide }: HeaderProps) {
   return (
     <div className={classes.header}>
       <div className={classes.logoAndName}>
@@ -23,7 +24,7 @@ function Header({ presentationName, onAddSlide }: HeaderProps) {
         />
       </div>
       <InfoBar />
-      <ToolBar onAddSlide={onAddSlide} />
+      <ToolBar onAddSlide={onAddSlide} onRemoveSlide={onRemoveSlide} />
     </div>
   )
 }

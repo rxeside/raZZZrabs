@@ -273,7 +273,7 @@ const maxPage: Page = {
     lastSave: [firstSlide, secondSlide, thirdSlide],
   },
   selection: {
-    slideID: '2',
+    slideID: '3',
     elementIDS: ['1'],
   },
   title: 'Sample Presentation',
