@@ -32,7 +32,9 @@ function SlideBar({ selectSlide, slides }: SlideBarProps) {
       {slides.length > 0 &&
         slides.map((slide) => (
           <div key={slide.slideID} className={classes.slideBarElement}>
-            <div className={classes.slideBarIndex}>{slide.slideID}</div>
+            <div className={classes.slideBarIndex}>
+              {slides.indexOf(slide) + 1}
+            </div>
             <div
               className={setClassSelected(isSelectedSlide(selectSlide, slide))}
             >

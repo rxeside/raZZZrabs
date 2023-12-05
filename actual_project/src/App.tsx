@@ -8,9 +8,9 @@ import useSlideManagement from './hooks/useSlideManager'
 
 function App() {
   const { page } = useContext(PageContext)
-  const { slides, addSlide, removeSlide } = useSlideManagement() // Используйте ваш хук
+  const { addSlide, removeSlide } = useSlideManagement() // Используйте ваш хук
 
-  const slide = slides.find(function (slide) {
+  const slide = page.slides.find(function (slide) {
     if (slide.slideID == page.selection.slideID) {
       return slide
     }
@@ -25,7 +25,7 @@ function App() {
         onRemoveSlide={() => removeSlide(page.selection.slideID as string)}
       />
       <div className="editor">
-        <SlideBar selectSlide={page.selection} slides={slides} />
+        <SlideBar selectSlide={page.selection} slides={page.slides} />
         {slide && (
           <Workspace slide={slide} selectSlide={page.selection.elementIDS} />
         )}

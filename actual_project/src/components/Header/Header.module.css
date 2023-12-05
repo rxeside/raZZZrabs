@@ -19,7 +19,7 @@
 }
 
 .presentationName {
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-size: 18px;
   margin-top: 25px;
