@@ -8,7 +8,7 @@ type PageContextType = {
 }
 
 const newSelection: TSelection = {
-  elementIDS: [],
+  elementID: null,
   slideID: '',
 }
 

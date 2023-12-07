@@ -2,14 +2,21 @@ import InfoBar from '../InfoBar/InfoBar'
 import ToolBar from '../ToolBar/ToolBar'
 import Input from '../common/Input/Input'
 import classes from './Header.module.css'
+import { ImageBlock, ShapeBlock, TextBlock } from '../../model/main'
 
 type HeaderProps = {
   presentationName: string
   onAddSlide: () => void
   onRemoveSlide: () => void
+  selectedObject: TextBlock | ImageBlock | ShapeBlock | null
 }
 
-function Header({ presentationName, onAddSlide, onRemoveSlide }: HeaderProps) {
+function Header({
+  presentationName,
+  onAddSlide,
+  onRemoveSlide,
+  selectedObject,
+}: HeaderProps) {
   return (
     <div className={classes.header}>
       <div className={classes.logoAndName}>
@@ -24,7 +31,11 @@ function Header({ presentationName, onAddSlide, onRemoveSlide }: HeaderProps) {
         />
       </div>
       <InfoBar />
-      <ToolBar onAddSlide={onAddSlide} onRemoveSlide={onRemoveSlide} />
+      <ToolBar
+        onAddSlide={onAddSlide}
+        onRemoveSlide={onRemoveSlide}
+        selectedObject={selectedObject}
+      />
     </div>
   )
 }

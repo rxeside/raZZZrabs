@@ -20,7 +20,7 @@ const minPage: Page = {
   },
   selection: {
     slideID: '1',
-    elementIDS: [],
+    elementID: null,
   },
   title: 'Sample Presentation',
 }

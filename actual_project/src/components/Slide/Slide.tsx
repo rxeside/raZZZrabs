@@ -5,10 +5,16 @@ import { Slide as TSlide } from '../../model/main'
 type SlideProps = {
   slide: TSlide
   className?: string
-  elementSelect: string[] | null
+  elementSelect: string | null
+  onSelectElement: (elementID: string) => void
 }
 
-function Slide({ slide, className, elementSelect }: SlideProps) {
+function Slide({
+  slide,
+  className,
+  elementSelect,
+  onSelectElement,
+}: SlideProps) {
   const styleVar: CSSProperties = {}
 
   function setClassName(slide: TSlide, className?: string) {
@@ -59,7 +65,8 @@ function Slide({ slide, className, elementSelect }: SlideProps) {
         <BaseBlock
           key={object.id}
           {...object}
-          elementSelect={elementSelect?.find((id) => id === object.id)}
+          elementSelect={elementSelect}
+          onSelectElement={onSelectElement}
         />
       ))}
     </div>

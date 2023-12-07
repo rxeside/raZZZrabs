@@ -44,6 +44,7 @@ function SlideBar({ selectSlide, slides, onSelectSlide }: SlideBarProps) {
                 slide={slide}
                 className={classes.slideBarSlide}
                 elementSelect={null}
+                onSelectElement={() => null}
               />
             </div>
           </div>

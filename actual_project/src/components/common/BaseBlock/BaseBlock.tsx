@@ -11,7 +11,8 @@ import Shape from '../ShapeBlock/ShapeBlock'
 import Text from '../TextBlock/TextBlock'
 
 type BlockProps = (TextBlock | ImageBlock | ShapeBlock) & {
-  elementSelect?: string
+  elementSelect?: string | null
+  onSelectElement: (elementID: string) => void
 }
 
 function BaseBlock({
@@ -22,6 +23,7 @@ function BaseBlock({
   scale = 1,
   id,
   elementSelect,
+  onSelectElement,
 }: BlockProps) {
   const newHeight: number = scale * size.height
   const newWidth: number = scale * size.width
@@ -37,7 +39,7 @@ function BaseBlock({
   }
 
   return (
-    <div className="block" style={style}>
+    <div className="block" style={style} onClick={() => onSelectElement(id)}>
       {elementType === ElementType.IMAGE && <Image data={data.image} />}
       {elementType === ElementType.SHAPE && <Shape data={data} />}
       {elementType === ElementType.TEXT && <Text data={data} />}
