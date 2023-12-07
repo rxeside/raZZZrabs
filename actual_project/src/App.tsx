@@ -8,7 +8,7 @@ import useSlideManagement from './hooks/useSlideManager'
 
 function App() {
   const { page } = useContext(PageContext)
-  const { addSlide, removeSlide } = useSlideManagement() // Используйте ваш хук
+  const { addSlide, removeSlide, selectSlide } = useSlideManagement()
 
   const slide = page.slides.find(function (slide) {
     if (slide.slideID == page.selection.slideID) {
@@ -21,11 +21,15 @@ function App() {
     <div className="app">
       <Header
         presentationName={page.title}
-        onAddSlide={addSlide}
+        onAddSlide={() => addSlide(page.selection.slideID as string)}
         onRemoveSlide={() => removeSlide(page.selection.slideID as string)}
       />
       <div className="editor">
-        <SlideBar selectSlide={page.selection} slides={page.slides} />
+        <SlideBar
+          selectSlide={page.selection}
+          slides={page.slides}
+          onSelectSlide={selectSlide}
+        />
         {slide && (
           <Workspace slide={slide} selectSlide={page.selection.elementIDS} />
         )}

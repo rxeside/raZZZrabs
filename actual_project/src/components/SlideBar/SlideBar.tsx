@@ -8,9 +8,10 @@ import {
 type SlideBarProps = {
   selectSlide: TSlideSelection | null
   slides: TSlide[]
+  onSelectSlide: (slideID: string) => void
 }
 
-function SlideBar({ selectSlide, slides }: SlideBarProps) {
+function SlideBar({ selectSlide, slides, onSelectSlide }: SlideBarProps) {
   function isSelectedSlide(selection: TSlideSelection | null, slide: TSlide) {
     if (selection != null) {
       if (slide.slideID == selection.slideID) {
@@ -37,6 +38,7 @@ function SlideBar({ selectSlide, slides }: SlideBarProps) {
             </div>
             <div
               className={setClassSelected(isSelectedSlide(selectSlide, slide))}
+              onClick={() => onSelectSlide(slide.slideID)}
             >
               <Slide
                 slide={slide}

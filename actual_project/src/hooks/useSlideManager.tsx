@@ -3,14 +3,15 @@ import { Slide } from '../model/main'
 import { PageContext } from '../context/page'
 
 type UseSlideManagementReturnType = {
-  addSlide: () => void
+  addSlide: (slideID: string) => void
   removeSlide: (slideID: string) => void
+  selectSlide: (slideID: string) => void
 }
 
 const useSlideManagement = (): UseSlideManagementReturnType => {
   const { page, setPage } = useContext(PageContext)
 
-  const addSlide = () => {
+  const addSlide = (slideID: string) => {
     const newSlide: Slide = {
       slideID: String(page.slides.length + 1),
       slideBackground: {
@@ -22,7 +23,26 @@ const useSlideManagement = (): UseSlideManagementReturnType => {
       slideObjects: [],
     }
 
-    const updatedSlides = [...page.slides, newSlide]
+    const selectedIndex = page.slides.findIndex(function (slide) {
+      if (slide.slideID === slideID) {
+        return slide
+      }
+    })
+
+    console.log(selectedIndex)
+
+    let updatedSlides
+
+    if (selectedIndex !== -1) {
+      updatedSlides = [
+        ...page.slides.slice(0, selectedIndex + 1),
+        newSlide,
+        ...page.slides.slice(selectedIndex + 1),
+      ]
+    } else {
+      updatedSlides = [newSlide]
+    }
+
     setPage({
       ...page,
       slides: updatedSlides,
@@ -55,9 +75,20 @@ const useSlideManagement = (): UseSlideManagementReturnType => {
     })
   }
 
+  const selectSlide = (slideID: string) => {
+    setPage({
+      ...page,
+      selection: {
+        ...page.selection,
+        slideID: slideID,
+      },
+    })
+  }
+
   return {
     addSlide,
     removeSlide,
+    selectSlide,
   }
 }
 
