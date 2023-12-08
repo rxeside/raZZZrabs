@@ -9,6 +9,9 @@ type HeaderProps = {
   onAddSlide: () => void
   onRemoveSlide: () => void
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
+  onAddText: () => void
+  onAddImage: () => void
+  onAddShape: () => void
 }
 
 function Header({
@@ -16,6 +19,9 @@ function Header({
   onAddSlide,
   onRemoveSlide,
   selectedObject,
+  onAddText,
+  onAddImage,
+  onAddShape,
 }: HeaderProps) {
   return (
     <div className={classes.header}>
@@ -35,6 +41,9 @@ function Header({
         onAddSlide={onAddSlide}
         onRemoveSlide={onRemoveSlide}
         selectedObject={selectedObject}
+        onAddText={onAddText}
+        onAddImage={onAddImage}
+        onAddShape={onAddShape}
       />
     </div>
   )

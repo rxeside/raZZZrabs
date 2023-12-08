@@ -10,14 +10,16 @@ import useElementManagement from './hooks/useElementManager'
 function App() {
   const { page } = useContext(PageContext)
   const { addSlide, removeSlide, selectSlide } = useSlideManagement()
-  const { selectElement } = useElementManagement()
+  const { selectElement, addTextElement, addImageElement, addShapeElement } =
+    useElementManagement()
 
-  const slide = page.slides.find(function (slide) {
-    if (slide.slideID == page.selection.slideID) {
-      return slide
-    }
-    return null
-  })
+  const slide =
+    page.slides.find(function (slide) {
+      if (slide.slideID == page.selection.slideID) {
+        return slide
+      }
+      return null
+    }) || null
 
   const object =
     slide?.slideObjects.find(function (object) {
@@ -36,6 +38,9 @@ function App() {
         onAddSlide={() => addSlide(page.selection.slideID as string)}
         onRemoveSlide={() => removeSlide(page.selection.slideID as string)}
         selectedObject={object}
+        onAddText={() => addTextElement(slide)}
+        onAddImage={() => addImageElement(slide)}
+        onAddShape={() => addShapeElement(slide)}
       />
       <div className="editor">
         <SlideBar

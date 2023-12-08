@@ -6,6 +6,7 @@ import {
   Size,
   VerticalAlignType,
 } from '../../../model/main'
+import Input from '../Input/Input'
 
 type TextProps = {
   data: {
@@ -21,7 +22,7 @@ type TextProps = {
 }
 
 function Text({ data }: TextProps) {
-  return <span>{data.value}</span>
+  return <Input defaultValue={data.value} className={'text'}></Input>
 }
 
 export default Text

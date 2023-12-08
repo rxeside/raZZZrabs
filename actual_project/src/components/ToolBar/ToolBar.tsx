@@ -2,14 +2,25 @@ import Button from '../common/Button/Button'
 import classes from './ToolBar.module.css'
 import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
 import Input from '../common/Input/Input'
+import List from '../common/List/List'
 
 interface ToolBarProps {
   onAddSlide: () => void
   onRemoveSlide: () => void
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
+  onAddText: () => void
+  onAddImage: () => void
+  onAddShape: () => void
 }
 
-function ToolBar({ onAddSlide, onRemoveSlide, selectedObject }: ToolBarProps) {
+function ToolBar({
+  onAddSlide,
+  onRemoveSlide,
+  selectedObject,
+  onAddText,
+  onAddImage,
+  onAddShape,
+}: ToolBarProps) {
   // const handleAddSlide = () => {
   //   addSlide()
   // }
@@ -41,6 +52,10 @@ function ToolBar({ onAddSlide, onRemoveSlide, selectedObject }: ToolBarProps) {
     return false
   }
 
+  const handleSelectChange = (value: string) => {
+    console.log('Выбрано значение:', value)
+  }
+
   return (
     <div className={classes.toolBar}>
       <Button icon={'plus'} onClick={onAddSlide} />
@@ -51,9 +66,23 @@ function ToolBar({ onAddSlide, onRemoveSlide, selectedObject }: ToolBarProps) {
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />
-      <Button icon={'text-align'} />
-      <Button icon={'images'} />
-      <Button icon={'primitives'} />
+      <Button icon={'text-align'} onClick={onAddText} />
+      <Button icon={'images'} onClick={onAddImage} />
+      <Button
+        icon={'primitives'}
+        onClick={() => {
+          return (
+            <List
+              className={'List'}
+              options={[
+                { value: 'url', label: 'url' },
+                { value: 'base64', label: 'base64' },
+              ]}
+              onChange={handleSelectChange}
+            ></List>
+          )
+        }}
+      />
       <Button icon={'line'} />
       {isNull(selectedObject) && (
         <>
