@@ -1,7 +1,7 @@
 import { RefObject, useCallback, useRef } from 'react'
 
 type DndItemInfo = {
-  elementRef: RefObject<HTMLDivElement | null>
+  elementRef: RefObject<HTMLDivElement>
   controlRef: RefObject<HTMLDivElement>
 }
 
