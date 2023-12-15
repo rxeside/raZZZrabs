@@ -6,7 +6,7 @@ import {
   Size,
   VerticalAlignType,
 } from '../../../model/main'
-import Input from '../Input/Input'
+import TextAria from '../TextAria/TextAria'
 
 type TextProps = {
   data: {
@@ -22,7 +22,13 @@ type TextProps = {
 }
 
 function Text({ data }: TextProps) {
-  return <Input defaultValue={data.value} className={'text'}></Input>
+  return (
+    <TextAria
+      placeholder={'Ведите текст'}
+      className={'text'}
+      value={data.value}
+    ></TextAria>
+  )
 }
 
 export default Text

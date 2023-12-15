@@ -4,14 +4,14 @@ import {
   Slide as TSlide,
   SlideSelection as TSlideSelection,
 } from '../../model/main'
-
+import useSlideManagement from '../../hooks/useSlideManager'
 type SlideBarProps = {
   selectSlide: TSlideSelection | null
   slides: TSlide[]
-  onSelectSlide: (slideID: string) => void
 }
 
-function SlideBar({ selectSlide, slides, onSelectSlide }: SlideBarProps) {
+function SlideBar({ selectSlide, slides }: SlideBarProps) {
+  const { onSelectSlide } = useSlideManagement()
   function isSelectedSlide(selection: TSlideSelection | null, slide: TSlide) {
     if (selection != null) {
       if (slide.slideID == selection.slideID) {
@@ -44,7 +44,6 @@ function SlideBar({ selectSlide, slides, onSelectSlide }: SlideBarProps) {
                 slide={slide}
                 className={classes.slideBarSlide}
                 elementSelect={null}
-                onSelectElement={() => null}
               />
             </div>
           </div>

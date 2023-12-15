@@ -3,27 +3,19 @@ import classes from './ToolBar.module.css'
 import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
 import Input from '../common/Input/Input'
 import List from '../common/List/List'
+import useElementManagement from '../../hooks/useElementManager'
+import useSlideManagement from '../../hooks/useSlideManager'
 
 interface ToolBarProps {
-  onAddSlide: () => void
-  onRemoveSlide: () => void
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
-  onAddText: () => void
-  onAddImage: () => void
-  onAddShape: () => void
 }
 
-function ToolBar({
-  onAddSlide,
-  onRemoveSlide,
-  selectedObject,
-  onAddText,
-  onAddImage,
-  onAddShape,
-}: ToolBarProps) {
-  // const handleAddSlide = () => {
-  //   addSlide()
-  // }
+function ToolBar({ selectedObject }: ToolBarProps) {
+  const { addSlide, removeSlide } = useSlideManagement()
+
+  const { addTextElement, addImageElement, addShapeElement, removeElement } =
+    useElementManagement()
+
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
       return true
@@ -58,16 +50,16 @@ function ToolBar({
 
   return (
     <div className={classes.toolBar}>
-      <Button icon={'plus'} onClick={onAddSlide} />
-      <Button icon={'trash'} onClick={onRemoveSlide} />
+      <Button icon={'plus'} onClick={addSlide} />
+      <Button icon={'trash'} onClick={removeSlide} />
       <div className={classes.v1}></div>
       <Button icon={'prev-arrow'} />
       <Button icon={'next-arrow'} />
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />
-      <Button icon={'text-align'} onClick={onAddText} />
-      <Button icon={'images'} onClick={onAddImage} />
+      <Button icon={'text-align'} onClick={addTextElement} />
+      <Button icon={'images'} onClick={addImageElement} />
       <Button
         icon={'primitives'}
         onClick={() => {
@@ -78,7 +70,7 @@ function ToolBar({
                 { value: 'url', label: 'url' },
                 { value: 'base64', label: 'base64' },
               ]}
-              onChange={handleSelectChange}
+              onChange={addImageElement}
             ></List>
           )
         }}
@@ -90,16 +82,15 @@ function ToolBar({
           <Button text={'Фон'} />
         </>
       )}
-      {isText(selectedObject) ||
-        (isShape(selectedObject) && (
-          <>
-            <div className={classes.v1}></div>
-            <Button icon={'fillcolor'} />
-            <Button icon={'bordercolor'} />
-            <Button icon={'borderwidth'} />
-            <Button icon={'borderstyle'} />
-          </>
-        ))}
+      {(isText(selectedObject) || isShape(selectedObject)) && (
+        <>
+          <div className={classes.v1}></div>
+          <Button icon={'fillcolor'} />
+          <Button icon={'bordercolor'} />
+          <Button icon={'borderwidth'} />
+          <Button icon={'borderstyle'} />
+        </>
+      )}
       {isText(selectedObject) && (
         <>
           <div className={classes.v1}></div>
@@ -126,6 +117,12 @@ function ToolBar({
           <Button icon={'crop'} />
         </>
       )}
+      <div className={classes.v1}></div>
+      <Button
+        icon={'trash'}
+        onClick={removeElement}
+        title={'Удалить элемент'}
+      />
     </div>
   )
 }

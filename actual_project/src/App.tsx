@@ -4,14 +4,9 @@ import Header from './components/Header/Header'
 import SlideBar from './components/SlideBar/SlideBar'
 import Workspace from './components/WorkSpace/Workspace'
 import { PageContext } from './context/page'
-import useSlideManagement from './hooks/useSlideManager'
-import useElementManagement from './hooks/useElementManager'
 
 function App() {
   const { page } = useContext(PageContext)
-  const { addSlide, removeSlide, selectSlide } = useSlideManagement()
-  const { selectElement, addTextElement, addImageElement, addShapeElement } =
-    useElementManagement()
 
   const slide =
     page.slides.find(function (slide) {
@@ -33,27 +28,11 @@ function App() {
 
   return (
     <div className="app">
-      <Header
-        presentationName={page.title}
-        onAddSlide={() => addSlide(page.selection.slideID as string)}
-        onRemoveSlide={() => removeSlide(page.selection.slideID as string)}
-        selectedObject={object}
-        onAddText={() => addTextElement(slide)}
-        onAddImage={() => addImageElement(slide)}
-        onAddShape={() => addShapeElement(slide)}
-      />
+      <Header presentationName={page.title} selectedObject={object} />
       <div className="editor">
-        <SlideBar
-          selectSlide={page.selection}
-          slides={page.slides}
-          onSelectSlide={selectSlide}
-        />
+        <SlideBar selectSlide={page.selection} slides={page.slides} />
         {slide && (
-          <Workspace
-            slide={slide}
-            selectSlide={page.selection.elementID}
-            onSelectElement={selectElement}
-          />
+          <Workspace slide={slide} selectSlide={page.selection.elementID} />
         )}
       </div>
     </div>

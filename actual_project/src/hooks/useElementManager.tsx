@@ -6,7 +6,6 @@ import {
   ImageBlock,
   PrimitiveType,
   ShapeBlock,
-  Slide,
   TextBlock,
   VerticalAlignType,
 } from '../model/main'
@@ -19,16 +18,21 @@ import {
 
 type useElementManagementReturnType = {
   selectElement: (elementID: string) => void
-  addTextElement: (slide: Slide | null) => void
-  addImageElement: (slide: Slide | null) => void
-  addShapeElement: (slide: Slide | null) => void
+  addTextElement: () => void
+  addImageElement: () => void
+  addShapeElement: () => void
+  removeElement: () => void
 }
 
 const useElementManagement = (): useElementManagementReturnType => {
   const { page, setPage } = useContext(PageContext)
 
-  const addTextElement = (slide: Slide | null) => {
-    if (slide != null) {
+  const addTextElement = () => {
+    const slideCur =
+      page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+      null
+
+    if (slideCur != null) {
       const newElement: TextBlock = {
         startDot: {
           x: 100,
@@ -40,7 +44,7 @@ const useElementManagement = (): useElementManagementReturnType => {
           height: 100,
         },
         data: {
-          value: '',
+          value: 'MotoMoto',
           color: {
             hex: '#FF0000',
             opacity: 0,
@@ -58,13 +62,19 @@ const useElementManagement = (): useElementManagementReturnType => {
             height: 100,
           },
         },
-        id: String(slide.slideObjects.length + 1),
+        id: String(Date.now()),
         elementType: ElementType.TEXT,
       }
 
-      slide.slideObjects = [...slide.slideObjects, newElement]
+      slideCur.slideObjects = [...slideCur.slideObjects, newElement]
 
-      const updatedSlides = [...page.slides]
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === slideCur.slideID) {
+          return slideCur
+        } else {
+          return slide
+        }
+      })
 
       setPage({
         ...page,
@@ -73,8 +83,12 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
-  const addImageElement = (slide: Slide | null) => {
-    if (slide != null) {
+  const addImageElement = () => {
+    const slideCur =
+      page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+      null
+
+    if (slideCur != null) {
       const newElement: ImageBlock = {
         startDot: {
           x: 23,
@@ -85,7 +99,7 @@ const useElementManagement = (): useElementManagementReturnType => {
           height: 480,
         },
         scale: 1,
-        id: String(slide.slideObjects.length + 1),
+        id: String(Date.now()),
         data: {
           image: imageBase64BlockDataType,
           border: imageBase64BlockBorder,
@@ -97,9 +111,15 @@ const useElementManagement = (): useElementManagementReturnType => {
         elementType: ElementType.IMAGE,
       }
 
-      slide.slideObjects = [...slide.slideObjects, newElement]
+      slideCur.slideObjects = [...slideCur.slideObjects, newElement]
 
-      const updatedSlides = [...page.slides]
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === slideCur.slideID) {
+          return slideCur
+        } else {
+          return slide
+        }
+      })
 
       setPage({
         ...page,
@@ -108,8 +128,12 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
-  const addShapeElement = (slide: Slide | null) => {
-    if (slide != null) {
+  const addShapeElement = () => {
+    const slideCur =
+      page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+      null
+
+    if (slideCur != null) {
       const newElement: ShapeBlock = {
         startDot: {
           x: 12,
@@ -120,7 +144,7 @@ const useElementManagement = (): useElementManagementReturnType => {
           height: 100,
         },
         scale: 1,
-        id: String(slide.slideObjects.length + 1),
+        id: String(Date.now()),
         data: {
           primitiveType: PrimitiveType.CIRCLE,
           color: circleColor,
@@ -133,9 +157,15 @@ const useElementManagement = (): useElementManagementReturnType => {
         elementType: ElementType.SHAPE,
       }
 
-      slide.slideObjects = [...slide.slideObjects, newElement]
+      slideCur.slideObjects = [...slideCur.slideObjects, newElement]
 
-      const updatedSlides = [...page.slides]
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === slideCur.slideID) {
+          return slideCur
+        } else {
+          return slide
+        }
+      })
 
       setPage({
         ...page,
@@ -145,14 +175,48 @@ const useElementManagement = (): useElementManagementReturnType => {
   }
 
   const selectElement = (elementID: string) => {
-    console.log(elementID)
-    setPage({
-      ...page,
-      selection: {
-        ...page.selection,
-        elementID: elementID,
-      },
-    })
+    if (elementID === page.selection.elementID) {
+      setPage({
+        ...page,
+        selection: {
+          ...page.selection,
+          elementID: '',
+        },
+      })
+    } else {
+      setPage({
+        ...page,
+        selection: {
+          ...page.selection,
+          elementID: elementID,
+        },
+      })
+    }
+  }
+
+  const removeElement = () => {
+    const slideCur = page.slides.find(
+      (slide) => slide.slideID === page.selection.slideID,
+    )
+
+    if (slideCur) {
+      const updatedSlideObjects = slideCur.slideObjects.filter(
+        (elem) => elem.id !== page.selection.elementID,
+      )
+
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === slideCur.slideID) {
+          return { ...slide, slideObjects: updatedSlideObjects }
+        } else {
+          return slide
+        }
+      })
+
+      setPage({
+        ...page,
+        slides: updatedSlides,
+      })
+    }
   }
 
   return {
@@ -160,6 +224,7 @@ const useElementManagement = (): useElementManagementReturnType => {
     addTextElement,
     addImageElement,
     addShapeElement,
+    removeElement,
   }
 }
 

@@ -5,9 +5,10 @@ type ButtonProps = {
   text?: string
   icon?: string
   onClick?: MouseEventHandler<HTMLButtonElement>
+  title?: string
 }
 
-function Button({ text, icon, onClick }: ButtonProps) {
+function Button({ text, icon, onClick, title }: ButtonProps) {
   const isIconButton = (icon && !text) != undefined
   const isTextButton = (text && !icon) != undefined
 
@@ -26,6 +27,7 @@ function Button({ text, icon, onClick }: ButtonProps) {
       type="button"
       className={setClassName(isIconButton, isTextButton)}
       onClick={onClick}
+      title={title}
     >
       {isIconButton && (
         <img

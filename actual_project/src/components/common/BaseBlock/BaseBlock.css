@@ -2,3 +2,26 @@
   position: absolute;
   transform-origin: 0 0;
 }
+
+.text {
+  margin: 0px;
+  padding: 0px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  color: rgb(98 98 98 / 100%);
+  border: none;
+  width: 100%;
+  height: 100%;
+  background: none;
+  white-space: normal;
+  resize: none;
+}
+
+.text:hover {
+  outline: 0;
+}
+
+.text:focus {
+  outline: 0;
+}

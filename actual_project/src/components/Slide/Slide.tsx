@@ -1,20 +1,17 @@
 import { CSSProperties } from 'react'
 import BaseBlock from '../common/BaseBlock/BaseBlock'
 import { Slide as TSlide } from '../../model/main'
+import useElementManagement from '../../hooks/useElementManager'
 
 type SlideProps = {
   slide: TSlide
   className?: string
   elementSelect: string | null
-  onSelectElement: (elementID: string) => void
 }
 
-function Slide({
-  slide,
-  className,
-  elementSelect,
-  onSelectElement,
-}: SlideProps) {
+function Slide({ slide, className, elementSelect }: SlideProps) {
+  const { selectElement } = useElementManagement()
+
   const styleVar: CSSProperties = {}
 
   function setClassName(slide: TSlide, className?: string) {
@@ -66,7 +63,7 @@ function Slide({
           key={object.id}
           {...object}
           elementSelect={elementSelect}
-          onSelectElement={onSelectElement}
+          onSelectElement={selectElement}
         />
       ))}
     </div>
