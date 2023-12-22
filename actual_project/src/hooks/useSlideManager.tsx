@@ -6,6 +6,7 @@ type UseSlideManagementReturnType = {
   addSlide: () => void
   removeSlide: () => void
   onSelectSlide: (slideID: string) => void
+  // changeBackgroundSlide: () => void
 }
 
 const useSlideManagement = (): UseSlideManagementReturnType => {
@@ -48,6 +49,7 @@ const useSlideManagement = (): UseSlideManagementReturnType => {
       slides: updatedSlides,
     })
   }
+
   const removeSlide = () => {
     const updatedSlides = page.slides.filter(
       (slide) => slide.slideID !== page.selection.slideID,
@@ -85,10 +87,25 @@ const useSlideManagement = (): UseSlideManagementReturnType => {
     })
   }
 
+  // const changeBackgroundSlide = (backgroundColor: string, slide: Slide) => {
+  //   if (slide.slideID === page.selection.slideID) {
+  //     const changeBackgroundSlide = (slideID: string) => {
+  //       slideID: slide.slideID,
+  //       slideBackground: {
+  //         color: {
+  //           hex: '#00FF00',
+  //           opacity: 1,
+  //         },
+  //       },
+  //       slideObjects: [],
+  //     }
+  //   }
+  // }
   return {
     addSlide,
     removeSlide,
     onSelectSlide,
+    // changeBackgroundSlide,
   }
 }
 

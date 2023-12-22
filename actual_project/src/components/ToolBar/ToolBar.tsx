@@ -44,6 +44,10 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     return false
   }
 
+  function generateRandomColor(): string {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`
+  }
+
   const handleSelectChange = (value: string) => {
     console.log('Выбрано значение:', value)
   }
@@ -57,7 +61,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'next-arrow'} />
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
-      <Button icon={'cursor'} />
+      <Button icon={'cursor'} onClick={generateRandomColor} />
       <Button icon={'text-align'} onClick={addTextElement} />
       <Button icon={'images'} onClick={addImageElement} />
       <Button
