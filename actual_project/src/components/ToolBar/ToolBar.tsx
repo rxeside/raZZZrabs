@@ -5,6 +5,8 @@ import Input from '../common/Input/Input'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
+import useSlideBackground from '../../hooks/useSlideBackground'
+import ColorPicker from '../ColorPicker/ColorPicker'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -16,6 +18,10 @@ function ToolBar({ selectedObject }: ToolBarProps) {
   const { addTextElement, addImageElement, addShapeElement, removeElement } =
     useElementManagement()
 
+  const { slideBackground, changeSlideBackground } = useSlideBackground()
+  const handleColorChange = (color: string) => {
+    changeSlideBackground(color)
+  }
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
       return true
@@ -123,6 +129,9 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         onClick={removeElement}
         title={'Удалить элемент'}
       />
+      <div>
+        <ColorPicker onColorChange={handleColorChange} />
+      </div>
     </div>
   )
 }
