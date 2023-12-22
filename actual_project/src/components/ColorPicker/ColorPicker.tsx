@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import useElementManagement from '../../hooks/useElementManager'
+import { PageContext } from '../../context/page'
 
-interface ColorPickerProps {
-  onColorChange: (color: string) => void
-}
+function ColorPicker() {
+  const { page, setPage } = useContext(PageContext)
 
-const ColorPicker: React.FC<ColorPickerProps> = ({ onColorChange }) => {
-  const [color, setColor] = useState('#000000')
+  const { onColorChange } = useElementManagement()
 
+  const slideCur = page.slides.find(
+    (slide) => slide.slideID === page.selection.slideID,
+  )
+  const Color = slideCur?.slideBackground.color.hex
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = e.target.value
-    setColor(newColor)
     onColorChange(newColor)
+    console.log(newColor)
   }
 
-  return <input type="color" value={color} onChange={handleColorChange} />
+  return <input type="color" value={Color} onChange={handleColorChange} />
 }
 
 export default ColorPicker

@@ -17,11 +17,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
 
   const { addTextElement, addImageElement, addShapeElement, removeElement } =
     useElementManagement()
-
-  const { slideBackground, changeSlideBackground } = useSlideBackground()
-  const handleColorChange = (color: string) => {
-    changeSlideBackground(color)
-  }
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
       return true
@@ -130,7 +125,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         title={'Удалить элемент'}
       />
       <div>
-        <ColorPicker onColorChange={handleColorChange} />
+        <ColorPicker />
       </div>
     </div>
   )

@@ -22,6 +22,7 @@ type useElementManagementReturnType = {
   addImageElement: () => void
   addShapeElement: () => void
   removeElement: () => void
+  onColorChange: (newColor: string) => void
 }
 
 const useElementManagement = (): useElementManagementReturnType => {
@@ -219,12 +220,35 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
+  const onColorChange = (newColor: string) => {
+    const slideCur = page.slides.find(
+      (slide) => slide.slideID === page.selection.slideID,
+    )
+
+    if (slideCur) {
+      slideCur.slideBackground.color.hex = newColor
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === slideCur.slideID) {
+          return { ...slide, slideCur }
+        } else {
+          return slide
+        }
+      })
+
+      setPage({
+        ...page,
+        slides: updatedSlides,
+      })
+    }
+  }
+
   return {
     selectElement,
     addTextElement,
     addImageElement,
     addShapeElement,
     removeElement,
+    onColorChange,
   }
 }
 
