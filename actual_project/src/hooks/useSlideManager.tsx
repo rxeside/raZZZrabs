@@ -7,7 +7,6 @@ type UseSlideManagementReturnType = {
   removeSlide: () => void
   onSelectSlide: (slideID: string) => void
 }
-
 const useSlideManagement = (): UseSlideManagementReturnType => {
   const { page, setPage } = useContext(PageContext)
 

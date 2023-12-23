@@ -13,48 +13,42 @@ type OnDragStartFn = (args: {
 type RegisterDndItemFn = (
   index: number,
   dndItemInfo: DndItemInfo,
+  startY: number,
+  startX: number,
 ) => {
   onDragStart: OnDragStartFn
 }
 
-type UseDraggableListParams = {
-  onOrderChange: (fromIndex: number, toIndex: number) => void
+type UseDraggableElementParams = {
+  onOrderChange: (toY: number, toX: number) => void
 }
 
-function useDraggableList({ onOrderChange }: UseDraggableListParams) {
+function useDraggableElement({ onOrderChange }: UseDraggableElementParams) {
   const itemsRef = useRef<Array<DndItemInfo>>([])
 
   const registerDndItem = useCallback(
-    (index: number, dndItemInfo: DndItemInfo) => {
+    (
+      index: number,
+      dndItemInfo: DndItemInfo,
+      startY: number,
+      startX: number,
+    ) => {
       const item = {
         ...dndItemInfo,
-        startY: 0,
+        startY: startY,
+        startX: startX,
       }
       itemsRef.current[index] = item
-      console.log(itemsRef.current.length)
 
       const onDragStart: OnDragStartFn = ({ onDrag, onDrop }) => {
         item.startY = item.elementRef.current!.getBoundingClientRect().top
+        item.startX = item.elementRef.current!.getBoundingClientRect().left
 
         const onMouseUp = (event: MouseEvent) => {
-          let newIndex = index
-          const draggableItemTop =
-            item.elementRef.current!.getBoundingClientRect().top
-          for (let i = 0; i < itemsRef.current.length; ++i) {
-            if (i === index) {
-              continue
-            }
-            const currItem = itemsRef.current[i].elementRef.current!
-            if (
-              (currItem.getBoundingClientRect().top < draggableItemTop &&
-                i > index) ||
-              (currItem.getBoundingClientRect().top > draggableItemTop &&
-                i < index)
-            ) {
-              newIndex = i
-            }
-          }
-          onOrderChange(index, newIndex)
+          onOrderChange(
+            startY + event.clientY - item.startY,
+            startX + event.clientX - item.startX,
+          )
           onDrop(event)
 
           window.removeEventListener('mousemove', onDrag)
@@ -77,6 +71,6 @@ function useDraggableList({ onOrderChange }: UseDraggableListParams) {
   }
 }
 
-export { useDraggableList }
+export { useDraggableElement }
 
 export type { DndItemInfo, RegisterDndItemFn }

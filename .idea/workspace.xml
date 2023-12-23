@@ -4,20 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Add labs">
-      <change afterPath="$PROJECT_DIR$/actual_project/src/components/common/Input/Input.tsx" afterDir="false" />
+    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Last changes">
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/SlideForSlideBar/SlideForSlideBar.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/components/SlideForSlideBar/SlideForSlideBar.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/actual_project/src/hooks/useDraggableElement.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actual_project/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/components/Header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/Header/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actual_project/src/components/Slide/Slide.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/Slide/Slide.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/SlideBar/SlideBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/components/common/BaseBlock/BaseBlock.css" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/common/BaseBlock/BaseBlock.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actual_project/src/components/common/BaseBlock/BaseBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/common/BaseBlock/BaseBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/components/common/ShapeBlock/ShapeBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/components/common/ShapeBlock/ShapeBlock.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/model/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/model/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/tests/maxTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/tests/maxTests.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actual_project/src/tests/middleTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/tests/middleTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/hooks/useDraggableList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/hooks/useDraggableList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/hooks/useElementManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/hooks/useElementManager.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actual_project/src/hooks/useSlideManager.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/actual_project/src/hooks/useSlideManager.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +38,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -52,29 +59,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/iSpring/Frontend/raZZZrabs/actual_project/src/components/common",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettier.import.notification.dismissed": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Gleb-hooks&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/Downloads/notes-example-552c9b63122450c99b0437bacec76ee6c3e29e97/notes-example-552c9b63122450c99b0437bacec76ee6c3e29e97&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\common" />
@@ -90,6 +98,24 @@
       <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\InfoBar" />
       <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/actual_project/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.lint" />
+        <item itemvalue="npm.lint" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -113,6 +139,13 @@
       <workItem from="1699522330412" duration="15226000" />
       <workItem from="1699939858600" duration="3816000" />
       <workItem from="1700063451598" duration="1921000" />
+      <workItem from="1701805594528" duration="223000" />
+      <workItem from="1701973170416" duration="20071000" />
+      <workItem from="1702590259156" duration="10410000" />
+      <workItem from="1702654297953" duration="11696000" />
+      <workItem from="1702724711127" duration="4771000" />
+      <workItem from="1703189979625" duration="7369000" />
+      <workItem from="1703229198154" duration="4692000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена 2 лаба">
       <option name="closed" value="true" />
@@ -162,18 +195,53 @@
       <option name="project" value="LOCAL" />
       <updated>1698308769875</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Last changes">
+      <option name="closed" value="true" />
+      <created>1701805643137</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701805643137</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -185,7 +253,8 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Delete all" />
     <MESSAGE value="Add labs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add labs" />
+    <MESSAGE value="Last changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
