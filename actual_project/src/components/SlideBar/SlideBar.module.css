@@ -19,6 +19,7 @@
   font-size: 18;
   color: rgb(65 65 65 / 100%);
   margin-left: 17px;
+  user-select: none;
 }
 
 .slideBarWrapper {
@@ -29,6 +30,7 @@
   outline: 1px solid #a6a6a6;
   justify-content: center;
   overflow: hidden;
+  user-select: none;
 }
 
 .slideBarWrapperSelected {
@@ -38,6 +40,7 @@
   border-radius: 10px;
   outline: 2px solid rgb(0 146 192 / 100%);
   overflow: hidden;
+  user-select: none;
 }
 
 .slideBarSlide {
@@ -48,4 +51,5 @@
   transform-origin: 0 0;
   position: relative;
   overflow: hidden;
+  user-select: none;
 }

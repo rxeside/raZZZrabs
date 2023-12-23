@@ -1,6 +1,7 @@
 .block {
   position: absolute;
   transform-origin: 0 0;
+  user-select: none;
 }
 
 .text {

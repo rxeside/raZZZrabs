@@ -1,7 +1,13 @@
-import { CSSProperties } from 'react'
+import { CSSProperties, useContext } from 'react'
 import BaseBlock from '../common/BaseBlock/BaseBlock'
 import { Slide as TSlide } from '../../model/main'
 import useElementManagement from '../../hooks/useElementManager'
+import { PageContext } from '../../context/page'
+import {
+  RegisterDndItemFn,
+  useDraggableElement,
+} from '../../hooks/useDraggableElement'
+import { DndItemInfo } from '../../hooks/useDraggableList'
 
 type SlideProps = {
   slide: TSlide
@@ -53,17 +59,51 @@ function Slide({ slide, className, elementSelect }: SlideProps) {
     return style
   }
 
+  const { page, setPage } = useContext(PageContext)
+
+  const slideCur =
+    page.slides.find((s) => s.slideID === page.selection.slideID) || undefined
+
+  const elCur =
+    slideCur?.slideObjects.find(
+      (element) => element.id === page.selection.elementID,
+    ) || undefined
+
+  const { registerDndItem } = useDraggableElement({
+    onOrderChange: (toY, toX) => {
+      if (elCur) {
+        const newDot = elCur.startDot
+        if (newDot) {
+          newDot.x = toX
+          newDot.y = toY
+        }
+        const newEl = { ...elCur, startDot: newDot }
+        const index = slideCur?.slideObjects.indexOf(elCur) ?? -1
+        if (index !== -1 && slideCur) {
+          const newObjects = [...slideCur.slideObjects]
+          newObjects.splice(index, 1, newEl)
+          const updatedSlides = page.slides.map((s) =>
+            s.slideID === slideCur.slideID ? slideCur : s,
+          )
+          setPage({ ...page, slides: updatedSlides })
+        }
+      }
+    },
+  })
+
   return (
     <div
       className={setClassName(slide, className)}
       style={setBackground(slide, styleVar)}
     >
-      {slide.slideObjects.map((object) => (
+      {slide.slideObjects.map((object, index) => (
         <BaseBlock
           key={object.id}
           {...object}
           elementSelect={elementSelect}
           onSelectElement={selectElement}
+          registerDndItem={registerDndItem}
+          index={index}
         />
       ))}
     </div>

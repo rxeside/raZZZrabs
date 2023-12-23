@@ -5,10 +5,6 @@ type DndItemInfo = {
   controlRef: RefObject<HTMLDivElement>
 }
 
-type InternalDndItemInfo = DndItemInfo & {
-  startY: number
-}
-
 type OnDragStartFn = (args: {
   onDrag: (event: MouseEvent) => void
   onDrop: (event: MouseEvent) => void
@@ -26,7 +22,7 @@ type UseDraggableListParams = {
 }
 
 function useDraggableList({ onOrderChange }: UseDraggableListParams) {
-  const itemsRef = useRef<Array<InternalDndItemInfo>>([])
+  const itemsRef = useRef<Array<DndItemInfo>>([])
 
   const registerDndItem = useCallback(
     (index: number, dndItemInfo: DndItemInfo) => {
@@ -35,12 +31,13 @@ function useDraggableList({ onOrderChange }: UseDraggableListParams) {
         startY: 0,
       }
       itemsRef.current[index] = item
+      console.log(itemsRef.current.length)
 
       const onDragStart: OnDragStartFn = ({ onDrag, onDrop }) => {
         item.startY = item.elementRef.current!.getBoundingClientRect().top
 
         const onMouseUp = (event: MouseEvent) => {
-          let newIndex = 0
+          let newIndex = index
           const draggableItemTop =
             item.elementRef.current!.getBoundingClientRect().top
           for (let i = 0; i < itemsRef.current.length; ++i) {
@@ -48,11 +45,14 @@ function useDraggableList({ onOrderChange }: UseDraggableListParams) {
               continue
             }
             const currItem = itemsRef.current[i].elementRef.current!
-            if (currItem.getBoundingClientRect().top > draggableItemTop) {
-              newIndex = draggableItemTop > item.startY ? i - 1 : i
-              break
+            if (
+              (currItem.getBoundingClientRect().top < draggableItemTop &&
+                i > index) ||
+              (currItem.getBoundingClientRect().top > draggableItemTop &&
+                i < index)
+            ) {
+              newIndex = i
             }
-            newIndex = i
           }
           onOrderChange(index, newIndex)
           onDrop(event)

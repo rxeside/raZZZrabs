@@ -27,24 +27,11 @@ function App() {
       }
     }) || null
 
-  const { registerDndItem } = useDraggableList({
-    onOrderChange: (from, to) => {
-      const newNotes = page.slides
-      const removed = newNotes.splice(from, 1)
-      newNotes.splice(to, 0, removed[0])
-      setPage({ ...page, slides: newNotes })
-    },
-  })
-
   return (
     <div className="app">
       <Header presentationName={page.title} selectedObject={object} />
       <div className="editor">
-        <SlideBar
-          selectSlide={page.selection}
-          slides={page.slides}
-          registerDndItem={registerDndItem}
-        />
+        <SlideBar slides={page.slides} />
         {slide && (
           <Workspace slide={slide} selectSlide={page.selection.elementID} />
         )}
