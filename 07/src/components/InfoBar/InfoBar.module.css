@@ -1,0 +1,14 @@
+.infoBar {
+  display: flex;
+  flex-direction: row;
+  margin-left: 72px;
+  padding-left: 0;
+}
+
+.buttonText {
+  border: 0;
+  background: none;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  color: rgb(98 98 98 / 100%);
+}

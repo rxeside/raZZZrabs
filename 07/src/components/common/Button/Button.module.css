@@ -1,0 +1,39 @@
+.button {
+  display: flex;
+  min-width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 1px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 1px;
+  background: none;
+  color: #000000b3;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #44474614;
+}
+
+.buttonIcon {
+  cursor: pointer;
+  font-size: 20px;
+  border: 0;
+  background: none;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+
+.buttonText {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  color: rgb(98 98 98 / 100%);
+  padding: 1px 8px;
+  font:
+    500 normal 14px/1 Roboto,
+    sans-serif;
+}
