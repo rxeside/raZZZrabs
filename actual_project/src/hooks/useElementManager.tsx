@@ -14,18 +14,23 @@ import {
   circleColor,
   imageBase64BlockBorder,
   imageBase64BlockDataType,
+  rectangleBorder,
+  rectanglecolor,
+  triangleColor,
 } from '../tests/maxTests'
 
 type useElementManagementReturnType = {
   selectElement: (elementID: string) => void
   addTextElement: () => void
   addImageElement: () => void
-  addShapeElement: () => void
+  addCircleElement: () => void
   removeElement: () => void
   onHeightChange: (height: string) => void
   onWidthChange: (width: string) => void
   onColorChange: (newColor: string) => void
   onElemChange: (newColor: string) => void
+  addRectangleElement: () => void
+  addTriangleElement: () => void
 }
 
 const useElementManagement = (): useElementManagementReturnType => {
@@ -132,7 +137,7 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
-  const addShapeElement = () => {
+  const addCircleElement = () => {
     const slideCur =
       page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
       null
@@ -153,6 +158,97 @@ const useElementManagement = (): useElementManagementReturnType => {
           primitiveType: PrimitiveType.CIRCLE,
           color: circleColor,
           border: circleBorder,
+          size: {
+            width: 175,
+            height: 100,
+          },
+        },
+        elementType: ElementType.SHAPE,
+      }
+
+      slideCur.slideObjects = [...slideCur.slideObjects, newElement]
+
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === slideCur.slideID) {
+          return slideCur
+        } else {
+          return slide
+        }
+      })
+
+      setPage({
+        ...page,
+        slides: updatedSlides,
+      })
+    }
+  }
+
+  const addRectangleElement = () => {
+    const slideCur =
+      page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+      null
+
+    if (slideCur != null) {
+      const newElement: ShapeBlock = {
+        startDot: {
+          x: 12,
+          y: 256,
+        },
+        size: {
+          width: 175,
+          height: 100,
+        },
+        scale: 1,
+        id: String(Date.now()),
+        data: {
+          primitiveType: PrimitiveType.RECTANGLE,
+          color: rectanglecolor,
+          border: rectangleBorder,
+          size: {
+            width: 175,
+            height: 100,
+          },
+        },
+        elementType: ElementType.SHAPE,
+      }
+
+      slideCur.slideObjects = [...slideCur.slideObjects, newElement]
+
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === slideCur.slideID) {
+          return slideCur
+        } else {
+          return slide
+        }
+      })
+
+      setPage({
+        ...page,
+        slides: updatedSlides,
+      })
+    }
+  }
+
+  const addTriangleElement = () => {
+    const slideCur =
+      page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+      null
+
+    if (slideCur != null) {
+      const newElement: ShapeBlock = {
+        startDot: {
+          x: 12,
+          y: 256,
+        },
+        size: {
+          width: 175,
+          height: 100,
+        },
+        scale: 1,
+        id: String(Date.now()),
+        data: {
+          primitiveType: PrimitiveType.TRIANGLE,
+          color: triangleColor,
           size: {
             width: 175,
             height: 100,
@@ -363,7 +459,9 @@ const useElementManagement = (): useElementManagementReturnType => {
     selectElement,
     addTextElement,
     addImageElement,
-    addShapeElement,
+    addCircleElement,
+    addRectangleElement,
+    addTriangleElement,
     removeElement,
     onHeightChange,
     onWidthChange,

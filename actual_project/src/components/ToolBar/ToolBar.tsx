@@ -43,10 +43,12 @@ function ToolBar({ selectedObject }: ToolBarProps) {
 
   const {
     addTextElement,
-    addImageElement,
+    addCircleElement,
     removeElement,
     onHeightChange,
     onWidthChange,
+    addRectangleElement,
+    addTriangleElement,
   } = useElementManagement()
 
   const [selectedFont, setSelectedFont] = useState('Arial')
@@ -95,22 +97,9 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'cursor'} />
       <Button icon={'text-align'} onClick={addTextElement} />
       <input type="file" onChange={handleImageUpload} />
-      <Button
-        icon={'primitives'}
-        onClick={() => {
-          return (
-            <List
-              className={'List'}
-              options={[
-                { value: 'url', label: 'url' },
-                { value: 'base64', label: 'base64' },
-              ]}
-              onChange={addImageElement}
-            ></List>
-          )
-        }}
-      />
-      <Button icon={'line'} />
+      <Button icon={'circle'} onClick={addCircleElement} />
+      <Button icon={'triangle'} onClick={addTriangleElement} />
+      <Button icon={'rectangle'} onClick={addRectangleElement} />
       {isNull(selectedObject) && (
         <>
           <div className={classes.v1}></div>
