@@ -1,0 +1,8 @@
+.slide {
+  display: flex;
+  width: 860px;
+  height: 484px;
+  flex-direction: row;
+  border: 1px solid #dbdedc;
+  gap: 20px;
+}
