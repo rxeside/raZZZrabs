@@ -5,7 +5,6 @@ import Input from '../common/Input/Input'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
-import useSlideBackground from '../../hooks/useSlideBackground'
 import ColorPicker from '../ColorPicker/ColorPicker'
 
 interface ToolBarProps {
@@ -15,8 +14,15 @@ interface ToolBarProps {
 function ToolBar({ selectedObject }: ToolBarProps) {
   const { addSlide, removeSlide } = useSlideManagement()
 
-  const { addTextElement, addImageElement, addShapeElement, removeElement } =
-    useElementManagement()
+  const {
+    addTextElement,
+    addImageElement,
+    removeElement,
+    addShapeElement,
+    onHeightChange,
+    onWidthChange,
+  } = useElementManagement()
+
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
       return true
@@ -45,10 +51,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     return false
   }
 
-  const handleSelectChange = (value: string) => {
-    console.log('Выбрано значение:', value)
-  }
-
   return (
     <div className={classes.toolBar}>
       <Button icon={'plus'} onClick={addSlide} />
@@ -60,27 +62,13 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />
       <Button icon={'text-align'} onClick={addTextElement} />
-      <Button icon={'images'} onClick={addImageElement} />
-      <Button
-        icon={'primitives'}
-        onClick={() => {
-          return (
-            <List
-              className={'List'}
-              options={[
-                { value: 'url', label: 'url' },
-                { value: 'base64', label: 'base64' },
-              ]}
-              onChange={addImageElement}
-            ></List>
-          )
-        }}
-      />
+      <Button icon={'images'} onClick={() => {}} />
+      <Button icon={'primitives'} onClick={addShapeElement} />
       <Button icon={'line'} />
       {isNull(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <Button text={'Фон'} />
+          <ColorPicker />
         </>
       )}
       {(isText(selectedObject) || isShape(selectedObject)) && (
@@ -90,6 +78,8 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
           <Button icon={'borderstyle'} />
+          <div className={classes.v1}></div>
+          <ColorPicker />
         </>
       )}
       {isText(selectedObject) && (
@@ -114,19 +104,30 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
           <Button icon={'borderstyle'} />
-          <div className={classes.v1}></div>
-          <Button icon={'crop'} />
         </>
       )}
-      <div className={classes.v1}></div>
-      <Button
-        icon={'trash'}
-        onClick={removeElement}
-        title={'Удалить элемент'}
-      />
-      <div>
-        <ColorPicker />
-      </div>
+      {!isNull(selectedObject) && (
+        <>
+          <div className={classes.v1}></div>
+          <Button
+            icon={'trash'}
+            onClick={removeElement}
+            title={'Удалить элемент'}
+          />
+          <input
+            type={'number'}
+            className={classes.numberInput}
+            value={selectedObject?.size.height}
+            onChange={(event) => onHeightChange(event.target.value)}
+          ></input>
+          <input
+            type={'number'}
+            className={classes.numberInput}
+            value={selectedObject?.size.width}
+            onChange={(event) => onWidthChange(event.target.value)}
+          ></input>
+        </>
+      )}
     </div>
   )
 }

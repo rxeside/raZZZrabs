@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useRef } from 'react'
+import { RefObject, useCallback } from 'react'
 
 type DndItemInfo = {
   elementRef: RefObject<HTMLDivElement>
@@ -11,7 +11,6 @@ type OnDragStartFn = (args: {
 }) => void
 
 type RegisterDndItemFn = (
-  index: number,
   dndItemInfo: DndItemInfo,
   startY: number,
   startX: number,
@@ -24,27 +23,25 @@ type UseDraggableElementParams = {
 }
 
 function useDraggableElement({ onOrderChange }: UseDraggableElementParams) {
-  const itemsRef = useRef<Array<DndItemInfo>>([])
-
   const registerDndItem = useCallback(
-    (
-      index: number,
-      dndItemInfo: DndItemInfo,
-      startY: number,
-      startX: number,
-    ) => {
+    (dndItemInfo: DndItemInfo, startY: number, startX: number) => {
       const item = {
         ...dndItemInfo,
         startY: startY,
         startX: startX,
       }
-      itemsRef.current[index] = item
 
       const onDragStart: OnDragStartFn = ({ onDrag, onDrop }) => {
         item.startY = item.elementRef.current!.getBoundingClientRect().top
         item.startX = item.elementRef.current!.getBoundingClientRect().left
 
+        const stopDefAction = (evt: MouseEvent) => {
+          evt.preventDefault()
+        }
+
         const onMouseUp = (event: MouseEvent) => {
+          stopDefAction(event)
+
           onOrderChange(
             startY + event.clientY - item.startY,
             startX + event.clientX - item.startX,

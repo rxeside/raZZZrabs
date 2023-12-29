@@ -30,3 +30,19 @@
   height: 61%;
   border-left: 1px solid rgb(172 172 172 / 100%);
 }
+
+.numberInput {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-size: 15px;
+  color: rgb(98 98 98 / 100%);
+  width: 4%;
+}
+
+.numberInput:hover {
+  outline: 0;
+}
+
+.numberInput:focus {
+  outline: 0;
+}

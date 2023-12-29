@@ -4,17 +4,12 @@ import { Slide as TSlide } from '../../model/main'
 
 type WorkspaceProps = {
   slide: TSlide
-  selectSlide: string | null
 }
 
-function Workspace({ slide, selectSlide }: WorkspaceProps) {
+function Workspace({ slide }: WorkspaceProps) {
   return (
     <div className={classes.workspace}>
-      <Slide
-        slide={slide}
-        className={classes.slide}
-        elementSelect={selectSlide}
-      />
+      <Slide slide={slide} className={classes.slide} />
     </div>
   )
 }

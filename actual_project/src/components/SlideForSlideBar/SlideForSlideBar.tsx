@@ -142,8 +142,6 @@ function SlideForSlideBar({
             <BaseBlock
               key={object.id}
               {...object}
-              elementSelect={null}
-              onSelectElement={() => null}
               registerDndItem={null}
               index={index}
             />
@@ -153,5 +151,4 @@ function SlideForSlideBar({
     </div>
   )
 }
-
 export default SlideForSlideBar

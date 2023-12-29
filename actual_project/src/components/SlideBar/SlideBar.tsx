@@ -1,15 +1,10 @@
 import classes from './SlideBar.module.css'
 import SlideForSlideBar from '../SlideForSlideBar/SlideForSlideBar'
-import { Slide as TSlide } from '../../model/main'
 import { useDraggableList } from '../../hooks/useDraggableList'
 import { useContext } from 'react'
 import { PageContext } from '../../context/page'
 
-type SlideBarProps = {
-  slides: TSlide[]
-}
-
-function SlideBar({ slides }: SlideBarProps) {
+function SlideBar() {
   const { page, setPage } = useContext(PageContext)
 
   const { registerDndItem } = useDraggableList({
@@ -23,8 +18,8 @@ function SlideBar({ slides }: SlideBarProps) {
 
   return (
     <div className={classes.slideBar}>
-      {slides.length > 0 &&
-        slides.map((slide, index) => (
+      {page.slides.length > 0 &&
+        page.slides.map((slide, index) => (
           <SlideForSlideBar
             slide={slide}
             index={index}
