@@ -7,7 +7,6 @@ import {
   SlideSelection,
   Page,
 } from '../../model/main'
-import Input from '../common/Input/Input'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
@@ -46,7 +45,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     addTextElement,
     addImageElement,
     removeElement,
-    addShapeElement,
     onHeightChange,
     onWidthChange,
   } = useElementManagement()
@@ -85,10 +83,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     return false
   }
 
-  const handleSelectChange = (value: string) => {
-    console.log('Выбрано значение:', value)
-  }
-
   return (
     <div className={classes.toolBar}>
       <Button icon={'plus'} onClick={addSlide} />
@@ -120,7 +114,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {isNull(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <ColorPicker />
+          <ColorPicker isElement={false} />
         </>
       )}
       {(isText(selectedObject) || isShape(selectedObject)) && (
@@ -131,7 +125,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'borderwidth'} />
           <Button icon={'borderstyle'} />
           <div className={classes.v1}></div>
-          <ColorPicker />
+          <ColorPicker isElement={true} />
         </>
       )}
       {isText(selectedObject) && (

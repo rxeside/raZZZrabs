@@ -22,9 +22,10 @@ type useElementManagementReturnType = {
   addImageElement: () => void
   addShapeElement: () => void
   removeElement: () => void
-  onHeightChange: (ban: string) => void
-  onWidthChange: (ban: string) => void
+  onHeightChange: (height: string) => void
+  onWidthChange: (width: string) => void
   onColorChange: (newColor: string) => void
+  onElemChange: (newColor: string) => void
 }
 
 const useElementManagement = (): useElementManagementReturnType => {
@@ -222,7 +223,7 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
-  const onHeightChange = (ban: string) => {
+  const onHeightChange = (height: string) => {
     const slideCur =
       page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
       null
@@ -236,7 +237,7 @@ const useElementManagement = (): useElementManagementReturnType => {
       if (slideCurEl != null) {
         const newSize = {
           width: slideCurEl.size.width,
-          height: Number(ban),
+          height: Number(height),
         }
         slideCurEl.size = newSize
         slideCurEl.data.size = newSize
@@ -257,7 +258,7 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
-  const onWidthChange = (ban: string) => {
+  const onWidthChange = (width: string) => {
     const slideCur =
       page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
       null
@@ -268,9 +269,9 @@ const useElementManagement = (): useElementManagementReturnType => {
           (slideOb) => slideOb.id === page.selection.elementID,
         ) || null
 
-      if (slideCurEl != null) {
+      if (slideCurEl) {
         const newSize = {
-          width: Number(ban),
+          width: Number(width),
           height: slideCurEl.size.height, // сохраняем текущую высоту
         }
         slideCurEl.size = newSize
@@ -314,6 +315,50 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
+  const onElemChange = (newColor: string) => {
+    const slideCur = page.slides.find(
+      (slide) => slide.slideID === page.selection.slideID,
+    )
+
+    if (slideCur) {
+      const elemCur = slideCur?.slideObjects.find(
+        (elem) => elem.id === page.selection.elementID,
+      )
+
+      if (
+        elemCur &&
+        (elemCur.elementType === ElementType.SHAPE ||
+          elemCur.elementType === ElementType.TEXT)
+      ) {
+        elemCur.data.color.hex = newColor
+
+        const updatedObjects = slideCur.slideObjects.map((elem) =>
+          elem.id === elemCur.id ? elemCur : elem,
+        )
+
+        const updatedSlides = page.slides.map((slide) =>
+          slide.slideID === slideCur.slideID
+            ? { ...slide, slideObjects: updatedObjects }
+            : slide,
+        )
+
+        setPage({
+          ...page,
+          slides: updatedSlides,
+        })
+      } else {
+        const updatedSlides = page.slides.map((slide) =>
+          slide.slideID === slideCur.slideID ? { ...slide, slideCur } : slide,
+        )
+
+        setPage({
+          ...page,
+          slides: updatedSlides,
+        })
+      }
+    }
+  }
+
   return {
     selectElement,
     addTextElement,
@@ -323,6 +368,7 @@ const useElementManagement = (): useElementManagementReturnType => {
     onHeightChange,
     onWidthChange,
     onColorChange,
+    onElemChange,
   }
 }
 

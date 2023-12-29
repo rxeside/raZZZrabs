@@ -1,4 +1,5 @@
 import { BorderType, ColorType, PrimitiveType, Size } from '../../../model/main'
+import { CSSProperties } from 'react'
 
 type PrimitiveProps = {
   data: {
@@ -25,6 +26,10 @@ function Primitive({ data }: PrimitiveProps) {
   const centerX = size.width / 2
   const centerY = size.height / 2
 
+  const style: CSSProperties = {
+    opacity: data.color.opacity,
+  }
+
   return (
     <svg width={size.width} height={size.height}>
       <g>
@@ -34,14 +39,25 @@ function Primitive({ data }: PrimitiveProps) {
             cy={centerY}
             rx={size.width / 2}
             ry={size.height / 2}
+            style={style}
+            fill={data.color.hex}
           />
         )}
         {primitiveType === 'rectangle' && (
-          <rect x={0} y={0} width={size.width} height={size.height} />
+          <rect
+            x={0}
+            y={0}
+            width={size.width}
+            height={size.height}
+            style={style}
+            fill={data.color.hex}
+          />
         )}
         {primitiveType === 'triangle' && (
           <polygon
             points={calculateTriangleCoordinates(size.width, size.height)}
+            style={style}
+            fill={data.color.hex}
           />
         )}
       </g>
