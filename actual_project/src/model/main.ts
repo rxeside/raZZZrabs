@@ -87,6 +87,7 @@ type TextBlock = BaseBlock & {
     value: string
     color: ColorType
     fontSize: number
+    fontFamily: string
     verticalAlign: VerticalAlignType
     horizontalAlign: HorizontalAlignType
     outline: OutlineType

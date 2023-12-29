@@ -143,6 +143,7 @@ const textBlock: TextBlock = {
       opacity: 0,
     },
     fontSize: 16,
+    fontFamily: 'Arial',
     verticalAlign: VerticalAlignType.TOP,
     horizontalAlign: HorizontalAlignType.RIGHT,
     outline: textBolockOutline,

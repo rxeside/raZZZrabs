@@ -1,25 +1,16 @@
 import Button from '../common/Button/Button'
 import classes from './ToolBar.module.css'
-import {
-  TextBlock,
-  ImageBlock,
-  ShapeBlock,
-  SlideSelection,
-  Page,
-} from '../../model/main'
+import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import useAddImage from '../../hooks/useAddImage'
 import { useState } from 'react'
+import useTextElementManager from '../../hooks/useTextElementManager'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
-  selectedObjectId: SlideSelection['elementID']
-  presentationData: Page
-  updatePresentationData: (data: Page) => void
-  selectedSlideId?: string
 }
 
 function ToolBar({ selectedObject }: ToolBarProps) {
@@ -51,11 +42,8 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     addTriangleElement,
   } = useElementManagement()
 
-  const [selectedFont, setSelectedFont] = useState('Arial')
-
-  const handleFontChange = (font: string) => {
-    setSelectedFont(font)
-  }
+  const { onBold, onItalic, onUnderline, onFontfamily, onBigger, onLower } =
+    useTextElementManager()
 
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
@@ -120,7 +108,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {isText(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <Button icon={'minus'} />
+          <Button icon={'minus'} onClick={onLower} />
           <List
             className={'List'}
             options={[
@@ -128,15 +116,14 @@ function ToolBar({ selectedObject }: ToolBarProps) {
               { value: 'Times New Roman', label: 'Times New Roman' },
               { value: 'Courier New', label: 'Courier New' },
             ]}
-            onChange={handleFontChange}
-            selectedValue={selectedFont}
+            onChange={onFontfamily}
+            selectedValue={'Arial'}
           />
-          <Button icon={'plus'} />
+          <Button icon={'plus'} onClick={onBigger} />
           <div className={classes.v1}></div>
-          <Button icon={'bold'} />
-          <Button icon={'italic'} />
-          <Button icon={'underline'} />
-          <Button icon={'textcolor'} />
+          <Button icon={'bold'} onClick={onBold} />
+          <Button icon={'italic'} onClick={onItalic} />
+          <Button icon={'underline'} onClick={onUnderline} />
         </>
       )}
 
