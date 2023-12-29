@@ -232,7 +232,7 @@ const imageUrlBlock: ImageBlock = {
 const firstSlideBackground: BackgroundType = {
   color: {
     hex: '#FF00FF',
-    opacity: 0.1,
+    opacity: 1,
   },
 }
 
@@ -245,7 +245,7 @@ const firstSlide: Slide = {
 const secondSlideBackground: BackgroundType = {
   color: {
     hex: '#F2BAFF',
-    opacity: 0.3,
+    opacity: 1,
   },
 }
 
@@ -258,7 +258,7 @@ const secondSlide: Slide = {
 const thirdSlideBackground: BackgroundType = {
   color: {
     hex: '#FFF000',
-    opacity: 0.3,
+    opacity: 1,
   },
 }
 const thirdSlide: Slide = {

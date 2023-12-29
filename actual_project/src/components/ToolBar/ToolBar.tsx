@@ -1,22 +1,42 @@
+import { useState } from 'react'
 import Button from '../common/Button/Button'
 import classes from './ToolBar.module.css'
-import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
-import Input from '../common/Input/Input'
+import {
+  TextBlock,
+  ImageBlock,
+  ShapeBlock,
+  SlideSelection,
+  Page,
+} from '../../model/main'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
-import useSlideBackground from '../../hooks/useSlideBackground'
 import ColorPicker from '../ColorPicker/ColorPicker'
+import FontSelect from '../FontSelector/FontSelector'
+import useAddImage from '../../hooks/useAddImage'
+import { LoaderImage } from '../ImageUploader/ImageUploader'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
+  selectedObjectId: SlideSelection['elementID']
+  presentationData: Page
+  updatePresentationData: (data: Page) => void
+  selectedSlideId?: string
 }
 
-function ToolBar({ selectedObject }: ToolBarProps) {
+function ToolBar({ selectedObject, presentationData }: ToolBarProps) {
+  const addImage = useAddImage(presentationData)
+
   const { addSlide, removeSlide } = useSlideManagement()
 
+  const [selectedFont, setSelectedFont] = useState('Arial')
+
+  const handleFontChange = (font: string) => {
+    setSelectedFont(font)
+  }
   const { addTextElement, addImageElement, addShapeElement, removeElement } =
     useElementManagement()
+
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
       return true
@@ -60,7 +80,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />
       <Button icon={'text-align'} onClick={addTextElement} />
-      <Button icon={'images'} onClick={addImageElement} />
+      <LoaderImage addImage={addImage} />
       <Button
         icon={'primitives'}
         onClick={() => {
@@ -96,10 +116,11 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         <>
           <div className={classes.v1}></div>
           <Button icon={'minus'} />
-          <Input
-            defaultValue={'Arial'}
-            className={classes.presentationName}
-          ></Input>
+          <FontSelect
+            defaultFontName={selectedFont}
+            fontValue={selectedFont}
+            onChange={handleFontChange}
+          />
           <Button icon={'plus'} />
           <div className={classes.v1}></div>
           <Button icon={'bold'} />

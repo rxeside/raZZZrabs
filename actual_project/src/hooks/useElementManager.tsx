@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { PageContext } from '../context/page'
 import {
   ElementType,
@@ -15,6 +15,7 @@ import {
   imageBase64BlockBorder,
   imageBase64BlockDataType,
 } from '../tests/maxTests'
+import FontSelect from '../components/FontSelector/FontSelector'
 
 type useElementManagementReturnType = {
   selectElement: (elementID: string) => void
@@ -27,13 +28,18 @@ type useElementManagementReturnType = {
 
 const useElementManagement = (): useElementManagementReturnType => {
   const { page, setPage } = useContext(PageContext)
+  const [selectedFont, setSelectedFont] = useState('Arial')
+
+  const handleFontChange = (font: string) => {
+    setSelectedFont(font)
+  }
 
   const addTextElement = () => {
     const slideCur =
       page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
       null
-
     if (slideCur != null) {
+      console.log(selectedFont)
       const newElement: TextBlock = {
         startDot: {
           x: 100,
@@ -45,6 +51,7 @@ const useElementManagement = (): useElementManagementReturnType => {
           height: 100,
         },
         data: {
+          font: selectedFont,
           value: 'MotoMoto',
           color: {
             hex: '#FF0000',
@@ -66,7 +73,6 @@ const useElementManagement = (): useElementManagementReturnType => {
         id: String(Date.now()),
         elementType: ElementType.TEXT,
       }
-
       slideCur.slideObjects = [...slideCur.slideObjects, newElement]
 
       const updatedSlides = page.slides.map((slide) => {
