@@ -1,3 +1,5 @@
+import React from 'react'
+
 interface Option {
   value: string
   label: string
@@ -5,7 +7,7 @@ interface Option {
 
 interface SelectProps {
   options: Option[]
-  onChange: (value: string) => void
+  onChange: (value: React.ChangeEvent<HTMLSelectElement>) => void
   className?: string
   selectedValue?: string
   optionsClassName?: string
@@ -21,8 +23,8 @@ function List({
   return (
     <select
       className={className}
-      value={selectedValue}
-      onClick={() => onChange}
+      defaultValue={selectedValue}
+      onChange={onChange}
     >
       {options.map((option, index) => (
         <option key={index} value={option.value} className={optionsClassName}>
