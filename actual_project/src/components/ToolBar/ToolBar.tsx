@@ -1,14 +1,19 @@
 import Button from '../common/Button/Button'
 import classes from './ToolBar.module.css'
-import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
+import {
+  TextBlock,
+  ImageBlock,
+  ShapeBlock,
+  SlideSelection,
+  Page,
+} from '../../model/main'
 import Input from '../common/Input/Input'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
-import useSlideBackground from '../../hooks/useSlideBackground'
 import ColorPicker from '../ColorPicker/ColorPicker'
-// import FontSelect from '../FontSelector/FontSelector'
 import useAddImage from '../../hooks/useAddImage'
+import { useState } from 'react'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -51,8 +56,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
   const handleFontChange = (font: string) => {
     setSelectedFont(font)
   }
-  const { addTextElement, addImageElement, addShapeElement, removeElement } =
-    useElementManagement()
 
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
@@ -135,10 +138,16 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         <>
           <div className={classes.v1}></div>
           <Button icon={'minus'} />
-          <Input
-            defaultValue={'Arial'}
-            className={classes.presentationName}
-          ></Input>
+          <List
+            className={'List'}
+            options={[
+              { value: 'Arial', label: 'Arial' },
+              { value: 'Times New Roman', label: 'Times New Roman' },
+              { value: 'Courier New', label: 'Courier New' },
+            ]}
+            onChange={handleFontChange}
+            selectedValue={selectedFont}
+          />
           <Button icon={'plus'} />
           <div className={classes.v1}></div>
           <Button icon={'bold'} />
