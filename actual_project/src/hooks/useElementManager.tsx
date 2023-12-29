@@ -22,6 +22,8 @@ type useElementManagementReturnType = {
   addImageElement: () => void
   addShapeElement: () => void
   removeElement: () => void
+  onHeightChange: (ban: string) => void
+  onWidthChange: (ban: string) => void
   onColorChange: (newColor: string) => void
 }
 
@@ -220,6 +222,76 @@ const useElementManagement = (): useElementManagementReturnType => {
     }
   }
 
+  const onHeightChange = (ban: string) => {
+    const slideCur =
+      page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+      null
+
+    if (slideCur != null) {
+      const slideCurEl =
+        slideCur.slideObjects.find(
+          (slideOb) => slideOb.id === page.selection.elementID,
+        ) || null
+
+      if (slideCurEl != null) {
+        const newSize = {
+          width: slideCurEl.size.width,
+          height: Number(ban),
+        }
+        slideCurEl.size = newSize
+        slideCurEl.data.size = newSize
+
+        const updatedSlides = page.slides.map((slide) => {
+          if (slide.slideID === slideCur.slideID) {
+            return slideCur
+          } else {
+            return slide
+          }
+        })
+
+        setPage({
+          ...page,
+          slides: updatedSlides,
+        })
+      }
+    }
+  }
+
+  const onWidthChange = (ban: string) => {
+    const slideCur =
+      page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+      null
+
+    if (slideCur != null) {
+      const slideCurEl =
+        slideCur.slideObjects.find(
+          (slideOb) => slideOb.id === page.selection.elementID,
+        ) || null
+
+      if (slideCurEl != null) {
+        const newSize = {
+          width: Number(ban),
+          height: slideCurEl.size.height, // сохраняем текущую высоту
+        }
+        slideCurEl.size = newSize
+        slideCurEl.data.size = newSize
+
+        const updatedSlides = page.slides.map((slide) => {
+          if (slide.slideID === slideCur.slideID) {
+            return slideCur
+          } else {
+            return slide
+          }
+        })
+
+        setPage({
+          ...page,
+          slides: updatedSlides,
+        })
+      }
+    }
+  }
+
   const onColorChange = (newColor: string) => {
     const slideCur = page.slides.find(
       (slide) => slide.slideID === page.selection.slideID,
@@ -248,6 +320,8 @@ const useElementManagement = (): useElementManagementReturnType => {
     addImageElement,
     addShapeElement,
     removeElement,
+    onHeightChange,
+    onWidthChange,
     onColorChange,
   }
 }

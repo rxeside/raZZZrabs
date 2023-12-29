@@ -1,16 +1,11 @@
-import { useState } from 'react'
 import Button from '../common/Button/Button'
 import classes from './ToolBar.module.css'
-import {
-  TextBlock,
-  ImageBlock,
-  ShapeBlock,
-  SlideSelection,
-  Page,
-} from '../../model/main'
+import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
+import Input from '../common/Input/Input'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
+import useSlideBackground from '../../hooks/useSlideBackground'
 import ColorPicker from '../ColorPicker/ColorPicker'
 // import FontSelect from '../FontSelector/FontSelector'
 import useAddImage from '../../hooks/useAddImage'
@@ -41,6 +36,15 @@ function ToolBar({ selectedObject }: ToolBarProps) {
   }
 
   const { addSlide, removeSlide } = useSlideManagement()
+
+  const {
+    addTextElement,
+    addImageElement,
+    removeElement,
+    addShapeElement,
+    onHeightChange,
+    onWidthChange,
+  } = useElementManagement()
 
   const [selectedFont, setSelectedFont] = useState('Arial')
 
@@ -113,7 +117,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {isNull(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <Button text={'Фон'} />
+          <ColorPicker />
         </>
       )}
       {(isText(selectedObject) || isShape(selectedObject)) && (
@@ -123,17 +127,18 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
           <Button icon={'borderstyle'} />
+          <div className={classes.v1}></div>
+          <ColorPicker />
         </>
       )}
       {isText(selectedObject) && (
         <>
           <div className={classes.v1}></div>
           <Button icon={'minus'} />
-          {/* <FontSelect
-            defaultFontName={selectedFont}
-            fontValue={selectedFont}
-            onChange={handleFontChange}
-          /> */}
+          <Input
+            defaultValue={'Arial'}
+            className={classes.presentationName}
+          ></Input>
           <Button icon={'plus'} />
           <div className={classes.v1}></div>
           <Button icon={'bold'} />
@@ -148,19 +153,30 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
           <Button icon={'borderstyle'} />
-          <div className={classes.v1}></div>
-          <Button icon={'crop'} />
         </>
       )}
-      <div className={classes.v1}></div>
-      <Button
-        icon={'trash'}
-        onClick={removeElement}
-        title={'Удалить элемент'}
-      />
-      <div>
-        <ColorPicker />
-      </div>
+      {!isNull(selectedObject) && (
+        <>
+          <div className={classes.v1}></div>
+          <Button
+            icon={'trash'}
+            onClick={removeElement}
+            title={'Удалить элемент'}
+          />
+          <input
+            type={'number'}
+            className={classes.numberInput}
+            value={selectedObject?.size.height}
+            onChange={(event) => onHeightChange(event.target.value)}
+          ></input>
+          <input
+            type={'number'}
+            className={classes.numberInput}
+            value={selectedObject?.size.width}
+            onChange={(event) => onWidthChange(event.target.value)}
+          ></input>
+        </>
+      )}
     </div>
   )
 }

@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import useElementManagement from '../../hooks/useElementManager'
 import { PageContext } from '../../context/page'
 
 function ColorPicker() {
-  const { page, setPage } = useContext(PageContext)
+  const { page } = useContext(PageContext)
 
   const { onColorChange } = useElementManagement()
 

@@ -1,23 +1,15 @@
 import { CSSProperties, useContext } from 'react'
 import BaseBlock from '../common/BaseBlock/BaseBlock'
 import { Slide as TSlide } from '../../model/main'
-import useElementManagement from '../../hooks/useElementManager'
 import { PageContext } from '../../context/page'
-import {
-  RegisterDndItemFn,
-  useDraggableElement,
-} from '../../hooks/useDraggableElement'
-import { DndItemInfo } from '../../hooks/useDraggableList'
+import { useDraggableElement } from '../../hooks/useDraggableElement'
 
 type SlideProps = {
   slide: TSlide
   className?: string
-  elementSelect: string | null
 }
 
-function Slide({ slide, className, elementSelect }: SlideProps) {
-  const { selectElement } = useElementManagement()
-
+function Slide({ slide, className }: SlideProps) {
   const styleVar: CSSProperties = {}
 
   function setClassName(slide: TSlide, className?: string) {
@@ -100,8 +92,6 @@ function Slide({ slide, className, elementSelect }: SlideProps) {
         <BaseBlock
           key={object.id}
           {...object}
-          elementSelect={elementSelect}
-          onSelectElement={selectElement}
           registerDndItem={registerDndItem}
           index={index}
         />

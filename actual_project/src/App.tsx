@@ -4,10 +4,9 @@ import Header from './components/Header/Header'
 import SlideBar from './components/SlideBar/SlideBar'
 import Workspace from './components/WorkSpace/Workspace'
 import { PageContext } from './context/page'
-import { useDraggableList } from './hooks/useDraggableList'
 
 function App() {
-  const { page, setPage } = useContext(PageContext)
+  const { page } = useContext(PageContext)
 
   const slide =
     page.slides.find(function (slide) {
@@ -31,10 +30,8 @@ function App() {
     <div className="app">
       <Header presentationName={page.title} selectedObject={object} />
       <div className="editor">
-        <SlideBar slides={page.slides} />
-        {slide && (
-          <Workspace slide={slide} selectSlide={page.selection.elementID} />
-        )}
+        <SlideBar />
+        {slide && <Workspace slide={slide} />}
       </div>
     </div>
   )
