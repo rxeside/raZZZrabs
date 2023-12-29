@@ -150,6 +150,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'textcolor'} />
         </>
       )}
+
       {isImage(selectedObject) && (
         <>
           <div className={classes.v1}></div>
