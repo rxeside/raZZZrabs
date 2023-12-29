@@ -44,4 +44,4 @@ const LoaderImage = ({ addImage, setSelectedObjectId }: LoaderImageProps) => {
   )
 }
 
-export { LoaderImage }
+export default LoaderImage

@@ -16,7 +16,7 @@ const useSlideManagement = (): UseSlideManagementReturnType => {
       slideBackground: {
         color: {
           hex: '#FFFFFF',
-          opacity: 0,
+          opacity: 1,
         },
       },
       slideObjects: [],

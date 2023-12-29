@@ -12,9 +12,8 @@ import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
 import ColorPicker from '../ColorPicker/ColorPicker'
-import FontSelect from '../FontSelector/FontSelector'
+// import FontSelect from '../FontSelector/FontSelector'
 import useAddImage from '../../hooks/useAddImage'
-import { LoaderImage } from '../ImageUploader/ImageUploader'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -24,8 +23,22 @@ interface ToolBarProps {
   selectedSlideId?: string
 }
 
-function ToolBar({ selectedObject, presentationData }: ToolBarProps) {
-  const addImage = useAddImage(presentationData)
+function ToolBar({ selectedObject }: ToolBarProps) {
+  const addImage = useAddImage()
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const imageData = reader.result as string
+        addImage(imageData)
+      }
+
+      reader.readAsDataURL(file)
+    }
+  }
 
   const { addSlide, removeSlide } = useSlideManagement()
 
@@ -80,7 +93,7 @@ function ToolBar({ selectedObject, presentationData }: ToolBarProps) {
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />
       <Button icon={'text-align'} onClick={addTextElement} />
-      <LoaderImage addImage={addImage} />
+      <input type="file" onChange={handleImageUpload} />
       <Button
         icon={'primitives'}
         onClick={() => {
@@ -116,11 +129,11 @@ function ToolBar({ selectedObject, presentationData }: ToolBarProps) {
         <>
           <div className={classes.v1}></div>
           <Button icon={'minus'} />
-          <FontSelect
+          {/* <FontSelect
             defaultFontName={selectedFont}
             fontValue={selectedFont}
             onChange={handleFontChange}
-          />
+          /> */}
           <Button icon={'plus'} />
           <div className={classes.v1}></div>
           <Button icon={'bold'} />

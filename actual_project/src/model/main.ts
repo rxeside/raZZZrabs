@@ -84,7 +84,6 @@ type BorderType = {
 type TextBlock = BaseBlock & {
   elementType: ElementType.TEXT
   data: {
-    font: string
     value: string
     color: ColorType
     fontSize: number

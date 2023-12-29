@@ -13,8 +13,7 @@ function ColorPicker() {
   const Color = slideCur?.slideBackground.color.hex
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = e.target.value
-    const hexValue = newColor.slice(0, 7)
-    onColorChange(hexValue)
+    onColorChange(newColor)
     console.log(newColor)
   }
 
