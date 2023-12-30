@@ -2,12 +2,22 @@ import InfoBar from '../InfoBar/InfoBar'
 import ToolBar from '../ToolBar/ToolBar'
 import Input from '../common/Input/Input'
 import classes from './Header.module.css'
-import { ImageBlock, ShapeBlock, TextBlock } from '../../model/main'
+import { ImageBlock, ShapeBlock, TextBlock, ApplicationState, Page } from '../../model/main'
 
 type HeaderProps = {
   presentationName: string
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
 }
+
+type PresentationConfig = {
+    name?: string;
+}
+
+const defaultConfig: PresentationConfig = {
+    name: "newPresentation",
+}
+
+
 
 function Header({ presentationName, selectedObject }: HeaderProps) {
   return (

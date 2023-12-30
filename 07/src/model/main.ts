@@ -82,28 +82,28 @@ type BorderType = {
 }
 
 type TextBlock = BaseBlock & {
-  elementType: ElementType.TEXT
+  elementType: ElementType.TEXT;
   data: {
-    value: string
-    color: ColorType
-    fontSize: number
-    fontFamily: string
-    verticalAlign: VerticalAlignType
-    horizontalAlign: HorizontalAlignType
-    outline: OutlineType
-    border?: BorderType
-    size: Size
-  }
-}
+    value: string;
+    color: ColorType;
+    fontSize: number;
+    fontFamily: string;
+    verticalAlign: VerticalAlignType;
+    horizontalAlign: HorizontalAlignType;
+    outline: OutlineType;
+    border?: BorderType;
+    size: Size;
+  };
+};
 
 type ImageBlock = BaseBlock & {
-  elementType: ElementType.IMAGE
+  elementType: ElementType.IMAGE;
   data: {
-    image: ImageType
-    border?: BorderType
-    size: Size
-  }
-}
+    image: ImageType;
+    border?: BorderType;
+    size: Size;
+  };
+};
 
 type ShapeBlock = BaseBlock & {
   data: {
@@ -121,10 +121,10 @@ type ShapeBlock = BaseBlock & {
 // }
 
 type Slide = {
-  slideObjects: Array<TextBlock | ImageBlock | ShapeBlock>
-  slideID: string
-  slideBackground: BackgroundType
-}
+  slideObjects: (TextBlock | ImageBlock | ShapeBlock)[];
+  slideID: string;
+  slideBackground: BackgroundType;
+};
 
 type SlideSelection = {
   slideID: string | null
@@ -142,6 +142,16 @@ type Page = {
   title: string
 }
 
+type Selection = {
+  slideID: string | null
+  elementID: string | null
+}
+
+type ApplicationState = {
+  presentation: Page,
+  selection: Selection,
+}
+
 export {
   ImageTypeVariation,
   PrimitiveType,
@@ -149,6 +159,7 @@ export {
   HorizontalAlignType,
   ElementType,
   BorderStyleType,
+  type ApplicationState,
   type SlideSelection,
   type SlideHistory,
   type Slide,
@@ -164,4 +175,5 @@ export {
   type Dot,
   type ColorType,
   type Page,
+  type Selection,
 }
