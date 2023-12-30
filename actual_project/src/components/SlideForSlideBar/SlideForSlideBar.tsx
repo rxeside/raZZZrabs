@@ -34,7 +34,6 @@ function SlideForSlideBar({
   console.log('ban ' + index)
 
   useEffect(() => {
-    // TODO: эту логику перемещения можно вынести в отдельный компонент, div, который сможет отрисовывать в себе любой контент
     const { onDragStart } = registerDndItem(index, {
       elementRef: ref,
       controlRef: dndControlRef,
@@ -47,7 +46,6 @@ function SlideForSlideBar({
     const onMouseDown = (mouseDownEvent: MouseEvent) => {
       onDragStart({
         onDrag: (dragEvent) => {
-          // TODO: можно вынести в стили и использовать как-то так ref.current!.classList.add(styles.dragging) либо через useState
           stopDefAction(mouseDownEvent)
           ref.current!.style.position = 'relative'
           ref.current!.style.zIndex = '1'
@@ -151,4 +149,5 @@ function SlideForSlideBar({
     </div>
   )
 }
+
 export default SlideForSlideBar
