@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
-import { applicationReducers } from './reducers';
+import presentationReducer from './reducers';
 
 
-const store = createStore(applicationReducers);
+const store = createStore(presentationReducer);
 
 export default store
