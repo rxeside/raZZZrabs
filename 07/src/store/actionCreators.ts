@@ -11,7 +11,7 @@ import {
     DELETE_OBJECT,
     RESIZE_OBJECT,
     MOVE_OBJECT,
-    SET_COLOR_FIGURE,
+    SET_COLOR_PRIMITIVE,
     CREATE_PRIMITIVE,
     SET_STROKECOLOR_FIGURE,
     CREATE_IMAGE,
@@ -150,7 +150,7 @@ function createPrimitive(primitiveType: PrimitiveType) {
 
 function setColorFigure(color: ColorType, size: Size) {
     return {
-        type: SET_COLOR_FIGURE,
+        type: SET_COLOR_PRIMITIVE,
         color,
         size,
     };
