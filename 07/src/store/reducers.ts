@@ -54,11 +54,21 @@ import {
     Size,
     ApplicationState
 } from '../model/main'
-import { setBackgroundSlide } from './actionCreators'
+// import { setBackgroundSlide } from './actionCreators'
 import { generateId } from '../IdGenerator'
 
 
-const defaultApplication: ApplicationState = pageProvider()
+const initialState: ApplicationState = {
+    presentation: {
+        slides: [],
+        slideHistory: null,
+        selection: { slideID: null, elementID: null },
+        title: 'Untitled Presentation',
+    },
+    selection: { slideID: null, elementID: null },
+};
+
+const defaultApplication: ApplicationState = initialState
 
 const applicationReducers = (state = defaultApplication, action: any) => {
     switch (action.type) {
