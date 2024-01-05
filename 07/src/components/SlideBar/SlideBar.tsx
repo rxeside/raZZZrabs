@@ -1,18 +1,19 @@
 import classes from './SlideBar.module.css'
 import SlideForSlideBar from '../SlideForSlideBar/SlideForSlideBar'
 import { useDraggableList } from '../../hooks/useDraggableList'
-import { useContext } from 'react'
-import { PageContext } from '../../context/page'
+import { useSelector } from 'react-redux'
+import { Page } from '../../model/main'
 
 function SlideBar() {
-  const { page, setPage } = useContext(PageContext)
+  const page = useSelector((state) => state)
+  console.log(page.slides)
 
   const { registerDndItem } = useDraggableList({
     onOrderChange: (from, to) => {
       const newNotes = page.slides
       const removed = newNotes.splice(from, 1)
       newNotes.splice(to, 0, removed[0])
-      setPage({ ...page, slides: newNotes })
+      //setPage({ ...page, slides: newNotes })
     },
   })
 
