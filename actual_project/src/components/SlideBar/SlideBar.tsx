@@ -7,7 +7,7 @@ import { PageContext } from '../../context/page'
 function SlideBar() {
   const { page, setPage } = useContext(PageContext)
 
-  const { registerDndItem } = useDraggableList({
+  const { registerDndItem, unregisterDndItem } = useDraggableList({
     onOrderChange: (from, to) => {
       const newNotes = page.slides
       const removed = newNotes.splice(from, 1)
@@ -24,6 +24,7 @@ function SlideBar() {
             slide={slide}
             index={index}
             registerDndItem={registerDndItem}
+            unregisterDndItem={unregisterDndItem}
           />
         ))}
     </div>

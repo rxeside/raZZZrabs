@@ -30,7 +30,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     }
   }
 
-  const { addSlide, removeSlide } = useSlideManagement()
+  const { addSlide, removeSlide, goBackHistory } = useSlideManagement()
 
   const {
     addTextElement,
@@ -78,7 +78,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'plus'} onClick={addSlide} />
       <Button icon={'trash'} onClick={removeSlide} />
       <div className={classes.v1}></div>
-      <Button icon={'prev-arrow'} />
+      <Button icon={'prev-arrow'} onClick={goBackHistory} />
       <Button icon={'next-arrow'} />
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>

@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { Slide } from '../model/main'
 import { PageContext } from '../context/page'
 
@@ -6,6 +6,7 @@ type UseSlideManagementReturnType = {
   addSlide: () => void
   removeSlide: () => void
   onSelectSlide: (slideID: string) => void
+  goBackHistory: () => void
 }
 const useSlideManagement = (): UseSlideManagementReturnType => {
   const { page, setPage } = useContext(PageContext)
@@ -84,10 +85,17 @@ const useSlideManagement = (): UseSlideManagementReturnType => {
     })
   }
 
+  const goBackHistory = () => {
+    useEffect(() => {
+      window.history.back()
+    })
+  }
+
   return {
     addSlide,
     removeSlide,
     onSelectSlide,
+    goBackHistory,
   }
 }
 
