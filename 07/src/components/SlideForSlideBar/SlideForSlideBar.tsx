@@ -1,17 +1,16 @@
-import { CSSProperties, useContext, useEffect, useRef } from 'react'
+import { CSSProperties, useEffect, useRef } from 'react'
 import BaseBlock from '../common/BaseBlock/BaseBlock'
 import {
   Slide as TSlide,
   SlideSelection as TSlideSelection,
 } from '../../model/main'
 import classes from '../SlideBar/SlideBar.module.css'
-import useSlideManagement from '../../hooks/useSlideManager'
-import { PageContext } from '../../context/page'
 import { RegisterDndItemFn } from '../../hooks/useDraggableList'
 import store from '../../store/store'
-import { onSelectSlide } from '../../methods/slidesMethods'
 import { onSelectSlideAction } from '../../store/actionCreators'
-import { useSelector } from 'react-redux'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { DefaultRootState, useSelector } from 'react-redux'
 
 type SlideProps = {
   slide: TSlide
@@ -28,7 +27,7 @@ function SlideForSlideBar({
 }: SlideProps) {
   const styleVar: CSSProperties = {}
 
-  const page = useSelector((state) => state)
+  const page: DefaultRootState = useSelector((state) => state)
 
   const ref = useRef<HTMLDivElement>(null)
   const dndControlRef = useRef<HTMLDivElement>(null)
