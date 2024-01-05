@@ -9,7 +9,7 @@ function SlideBar() {
 
   const { registerDndItem, unregisterDndItem } = useDraggableList({
     onOrderChange: (from, to) => {
-      const newNotes = page.slides
+      const newNotes = [...page.slides]
       const removed = newNotes.splice(from, 1)
       newNotes.splice(to, 0, removed[0])
       setPage({ ...page, slides: newNotes })

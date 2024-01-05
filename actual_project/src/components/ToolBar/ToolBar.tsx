@@ -6,7 +6,6 @@ import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import useAddImage from '../../hooks/useAddImage'
-// import { useState } from 'react'
 import useTextElementManager from '../../hooks/useTextElementManager'
 
 interface ToolBarProps {

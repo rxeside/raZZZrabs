@@ -58,6 +58,7 @@ const useSlideManagement = (): UseSlideManagementReturnType => {
     const removedSlideIndex = page.slides.findIndex(
       (slide) => slide.slideID === page.selection.slideID,
     )
+
     if (removedSlideIndex > 0 && notEmptySlides) {
       selectedSlideId = page.slides[removedSlideIndex - 1].slideID
     }
