@@ -82,28 +82,28 @@ type BorderType = {
 }
 
 type TextBlock = BaseBlock & {
-  elementType: ElementType.TEXT;
+  elementType: ElementType.TEXT
   data: {
-    value: string;
-    color: ColorType;
-    fontSize: number;
-    fontFamily: string;
-    verticalAlign: VerticalAlignType;
-    horizontalAlign: HorizontalAlignType;
-    outline: OutlineType;
-    border?: BorderType;
-    size: Size;
-  };
-};
+    value: string
+    color: ColorType
+    fontSize: number
+    fontFamily: string
+    verticalAlign: VerticalAlignType
+    horizontalAlign: HorizontalAlignType
+    outline: OutlineType
+    border?: BorderType
+    size: Size
+  }
+}
 
 type ImageBlock = BaseBlock & {
-  elementType: ElementType.IMAGE;
+  elementType: ElementType.IMAGE
   data: {
-    image: ImageType;
-    border?: BorderType;
-    size: Size;
-  };
-};
+    image: ImageType
+    border?: BorderType
+    size: Size
+  }
+}
 
 type ShapeBlock = BaseBlock & {
   data: {
@@ -115,16 +115,11 @@ type ShapeBlock = BaseBlock & {
   elementType: ElementType.SHAPE
 }
 
-// type SlideElement = {
-//   elements:
-//   elementID: string
-// }
-
 type Slide = {
-  slideObjects: (TextBlock | ImageBlock | ShapeBlock)[];
-  slideID: string;
-  slideBackground: BackgroundType;
-};
+  slideObjects: (TextBlock | ImageBlock | ShapeBlock)[]
+  slideID: string
+  slideBackground: BackgroundType
+}
 
 type SlideSelection = {
   slideID: string | null
@@ -148,8 +143,8 @@ type Selection = {
 }
 
 type ApplicationState = {
-  presentation: Page,
-  selection: Selection,
+  presentation: Page
+  selection: Selection
 }
 
 export {

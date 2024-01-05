@@ -6,8 +6,9 @@ import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import useAddImage from '../../hooks/useAddImage'
-import { useState } from 'react'
 import useTextElementManager from '../../hooks/useTextElementManager'
+import store from '../../store/store'
+import { addSlideAction, removeSlideAction } from '../../store/actionCreators'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -75,8 +76,11 @@ function ToolBar({ selectedObject }: ToolBarProps) {
 
   return (
     <div className={classes.toolBar}>
-      <Button icon={'plus'} onClick={addSlide} />
-      <Button icon={'trash'} onClick={removeSlide} />
+      <Button icon={'plus'} onClick={() => store.dispatch(addSlideAction())} />
+      <Button
+        icon={'trash'}
+        onClick={() => store.dispatch(removeSlideAction())}
+      />
       <div className={classes.v1}></div>
       <Button icon={'prev-arrow'} />
       <Button icon={'next-arrow'} />
@@ -88,8 +92,8 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'circle'} onClick={addCircleElement} />
       <Button icon={'triangle'} onClick={addTriangleElement} />
       <Button icon={'rectangle'} onClick={addRectangleElement} />
-        <div className={classes.v1}></div>
-        <ColorPicker isElement={false} />
+      <div className={classes.v1}></div>
+      <ColorPicker isElement={false} />
       {(isText(selectedObject) || isShape(selectedObject)) && (
         <>
           <div className={classes.v1}></div>

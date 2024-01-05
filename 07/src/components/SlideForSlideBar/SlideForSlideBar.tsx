@@ -8,6 +8,10 @@ import classes from '../SlideBar/SlideBar.module.css'
 import useSlideManagement from '../../hooks/useSlideManager'
 import { PageContext } from '../../context/page'
 import { RegisterDndItemFn } from '../../hooks/useDraggableList'
+import store from '../../store/store'
+import { onSelectSlide } from '../../methods/slidesMethods'
+import { onSelectSlideAction } from '../../store/actionCreators'
+import { useSelector } from 'react-redux'
 
 type SlideProps = {
   slide: TSlide
@@ -24,9 +28,7 @@ function SlideForSlideBar({
 }: SlideProps) {
   const styleVar: CSSProperties = {}
 
-  const { onSelectSlide } = useSlideManagement()
-
-  const { page } = useContext(PageContext)
+  const page = useSelector((state) => state)
 
   const ref = useRef<HTMLDivElement>(null)
   const dndControlRef = useRef<HTMLDivElement>(null)
@@ -34,7 +36,6 @@ function SlideForSlideBar({
   console.log('ban ' + index)
 
   useEffect(() => {
-    // TODO: эту логику перемещения можно вынести в отдельный компонент, div, который сможет отрисовывать в себе любой контент
     const { onDragStart } = registerDndItem(index, {
       elementRef: ref,
       controlRef: dndControlRef,
@@ -47,7 +48,6 @@ function SlideForSlideBar({
     const onMouseDown = (mouseDownEvent: MouseEvent) => {
       onDragStart({
         onDrag: (dragEvent) => {
-          // TODO: можно вынести в стили и использовать как-то так ref.current!.classList.add(styles.dragging) либо через useState
           stopDefAction(mouseDownEvent)
           ref.current!.style.position = 'relative'
           ref.current!.style.zIndex = '1'
@@ -130,7 +130,7 @@ function SlideForSlideBar({
       <div className={classes.slideBarIndex}>{index + 1}</div>
       <div
         className={setClassSelected(isSelectedSlide(page.selection, slide))}
-        onClick={() => onSelectSlide(slide.slideID)}
+        onClick={() => store.dispatch(onSelectSlideAction(slide.slideID))}
         ref={ref}
       >
         <div
@@ -151,4 +151,5 @@ function SlideForSlideBar({
     </div>
   )
 }
+
 export default SlideForSlideBar
