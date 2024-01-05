@@ -1,15 +1,16 @@
-import React, { useContext } from 'react'
 import './App.css'
 import Header from './components/Header/Header'
 import SlideBar from './components/SlideBar/SlideBar'
 import Workspace from './components/WorkSpace/Workspace'
-import { PageContext } from './context/page'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { DefaultRootState, useSelector } from 'react-redux'
 
 function App() {
-  const { page } = useContext(PageContext)
+  const page: DefaultRootState = useSelector((state) => state)
 
   const slide =
-    page.slides.find(function (slide) {
+    page.slides.find(function (slide: { slideID: string }) {
       if (slide.slideID == page.selection.slideID) {
         return slide
       }
@@ -17,7 +18,7 @@ function App() {
     }) || null
 
   const object =
-    slide?.slideObjects.find(function (object) {
+    slide?.slideObjects.find(function (object: { id: string }) {
       if (
         object.id == page.selection.elementID &&
         page.selection.elementID != null
