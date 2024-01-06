@@ -1,3 +1,5 @@
+import { pageReducers } from '../store/reducers'
+
 enum ImageTypeVariation {
   BASE64 = 'base64',
   URL = 'url',
@@ -145,6 +147,15 @@ type Selection = {
 type ApplicationState = {
   presentation: Page
   selection: Selection
+}
+
+export type CornerType = 'LeftTop' | 'LeftBottom' | 'RightTop' | 'RightBottom'
+
+export type Rect = {
+  x: number
+  y: number
+  width: number
+  height: number
 }
 
 export {
