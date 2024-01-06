@@ -4,7 +4,6 @@ import { ElementType, ImageBlock, ImageTypeVariation } from '../model/main'
 
 const useAddImage = () => {
   const { page, setPage } = useContext(PageContext)
-
   const addImage = (newElement: string) => {
     const slideCur =
       page.slides.find((slide) => slide.slideID === page.selection.slideID) ||

@@ -33,7 +33,6 @@ function useDraggableList({ onOrderChange }: UseDraggableListParams) {
         startY: 0,
       }
       itemsRef.current[index] = item
-      console.log(itemsRef.current.length)
 
       const onDragStart: OnDragStartFn = ({ onDrag, onDrop }) => {
         item.startY = item.elementRef.current!.getBoundingClientRect().top

@@ -42,11 +42,14 @@ function useDraggableElement({ onOrderChange }: UseDraggableElementParams) {
         const onMouseUp = (event: MouseEvent) => {
           stopDefAction(event)
 
-          onOrderChange(
-            startY + event.clientY - item.startY,
-            startX + event.clientX - item.startX,
-          )
+          const deltaX = event.clientX - item.startX
+          const deltaY = event.clientY - item.startY
+
+          console.log(deltaY, deltaX)
+
           onDrop(event)
+
+          onOrderChange(startY + deltaY, startX + deltaX)
 
           window.removeEventListener('mousemove', onDrag)
           window.removeEventListener('mouseup', onMouseUp)
