@@ -270,9 +270,6 @@ const thirdSlide: Slide = {
 
 const maxPage: Page = {
   slides: [firstSlide, secondSlide, thirdSlide],
-  slideHistory: {
-    lastSave: [firstSlide, secondSlide, thirdSlide],
-  },
   selection: {
     slideID: '1',
     elementID: '',

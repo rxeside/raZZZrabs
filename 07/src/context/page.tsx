@@ -17,7 +17,6 @@ export const PageContext = createContext<PageContextType>({
     selection: newSelection,
     title: '',
     slides: [],
-    slideHistory: null,
   },
   setPage: () => {},
 })

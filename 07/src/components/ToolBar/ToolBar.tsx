@@ -21,6 +21,8 @@ import {
   removeElementAction,
   removeSlideAction,
   subFontSizeTextAction,
+  goToLastState,
+  goToNextState,
 } from '../../store/actionCreators'
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -77,8 +79,19 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         onClick={() => store.dispatch(removeSlideAction())}
       />
       <div className={classes.v1}></div>
-      <Button icon={'prev-arrow'} />
-      <Button icon={'next-arrow'} />
+      <Button
+        icon={'prev-arrow'}
+        onClick={() => {
+          console.log('SUKAAAAA')
+          store.dispatch(goToLastState())
+        }}
+      />
+      <Button
+        icon={'next-arrow'}
+        onClick={() => {
+          store.dispatch(goToNextState())
+        }}
+      />
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />

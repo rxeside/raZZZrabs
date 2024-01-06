@@ -128,13 +128,14 @@ type SlideSelection = {
   elementID: string | null
 }
 
-type SlideHistory = {
-  lastSave: Slide[]
-}
+// type SlideHistory = {
+//   lastSave: Slide[]
+//
+// }
 
 type Page = {
   slides: Slide[]
-  slideHistory: SlideHistory | null
+  // slideHistory: SlideHistory | null
   selection: SlideSelection
   title: string
 }
@@ -167,7 +168,6 @@ export {
   BorderStyleType,
   type ApplicationState,
   type SlideSelection,
-  type SlideHistory,
   type Slide,
   type Size,
   type BackgroundType,

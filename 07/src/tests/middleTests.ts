@@ -59,9 +59,6 @@ const midSlide: Slide = {
 
 const midPage: Page = {
   slides: [midSlide],
-  slideHistory: {
-    lastSave: [midSlide],
-  },
   selection: {
     slideID: '1',
     elementID: '1',
