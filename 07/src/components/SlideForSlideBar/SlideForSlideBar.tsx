@@ -37,8 +37,6 @@ function SlideForSlideBar({
   const ref = useRef<HTMLDivElement>(null)
   const dndControlRef = useRef<HTMLDivElement>(null)
 
-  console.log('ban ' + index)
-
   useEffect(() => {
     const { onDragStart } = registerDndItem(index, {
       elementRef: ref,

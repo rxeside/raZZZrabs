@@ -2,6 +2,7 @@ import {
   ElementType,
   HorizontalAlignType,
   ImageBlock,
+  ImageTypeVariation,
   Page,
   PrimitiveType,
   ShapeBlock,
@@ -11,8 +12,6 @@ import {
 import {
   circleBorder,
   circleColor,
-  imageBase64BlockBorder,
-  imageBase64BlockDataType,
   rectangleBorder,
   rectanglecolor,
   triangleColor,
@@ -75,13 +74,13 @@ const addTextElement = (page: Page) => {
   }
 }
 
-const addImageElement = (page: Page) => {
+const addImageElement = (page: Page, newElement: string) => {
   const slideCur =
     page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
     null
 
   if (slideCur != null) {
-    const newElement: ImageBlock = {
+    const newImage: ImageBlock = {
       startDot: {
         x: 23,
         y: 47,
@@ -93,8 +92,7 @@ const addImageElement = (page: Page) => {
       scale: 1,
       id: String(Date.now()),
       data: {
-        image: imageBase64BlockDataType,
-        border: imageBase64BlockBorder,
+        image: { data: newElement, type: ImageTypeVariation.BASE64 },
         size: {
           width: 640,
           height: 480,
@@ -103,11 +101,11 @@ const addImageElement = (page: Page) => {
       elementType: ElementType.IMAGE,
     }
 
-    slideCur.slideObjects = [...slideCur.slideObjects, newElement]
+    const updatedSlideObjects = [...slideCur.slideObjects, newImage]
 
     const updatedSlides = page.slides.map((slide) => {
       if (slide.slideID === slideCur.slideID) {
-        return slideCur
+        return { ...slide, slideObjects: updatedSlideObjects }
       } else {
         return slide
       }

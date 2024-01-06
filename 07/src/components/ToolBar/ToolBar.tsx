@@ -2,20 +2,27 @@ import Button from '../common/Button/Button'
 import classes from './ToolBar.module.css'
 import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
 import List from '../common/List/List'
-import useElementManagement from '../../hooks/useElementManager'
 import ColorPicker from '../ColorPicker/ColorPicker'
-import useAddImage from '../../hooks/useAddImage'
 import useTextElementManager from '../../hooks/useTextElementManager'
 import store from '../../store/store'
-import { addSlideAction, removeSlideAction } from '../../store/actionCreators'
+import {
+  addCircleElementAction,
+  addImageElementAction,
+  addRectangleElementAction,
+  addSlideAction,
+  addTextElementAction,
+  addTriangleElementAction,
+  changeElementHeightAction,
+  changeElementWidthAction,
+  removeElementAction,
+  removeSlideAction,
+} from '../../store/actionCreators'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
 }
 
 function ToolBar({ selectedObject }: ToolBarProps) {
-  const addImage = useAddImage()
-
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
 
@@ -23,22 +30,12 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       const reader = new FileReader()
       reader.onloadend = () => {
         const imageData = reader.result as string
-        addImage(imageData)
+        store.dispatch(addImageElementAction(imageData))
       }
 
       reader.readAsDataURL(file)
     }
   }
-
-  const {
-    addTextElement,
-    addCircleElement,
-    removeElement,
-    onHeightChange,
-    onWidthChange,
-    addRectangleElement,
-    addTriangleElement,
-  } = useElementManagement()
 
   const { onBold, onItalic, onUnderline, onFontfamily, onBigger, onLower } =
     useTextElementManager()
@@ -84,13 +81,30 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />
-      <Button icon={'text-align'} onClick={addTextElement} />
-      <input type="file" onChange={handleImageUpload} />
-      <Button icon={'circle'} onClick={addCircleElement} />
-      <Button icon={'triangle'} onClick={addTriangleElement} />
-      <Button icon={'rectangle'} onClick={addRectangleElement} />
-      <div className={classes.v1}></div>
-      <ColorPicker isElement={false} className={classes.colorInput} />
+      <Button
+        icon={'text-align'}
+        onClick={() => store.dispatch(addTextElementAction())}
+      />
+      <div className={classes.fileInputContainer}>
+        <input
+          type="file"
+          onChange={handleImageUpload}
+          className={classes.customFileInput}
+        />
+        <Button icon={'images'} />
+      </div>
+      <Button
+        icon={'circle'}
+        onClick={() => store.dispatch(addCircleElementAction())}
+      />
+      <Button
+        icon={'triangle'}
+        onClick={() => store.dispatch(addTriangleElementAction())}
+      />
+      <Button
+        icon={'rectangle'}
+        onClick={() => store.dispatch(addRectangleElementAction())}
+      />
       {(isText(selectedObject) || isShape(selectedObject)) && (
         <>
           <div className={classes.v1}></div>
@@ -138,21 +152,31 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <div className={classes.v1}></div>
           <Button
             icon={'trash'}
-            onClick={removeElement}
+            onClick={() => store.dispatch(removeElementAction())}
             title={'Удалить элемент'}
           />
           <input
             type={'number'}
             className={classes.numberInput}
             value={selectedObject?.size.height}
-            onChange={(event) => onHeightChange(event.target.value)}
+            onChange={(event) =>
+              store.dispatch(changeElementHeightAction(event.target.value))
+            }
           ></input>
           <input
             type={'number'}
             className={classes.numberInput}
             value={selectedObject?.size.width}
-            onChange={(event) => onWidthChange(event.target.value)}
+            onChange={(event) =>
+              store.dispatch(changeElementWidthAction(event.target.value))
+            }
           ></input>
+        </>
+      )}
+      {isNull(selectedObject) && (
+        <>
+          <div className={classes.v1}></div>
+          <ColorPicker isElement={false} className={classes.colorInput} />
         </>
       )}
     </div>

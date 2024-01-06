@@ -280,8 +280,6 @@ const maxPage: Page = {
   title: 'Sample Presentation',
 }
 
-console.log(maxPage)
-
 export {
   rectanglecolor,
   rectangleBorder,

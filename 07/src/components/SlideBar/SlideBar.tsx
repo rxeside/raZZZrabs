@@ -10,7 +10,6 @@ import { updateSlideAction } from '../../store/actionCreators'
 
 function SlideBar() {
   const page: DefaultRootState = useSelector((state) => state)
-  console.log(page.slides)
 
   const { registerDndItem, unregisterDndItem } = useDraggableList({
     onOrderChange: (from, to) => {
