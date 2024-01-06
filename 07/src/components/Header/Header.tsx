@@ -1,25 +1,23 @@
 import InfoBar from '../InfoBar/InfoBar'
 import ToolBar from '../ToolBar/ToolBar'
-import Input from '../common/Input/Input'
 import classes from './Header.module.css'
-import { ImageBlock, ShapeBlock, TextBlock, ApplicationState, Page } from '../../model/main'
+import { ImageBlock, ShapeBlock, TextBlock } from '../../model/main'
+import { useState } from 'react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { DefaultRootState, useSelector } from 'react-redux'
+import store from '../../store/store'
+import { changePageTitleAction } from '../../store/actionCreators'
 
 type HeaderProps = {
   presentationName: string
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
 }
 
-type PresentationConfig = {
-    name?: string;
-}
-
-const defaultConfig: PresentationConfig = {
-    name: "newPresentation",
-}
-
-
-
 function Header({ presentationName, selectedObject }: HeaderProps) {
+  const page: DefaultRootState = useSelector((state) => state)
+  const [title, setTitle] = useState(page.title)
+
   return (
     <div className={classes.header}>
       <div className={classes.logoAndName}>
@@ -28,9 +26,14 @@ function Header({ presentationName, selectedObject }: HeaderProps) {
           alt={'logo'}
           src={'../../static/img/logo.svg'}
         />
-        <Input
+        <input
+          value={title}
           defaultValue={presentationName}
           className={classes.presentationName}
+          onChange={(event) => {
+            setTitle(event.target.value)
+            store.dispatch(changePageTitleAction(event.target.value))
+          }}
         />
       </div>
       <InfoBar />

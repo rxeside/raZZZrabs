@@ -1,10 +1,7 @@
-import { useContext } from 'react'
-import { PageContext } from '../context/page'
-import { ElementType, ImageBlock, ImageTypeVariation } from '../model/main'
+import {PageContext} from "../../context/page";
+import {ElementType, ImageBlock, ImageTypeVariation} from "../main";
 
-const useAddImage = () => {
-  const { page, setPage } = useContext(PageContext)
-
+const useAddImage = (page: PageState) => {
   const addImage = (newElement: string) => {
     const slideCur =
       page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
@@ -51,5 +48,3 @@ const useAddImage = () => {
 
   return addImage
 }
-
-export default useAddImage
