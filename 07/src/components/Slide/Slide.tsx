@@ -1,8 +1,12 @@
-import { CSSProperties, useContext } from 'react'
+import { CSSProperties } from 'react'
 import BaseBlock from '../common/BaseBlock/BaseBlock'
-import { Slide as TSlide } from '../../model/main'
-import { PageContext } from '../../context/page'
+import { Dot, Slide as TSlide } from '../../model/main'
 import { useDraggableElement } from '../../hooks/useDraggableElement'
+import store from '../../store/store'
+import { updateSlideAction } from '../../store/actionCreators'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { DefaultRootState, useSelector } from 'react-redux'
 
 type SlideProps = {
   slide: TSlide
@@ -51,33 +55,38 @@ function Slide({ slide, className }: SlideProps) {
     return style
   }
 
-  const { page, setPage } = useContext(PageContext)
+  //const { page, setPage } = useContext(PageContext)
+
+  const page: DefaultRootState = useSelector((state) => state)
 
   const slideCur =
-    page.slides.find((s) => s.slideID === page.selection.slideID) || undefined
+    page.slides.find(
+      (s: { slideID: any }): any => s.slideID === page.selection.slideID,
+    ) || undefined
 
   const elCur =
     slideCur?.slideObjects.find(
-      (element) => element.id === page.selection.elementID,
+      (element: { id: any }) => element.id === page.selection.elementID,
     ) || undefined
 
   const { registerDndItem } = useDraggableElement({
     onOrderChange: (toY, toX) => {
       if (elCur) {
-        const newDot = elCur.startDot
-        if (newDot) {
-          newDot.x = toX
-          newDot.y = toY
+        const newDot: Dot = {
+          x: toX,
+          y: toY,
         }
         const newEl = { ...elCur, startDot: newDot }
         const index = slideCur?.slideObjects.indexOf(elCur) ?? -1
         if (index !== -1 && slideCur) {
           const newObjects = [...slideCur.slideObjects]
-          newObjects.splice(index, 1, newEl)
-          const updatedSlides = page.slides.map((s) =>
-            s.slideID === slideCur.slideID ? slideCur : s,
+          newObjects[index] = newEl
+          const newSlide = { ...slideCur, slideObjects: newObjects }
+          const updatedSlides = page.slides.map((s: { slideID: any }) =>
+            s.slideID === slideCur.slideID ? newSlide : s,
           )
-          setPage({ ...page, slides: updatedSlides })
+          //setPage({ ...page, slides: updatedSlides })
+          store.dispatch(updateSlideAction(updatedSlides))
         }
       }
     },
@@ -92,6 +101,7 @@ function Slide({ slide, className }: SlideProps) {
         <BaseBlock
           key={object.id}
           {...object}
+          startDot={object.startDot}
           registerDndItem={registerDndItem}
           index={index}
         />

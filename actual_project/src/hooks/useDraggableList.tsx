@@ -17,12 +17,15 @@ type RegisterDndItemFn = (
   onDragStart: OnDragStartFn
 }
 
+type UnregisterDndItemFn = (index: number) => void
+
 type UseDraggableListParams = {
   onOrderChange: (fromIndex: number, toIndex: number) => void
 }
 
 function useDraggableList({ onOrderChange }: UseDraggableListParams) {
   const itemsRef = useRef<Array<DndItemInfo>>([])
+  console.log(itemsRef)
 
   const registerDndItem = useCallback(
     (index: number, dndItemInfo: DndItemInfo) => {
@@ -31,8 +34,9 @@ function useDraggableList({ onOrderChange }: UseDraggableListParams) {
         startY: 0,
       }
       itemsRef.current[index] = item
-      console.log(itemsRef.current.length)
-
+      console.log(itemsRef.current)
+      console.log('useLength = ' + itemsRef.current.length)
+      console.log('useIndex = ' + index)
       const onDragStart: OnDragStartFn = ({ onDrag, onDrop }) => {
         item.startY = item.elementRef.current!.getBoundingClientRect().top
 
@@ -69,14 +73,19 @@ function useDraggableList({ onOrderChange }: UseDraggableListParams) {
         onDragStart,
       }
     },
-    [onOrderChange],
+    [onOrderChange, itemsRef],
   )
+
+  const unregisterDndItem = useCallback((index: number) => {
+    itemsRef.current.splice(index, 1)
+  }, [])
 
   return {
     registerDndItem,
+    unregisterDndItem,
   }
 }
 
 export { useDraggableList }
 
-export type { DndItemInfo, RegisterDndItemFn }
+export type { DndItemInfo, RegisterDndItemFn, UnregisterDndItemFn }

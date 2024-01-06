@@ -6,7 +6,6 @@ import useElementManagement from '../../hooks/useElementManager'
 import useSlideManagement from '../../hooks/useSlideManager'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import useAddImage from '../../hooks/useAddImage'
-import { useState } from 'react'
 import useTextElementManager from '../../hooks/useTextElementManager'
 
 interface ToolBarProps {
@@ -14,7 +13,7 @@ interface ToolBarProps {
 }
 
 function ToolBar({ selectedObject }: ToolBarProps) {
-  const addImage = useAddImage()
+  const { addImage } = useAddImage()
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
@@ -30,7 +29,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     }
   }
 
-  const { addSlide, removeSlide } = useSlideManagement()
+  const { addSlide, removeSlide, goBackHistory } = useSlideManagement()
 
   const {
     addTextElement,
@@ -78,13 +77,17 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'plus'} onClick={addSlide} />
       <Button icon={'trash'} onClick={removeSlide} />
       <div className={classes.v1}></div>
-      <Button icon={'prev-arrow'} />
+      <Button icon={'prev-arrow'} onClick={goBackHistory} />
       <Button icon={'next-arrow'} />
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
       <Button icon={'cursor'} />
       <Button icon={'text-align'} onClick={addTextElement} />
-      <input type="file" onChange={handleImageUpload} />
+      <input
+        type="file"
+        className={classes.uploadImage}
+        onChange={handleImageUpload}
+      />
       <Button icon={'circle'} onClick={addCircleElement} />
       <Button icon={'triangle'} onClick={addTriangleElement} />
       <Button icon={'rectangle'} onClick={addRectangleElement} />
@@ -96,11 +99,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       )}
       {(isText(selectedObject) || isShape(selectedObject)) && (
         <>
-          <div className={classes.v1}></div>
-          <Button icon={'fillcolor'} />
-          <Button icon={'bordercolor'} />
-          <Button icon={'borderwidth'} />
-          <Button icon={'borderstyle'} />
           <div className={classes.v1}></div>
           <ColorPicker isElement={true} />
         </>

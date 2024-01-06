@@ -7,10 +7,8 @@ function InfoBar() {
 
   return (
     <div className={classes.infoBar}>
-      <Button text={'Файл'} />
-      <Button text={'Правка'} />
-      <Button text={'Скачать'} onClick={download} />
-      <Button text={'Загрузить'} onClick={upload} />
+      <Button text={'Скачать JSON'} onClick={download} />
+      <Button text={'Загрузить JSON'} onClick={upload} />
     </div>
   )
 }

@@ -18,8 +18,8 @@ import {
 } from '../model/main'
 
 const rectanglecolor: ColorType = {
-  hex: '#FF03AB',
-  opacity: 0.7,
+  hex: '#5DC5E3',
+  opacity: 1,
 }
 
 const rectangleBorder: BorderType = {
@@ -57,7 +57,7 @@ const shapeBlockRectangle: ShapeBlock = {
 }
 
 const triangleColor: ColorType = {
-  hex: '#00FF00',
+  hex: '#5DC5E3',
   opacity: 1,
 }
 
@@ -84,14 +84,14 @@ const shapeBlockTriangle: ShapeBlock = {
 }
 
 const circleColor: ColorType = {
-  hex: '#FF03AB',
-  opacity: 0.7,
+  hex: '#5DC5E3',
+  opacity: 1,
 }
 
 const circleBorder: BorderType = {
   color: {
-    hex: '#4F4F4F',
-    opacity: 0.4,
+    hex: '#5DC5E3',
+    opacity: 1,
   },
   width: 4,
   borderStyle: BorderStyleType.DOUBLED,

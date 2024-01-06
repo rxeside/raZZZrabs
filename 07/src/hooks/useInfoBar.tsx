@@ -1,8 +1,12 @@
-import { useCallback, useContext } from 'react'
-import { PageContext } from '../context/page'
+import { useCallback } from 'react'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { DefaultRootState, useSelector } from 'react-redux'
+import store from '../store/store'
+import { updatePageAction } from '../store/actionCreators'
 
 export const useInfoBar = () => {
-  const { page, setPage } = useContext(PageContext)
+  const page: DefaultRootState = useSelector((state) => state)
 
   const download = useCallback(() => {
     const data = JSON.stringify(page, null, 2)
@@ -26,16 +30,17 @@ export const useInfoBar = () => {
         const reader = new FileReader()
         reader.onload = () => {
           const fileContent = JSON.parse(reader.result as string)
-          setPage(fileContent)
+          store.dispatch(updatePageAction(fileContent))
         }
         reader.readAsText(selectedFile)
       }
     }
+
     input.addEventListener('change', (event) => listener(event))
     input.removeEventListener('change', (event) => listener(event))
     input.click()
     input.remove()
-  }, [setPage])
+  }, [])
 
   return { download, upload }
 }

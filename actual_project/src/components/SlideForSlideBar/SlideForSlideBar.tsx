@@ -7,12 +7,16 @@ import {
 import classes from '../SlideBar/SlideBar.module.css'
 import useSlideManagement from '../../hooks/useSlideManager'
 import { PageContext } from '../../context/page'
-import { RegisterDndItemFn } from '../../hooks/useDraggableList'
+import {
+  RegisterDndItemFn,
+  UnregisterDndItemFn,
+} from '../../hooks/useDraggableList'
 
 type SlideProps = {
   slide: TSlide
   className?: string
   registerDndItem: RegisterDndItemFn
+  unregisterDndItem: UnregisterDndItemFn
   index: number
 }
 
@@ -20,6 +24,7 @@ function SlideForSlideBar({
   slide,
   className,
   registerDndItem,
+  unregisterDndItem,
   index,
 }: SlideProps) {
   const styleVar: CSSProperties = {}
@@ -34,7 +39,6 @@ function SlideForSlideBar({
   console.log('ban ' + index)
 
   useEffect(() => {
-    // TODO: эту логику перемещения можно вынести в отдельный компонент, div, который сможет отрисовывать в себе любой контент
     const { onDragStart } = registerDndItem(index, {
       elementRef: ref,
       controlRef: dndControlRef,
@@ -47,7 +51,6 @@ function SlideForSlideBar({
     const onMouseDown = (mouseDownEvent: MouseEvent) => {
       onDragStart({
         onDrag: (dragEvent) => {
-          // TODO: можно вынести в стили и использовать как-то так ref.current!.classList.add(styles.dragging) либо через useState
           stopDefAction(mouseDownEvent)
           ref.current!.style.position = 'relative'
           ref.current!.style.zIndex = '1'
@@ -67,7 +70,10 @@ function SlideForSlideBar({
 
     const control = dndControlRef.current!
     control.addEventListener('mousedown', onMouseDown)
-    return () => control.removeEventListener('mousedown', onMouseDown)
+    return () => {
+      control.removeEventListener('mousedown', onMouseDown)
+      unregisterDndItem(index)
+    }
   }, [index, registerDndItem])
 
   function isSelectedSlide(selection: TSlideSelection | null, slide: TSlide) {
@@ -151,4 +157,5 @@ function SlideForSlideBar({
     </div>
   )
 }
+
 export default SlideForSlideBar

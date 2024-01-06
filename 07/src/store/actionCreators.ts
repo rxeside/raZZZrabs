@@ -1,228 +1,201 @@
 import {
-    IMPORT_PRESENTATION,
-    CHANGE_PRESENTATION_TITLE,
-    ADD_SLIDE,
-    CREATE_SLIDE,
-    SELECT_SLIDE,
-    SET_BACKGROUND_SLIDE,
-    MOVE_SLIDE,
-    DELETE_SLIDE,
-    SELECT_OBJECT,
-    DELETE_OBJECT,
-    RESIZE_OBJECT,
-    MOVE_OBJECT,
-    SET_COLOR_PRIMITIVE,
-    CREATE_PRIMITIVE,
-    SET_STROKECOLOR_FIGURE,
-    CREATE_IMAGE,
-    CREATE_TEXTBOX,
-    SET_TEXT,
-    CHANGE_TEXT_COLOR,
-    CHANGE_TEXT_SIZE,
-    CHANGE_FONT,
-    CHANGE_TEXT_STYLE,
+  ADD_CIRCLE,
+  ADD_FONT_SIZE,
+  ADD_IMAGE,
+  ADD_RECTANGLE,
+  ADD_SLIDE,
+  ADD_TEXT,
+  ADD_TRIANGLE,
+  BOLD_TEXT,
+  CHANGE_ELEMENT_COLOR,
+  CHANGE_ELEMENT_HEIGHT,
+  CHANGE_ELEMENT_WIDTH,
+  CHANGE_FONT,
+  CHANGE_PRESENTATION_TITLE,
+  CHANGE_SLIDE_COLOR,
+  DELETE_SLIDE,
+  ITALIC_TEXT,
+  REMOVE_OBJECT,
+  SELECT_OBJECT,
+  SELECT_SLIDE,
+  SUB_FONT_SIZE,
+  UNDERLINE_TEXT,
+  UPDATE_PAGE,
+  UPDATE_SLIDE,
 } from './actions'
+import { Slide } from '../model/main'
 
-import {
-    ImageTypeVariation,
-    PrimitiveType,
-    VerticalAlignType,
-    HorizontalAlignType,
-    ElementType,
-    BorderStyleType,
-    Page,
-    Slide,
-    BackgroundType,
-    ImageBlock,
-    ImageType,
-    ShapeBlock,
-    TextBlock,
-    OutlineType,
-    BorderType,
-    ColorType,
-    Size,
-    ApplicationState
-} from '../model/main'
-
-import ColorPicker from '../components/ColorPicker/ColorPicker'
-import BaseBlock from '../components/common/BaseBlock/BaseBlock'
-import ImageUploader from '../components/ImageUploader/ImageUploader'
-import context from '../context/page'
-import useAddImage from '../hooks/useAddImage'
-import {RegisterDndItemFn, useDraggableElement} from '../hooks/useDraggableElement'
-import {useDraggableList} from '../hooks/useDraggableList'
-import useTextElementManager from '../hooks/useTextElementManager'
-import {useInfoBar} from '../hooks/useInfoBar'
-import useSlideBackgrouond from '../hooks/useSlideBackground'
-import useSlideManager from '../hooks/useElementManager'
-import useElementManager from '../hooks/useElementManager'
-
-function importPresentation(app: ApplicationState) {
-    return {
-        type: IMPORT_PRESENTATION,
-        app,
-    }
+function addSlideAction() {
+  return {
+    type: ADD_SLIDE,
+  }
 }
 
-function changePresentationTitle(title: string) {
-    return {
-        type: CHANGE_PRESENTATION_TITLE,
-        title,
-    }
+function removeSlideAction() {
+  return {
+    type: DELETE_SLIDE,
+  }
 }
 
-function addSlide(slide: Slide) {
-    return {
-        type: ADD_SLIDE,
-        slide,
-    }
+function onSelectSlideAction(slideID: string) {
+  return {
+    type: SELECT_SLIDE,
+    slideID: slideID,
+  }
 }
 
-function createSlide() {
-    return {
-        type: CREATE_SLIDE,
-    };
+function updateSlideAction(slides: Slide[]) {
+  return {
+    type: UPDATE_SLIDE,
+    slides: slides,
+  }
 }
 
-
-function selectSlide(slideId: string) {
-    return {
-        type: SELECT_SLIDE,
-        slideId,
-    }
+function changePageTitleAction(title: string) {
+  return {
+    type: CHANGE_PRESENTATION_TITLE,
+    title: title,
+  }
 }
 
-function setBackgroundSlide(background: BackgroundType) {
-    return {
-        type: SET_BACKGROUND_SLIDE,
-        background,
-    }
+function updatePageAction(page: any) {
+  return {
+    type: UPDATE_PAGE,
+    page: page,
+  }
 }
 
-function moveSlide(delta: number) {
-    return {
-        type: MOVE_SLIDE,
-        delta,
-    }
+function selectElementAction(elementID: string) {
+  return {
+    type: SELECT_OBJECT,
+    elementID: elementID,
+  }
 }
 
-function deleteSlide(slideId: string) {
-    return {
-        type: DELETE_SLIDE,
-        slideId,
-    }
+function removeElementAction() {
+  return {
+    type: REMOVE_OBJECT,
+  }
 }
 
-function selectObject(objectId: string) {
-    return {
-        type: SELECT_OBJECT,
-        objectId,
-    }
+function addTextElementAction() {
+  return {
+    type: ADD_TEXT,
+  }
 }
 
-function deleteObject() {
-    return {
-        type: DELETE_OBJECT,
-    }
+function addRectangleElementAction() {
+  return {
+    type: ADD_RECTANGLE,
+  }
 }
 
-function resizeObject(payload: Size) {
-    return {
-        type: RESIZE_OBJECT,
-        payload,
-    }
+function addImageElementAction(image: string) {
+  return {
+    type: ADD_IMAGE,
+    image: image,
+  }
 }
 
-function moveObject(payload: RegisterDndItemFn) {
-    return {
-        type: MOVE_OBJECT,
-        payload,
-    }
+function addTriangleElementAction() {
+  return {
+    type: ADD_TRIANGLE,
+  }
 }
 
-function createPrimitive(primitiveType: PrimitiveType) {
-    return {
-        type: CREATE_PRIMITIVE,
-        primitiveType,
-        size: { height: 50, width: 50 },
-    };
+function addCircleElementAction() {
+  return {
+    type: ADD_CIRCLE,
+  }
 }
 
-function setColorFigure(color: ColorType, size: Size) {
-    return {
-        type: SET_COLOR_PRIMITIVE,
-        color,
-        size,
-    };
+function changeElementColorAction(newColor: string) {
+  return {
+    type: CHANGE_ELEMENT_COLOR,
+    newColor: newColor,
+  }
 }
 
-function setStrokeFigureColor(color: string) {
-    return {
-        type: SET_STROKECOLOR_FIGURE,
-        color,
-    }
+function changeSlideColorAction(newColor: string) {
+  return {
+    type: CHANGE_SLIDE_COLOR,
+    newColor: newColor,
+  }
 }
 
-function createImage(src: string) {
-    return {
-        type: CREATE_IMAGE,
-        src,
-    }
+function changeElementHeightAction(height: string) {
+  return {
+    type: CHANGE_ELEMENT_HEIGHT,
+    height: height,
+  }
 }
 
-function createTextbox() {
-    return {
-        type: CREATE_TEXTBOX,
-    }
+function changeElementWidthAction(width: string) {
+  return {
+    type: CHANGE_ELEMENT_WIDTH,
+    width: width,
+  }
 }
 
-function setText(payload: TextBlock) {
-    return {
-        type: SET_TEXT,
-        payload,
-    }
+function onBoldTextAction() {
+  return {
+    type: BOLD_TEXT,
+  }
 }
 
-function changeTextColor(color: string) {
-    return {
-        type: CHANGE_TEXT_COLOR,
-        color,
-    }
-}
-function changeTextSize(size: number) {
-    return {
-        type: CHANGE_TEXT_SIZE,
-        size,
-    }
+function onItalicTextAction() {
+  return {
+    type: ITALIC_TEXT,
+  }
 }
 
-function changeFont(font: string) {
-    return {
-        type: CHANGE_FONT,
-        font,
-    }
+function onUnderlineTextAction() {
+  return {
+    type: UNDERLINE_TEXT,
+  }
+}
+
+function changeFontFamilyAction(fontName: string) {
+  return {
+    type: CHANGE_FONT,
+    fontName: fontName,
+  }
+}
+
+function addFontSizeAction() {
+  return {
+    type: ADD_FONT_SIZE,
+  }
+}
+
+function subFontSizeTextAction() {
+  return {
+    type: SUB_FONT_SIZE,
+  }
 }
 
 export {
-    importPresentation,
-    setBackgroundSlide,
-    changePresentationTitle,
-    addSlide,
-    createSlide,
-    selectSlide,
-    moveSlide,
-    deleteSlide,
-    selectObject,
-    deleteObject,
-    resizeObject,
-    moveObject,
-    createPrimitive,
-    setColorFigure,
-    setStrokeFigureColor,
-    createImage,
-    createTextbox,
-    setText,
-    changeTextColor,
-    changeTextSize,
-    changeFont,
+  addSlideAction,
+  removeSlideAction,
+  onSelectSlideAction,
+  updateSlideAction,
+  changePageTitleAction,
+  updatePageAction,
+  selectElementAction,
+  removeElementAction,
+  addTextElementAction,
+  addImageElementAction,
+  addCircleElementAction,
+  addRectangleElementAction,
+  addTriangleElementAction,
+  changeElementColorAction,
+  changeSlideColorAction,
+  changeElementWidthAction,
+  changeElementHeightAction,
+  onBoldTextAction,
+  onItalicTextAction,
+  onUnderlineTextAction,
+  changeFontFamilyAction,
+  addFontSizeAction,
+  subFontSizeTextAction,
 }
