@@ -1,5 +1,5 @@
 import './BaseBlock.css'
-import { CSSProperties, useContext, useEffect, useRef } from 'react'
+import { CSSProperties, useEffect, useRef } from 'react'
 import {
   ElementType,
   ImageBlock,
@@ -10,8 +10,11 @@ import Image from '../ImageBlock/ImageBlock'
 import Shape from '../ShapeBlock/ShapeBlock'
 import Text from '../TextBlock/TextBlock'
 import { RegisterDndItemFn } from '../../../hooks/useDraggableElement'
-import { PageContext } from '../../../context/page'
-import useElementManagement from '../../../hooks/useElementManager'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { DefaultRootState, useSelector } from 'react-redux'
+import store from '../../../store/store'
+import { selectElementAction } from '../../../store/actionCreators'
 
 type BlockProps = (TextBlock | ImageBlock | ShapeBlock) & {
   registerDndItem?: RegisterDndItemFn | null
@@ -27,9 +30,7 @@ function BaseBlock({
   id,
   registerDndItem,
 }: BlockProps) {
-  const { page } = useContext(PageContext)
-
-  const { selectElement } = useElementManagement()
+  const page: DefaultRootState = useSelector((state) => state)
 
   const newHeight: number = scale * size.height
   const newWidth: number = scale * size.width
@@ -98,7 +99,7 @@ function BaseBlock({
     <div
       className="block"
       style={style}
-      onClick={() => selectElement(id)}
+      onClick={() => store.dispatch(selectElementAction(id))}
       ref={page.selection.elementID === id ? ref : undefined}
     >
       {elementType === ElementType.IMAGE && <Image data={data.image} />}

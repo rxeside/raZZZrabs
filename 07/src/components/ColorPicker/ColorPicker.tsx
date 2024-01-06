@@ -5,9 +5,10 @@ import { ElementType } from '../../model/main'
 
 interface ColorPickerProps {
   isElement: boolean
+  className?: string
 }
 
-function ColorPicker({ isElement }: ColorPickerProps) {
+function ColorPicker({ isElement, className }: ColorPickerProps) {
   const { page } = useContext(PageContext)
 
   const { onColorChange, onElemChange } = useElementManagement()
@@ -42,7 +43,14 @@ function ColorPicker({ isElement }: ColorPickerProps) {
     console.log(newColor)
   }
 
-  return <input type="color" value={Color} onChange={handleColorChange} />
+  return (
+    <input
+      type="color"
+      className={className}
+      value={Color}
+      onChange={handleColorChange}
+    />
+  )
 }
 
 export default ColorPicker

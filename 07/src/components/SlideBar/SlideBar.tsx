@@ -5,17 +5,19 @@ import { useDraggableList } from '../../hooks/useDraggableList'
 // @ts-expect-error
 import { DefaultRootState, useSelector } from 'react-redux'
 import { Slide } from 'model/main'
+import store from '../../store/store'
+import { updateSlideAction } from '../../store/actionCreators'
 
 function SlideBar() {
   const page: DefaultRootState = useSelector((state) => state)
   console.log(page.slides)
 
-  const { registerDndItem } = useDraggableList({
+  const { registerDndItem, unregisterDndItem } = useDraggableList({
     onOrderChange: (from, to) => {
-      const newNotes = page.slides
+      const newNotes = [...page.slides]
       const removed = newNotes.splice(from, 1)
       newNotes.splice(to, 0, removed[0])
-      //setPage({ ...page, slides: newNotes })
+      store.dispatch(updateSlideAction(newNotes))
     },
   })
 
@@ -27,6 +29,7 @@ function SlideBar() {
             slide={slide}
             index={index}
             registerDndItem={registerDndItem}
+            unregisterDndItem={unregisterDndItem}
           />
         ))}
     </div>

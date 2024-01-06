@@ -5,7 +5,10 @@ import {
   SlideSelection as TSlideSelection,
 } from '../../model/main'
 import classes from '../SlideBar/SlideBar.module.css'
-import { RegisterDndItemFn } from '../../hooks/useDraggableList'
+import {
+  RegisterDndItemFn,
+  UnregisterDndItemFn,
+} from '../../hooks/useDraggableList'
 import store from '../../store/store'
 import { onSelectSlideAction } from '../../store/actionCreators'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -16,6 +19,7 @@ type SlideProps = {
   slide: TSlide
   className?: string
   registerDndItem: RegisterDndItemFn
+  unregisterDndItem: UnregisterDndItemFn
   index: number
 }
 
@@ -23,6 +27,7 @@ function SlideForSlideBar({
   slide,
   className,
   registerDndItem,
+  unregisterDndItem,
   index,
 }: SlideProps) {
   const styleVar: CSSProperties = {}
@@ -66,7 +71,10 @@ function SlideForSlideBar({
 
     const control = dndControlRef.current!
     control.addEventListener('mousedown', onMouseDown)
-    return () => control.removeEventListener('mousedown', onMouseDown)
+    return () => {
+      control.removeEventListener('mousedown', onMouseDown)
+      unregisterDndItem(index)
+    }
   }, [index, registerDndItem])
 
   function isSelectedSlide(selection: TSlideSelection | null, slide: TSlide) {
