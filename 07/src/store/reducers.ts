@@ -1,20 +1,26 @@
 import { Page } from '../model/main'
 import {
   ADD_CIRCLE,
+  ADD_FONT_SIZE,
   ADD_IMAGE,
   ADD_RECTANGLE,
   ADD_SLIDE,
   ADD_TEXT,
   ADD_TRIANGLE,
+  BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
   CHANGE_ELEMENT_HEIGHT,
   CHANGE_ELEMENT_WIDTH,
+  CHANGE_FONT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
   DELETE_SLIDE,
+  ITALIC_TEXT,
   REMOVE_OBJECT,
   SELECT_OBJECT,
   SELECT_SLIDE,
+  SUB_FONT_SIZE,
+  UNDERLINE_TEXT,
   UPDATE_PAGE,
   UPDATE_SLIDE,
 } from './actions'
@@ -39,6 +45,14 @@ import {
   removeElement,
   selectElement,
 } from '../methods/elementsMethods'
+import {
+  onBigger,
+  onBold,
+  onFontfamily,
+  onItalic,
+  onLower,
+  onUnderline,
+} from '../methods/textMethods'
 
 const initialState: Page = maxPage
 
@@ -80,6 +94,18 @@ const pageReducers = (state = defaultApplication, action: any) => {
       return onHeightChange(state, action.height)
     case CHANGE_ELEMENT_WIDTH:
       return onWidthChange(state, action.width)
+    case BOLD_TEXT:
+      return onBold(state)
+    case ITALIC_TEXT:
+      return onItalic(state)
+    case UNDERLINE_TEXT:
+      return onUnderline(state)
+    case CHANGE_FONT:
+      return onFontfamily(state, action.fontName)
+    case ADD_FONT_SIZE:
+      return onBigger(state)
+    case SUB_FONT_SIZE:
+      return onLower(state)
     default:
       return state
   }

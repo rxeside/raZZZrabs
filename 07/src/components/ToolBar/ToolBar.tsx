@@ -1,12 +1,12 @@
 import Button from '../common/Button/Button'
 import classes from './ToolBar.module.css'
-import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
+import { ImageBlock, ShapeBlock, TextBlock } from '../../model/main'
 import List from '../common/List/List'
 import ColorPicker from '../ColorPicker/ColorPicker'
-import useTextElementManager from '../../hooks/useTextElementManager'
 import store from '../../store/store'
 import {
   addCircleElementAction,
+  addFontSizeAction,
   addImageElementAction,
   addRectangleElementAction,
   addSlideAction,
@@ -14,10 +14,14 @@ import {
   addTriangleElementAction,
   changeElementHeightAction,
   changeElementWidthAction,
+  changeFontFamilyAction,
+  onBoldTextAction,
+  onItalicTextAction,
+  onUnderlineTextAction,
   removeElementAction,
   removeSlideAction,
+  subFontSizeTextAction,
 } from '../../store/actionCreators'
-
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
 }
@@ -36,9 +40,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       reader.readAsDataURL(file)
     }
   }
-
-  const { onBold, onItalic, onUnderline, onFontfamily, onBigger, onLower } =
-    useTextElementManager()
 
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
@@ -119,7 +120,10 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {isText(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <Button icon={'minus'} onClick={onLower} />
+          <Button
+            icon={'minus'}
+            onClick={() => store.dispatch(subFontSizeTextAction())}
+          />
           <List
             className={classes.list}
             optionsClassName={classes.list}
@@ -128,14 +132,28 @@ function ToolBar({ selectedObject }: ToolBarProps) {
               { value: 'Times New Roman', label: 'Times New Roman' },
               { value: 'Courier New', label: 'Courier New' },
             ]}
-            onChange={onFontfamily}
+            onChange={(event) => {
+              store.dispatch(changeFontFamilyAction(event.target.value))
+            }}
             selectedValue={'Arial'}
           />
-          <Button icon={'plus'} onClick={onBigger} />
+          <Button
+            icon={'plus'}
+            onClick={() => store.dispatch(addFontSizeAction())}
+          />
           <div className={classes.v1}></div>
-          <Button icon={'bold'} onClick={onBold} />
-          <Button icon={'italic'} onClick={onItalic} />
-          <Button icon={'underline'} onClick={onUnderline} />
+          <Button
+            icon={'bold'}
+            onClick={() => store.dispatch(onBoldTextAction())}
+          />
+          <Button
+            icon={'italic'}
+            onClick={() => store.dispatch(onItalicTextAction())}
+          />
+          <Button
+            icon={'underline'}
+            onClick={() => store.dispatch(onUnderlineTextAction())}
+          />
         </>
       )}
 
