@@ -17,11 +17,16 @@
       "jsx": true
     }
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "rules": {
     "no-duplicate-imports": "error",
     "no-self-compare": "error",
     "no-use-before-define": "error",
+    "@typescript-eslint/no-explicit-any": "off",
     "prettier/prettier": "error"
   }
 }

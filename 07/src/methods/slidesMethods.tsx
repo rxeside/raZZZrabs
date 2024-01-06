@@ -75,4 +75,11 @@ const onSelectSlide = (page: Page, slideID: string) => {
   }
 }
 
-export { addSlide, removeSlide, onSelectSlide }
+const updateSlides = (page: Page, slides: Slide[]) => {
+  return {
+    ...page,
+    slides: slides,
+  }
+}
+
+export { addSlide, removeSlide, onSelectSlide, updateSlides }

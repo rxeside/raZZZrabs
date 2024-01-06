@@ -3,7 +3,6 @@ import classes from './ToolBar.module.css'
 import { TextBlock, ImageBlock, ShapeBlock } from '../../model/main'
 import List from '../common/List/List'
 import useElementManagement from '../../hooks/useElementManager'
-import useSlideManagement from '../../hooks/useSlideManager'
 import ColorPicker from '../ColorPicker/ColorPicker'
 import useAddImage from '../../hooks/useAddImage'
 import useTextElementManager from '../../hooks/useTextElementManager'
@@ -30,8 +29,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       reader.readAsDataURL(file)
     }
   }
-
-  const { addSlide, removeSlide } = useSlideManagement()
 
   const {
     addTextElement,
@@ -93,7 +90,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'triangle'} onClick={addTriangleElement} />
       <Button icon={'rectangle'} onClick={addRectangleElement} />
       <div className={classes.v1}></div>
-      <ColorPicker isElement={false} />
+      <ColorPicker isElement={false} className={classes.colorInput} />
       {(isText(selectedObject) || isShape(selectedObject)) && (
         <>
           <div className={classes.v1}></div>
@@ -102,7 +99,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'borderwidth'} />
           <Button icon={'borderstyle'} />
           <div className={classes.v1}></div>
-          <ColorPicker isElement={true} />
+          <ColorPicker isElement={true} className={classes.colorInput} />
         </>
       )}
       {isText(selectedObject) && (
@@ -110,7 +107,8 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <div className={classes.v1}></div>
           <Button icon={'minus'} onClick={onLower} />
           <List
-            className={'List'}
+            className={classes.list}
+            optionsClassName={classes.list}
             options={[
               { value: 'Arial', label: 'Arial' },
               { value: 'Times New Roman', label: 'Times New Roman' },
