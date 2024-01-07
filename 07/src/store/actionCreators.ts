@@ -21,11 +21,12 @@ import {
   SUB_FONT_SIZE,
   UNDERLINE_TEXT,
   UPDATE_PAGE,
+  UPDATE_RECT,
   UPDATE_SLIDE,
   GO_TO_LAST_STATE,
   GO_TO_NEXT_STATE,
 } from './actions'
-import { Slide } from '../model/main'
+import { BaseBlock, Slide } from '../model/main'
 
 function addSlideAction() {
   return {
@@ -132,13 +133,6 @@ function changeElementHeightAction(height: string) {
   }
 }
 
-function changeElementWidthAction(width: string) {
-  return {
-    type: CHANGE_ELEMENT_WIDTH,
-    width: width,
-  }
-}
-
 function onBoldTextAction() {
   return {
     type: BOLD_TEXT,
@@ -176,6 +170,14 @@ function subFontSizeTextAction() {
   }
 }
 
+function updateObjectRectAction(id: string, newRect: BaseBlock) {
+  return {
+    type: UPDATE_RECT,
+    id: id,
+    newRect: newRect,
+  }
+}
+
 function goToLastState() {
   return {
     type: GO_TO_LAST_STATE,
@@ -204,7 +206,6 @@ export {
   addTriangleElementAction,
   changeElementColorAction,
   changeSlideColorAction,
-  changeElementWidthAction,
   changeElementHeightAction,
   onBoldTextAction,
   onItalicTextAction,
@@ -212,6 +213,7 @@ export {
   changeFontFamilyAction,
   addFontSizeAction,
   subFontSizeTextAction,
+  updateObjectRectAction,
   goToLastState,
   goToNextState,
 }

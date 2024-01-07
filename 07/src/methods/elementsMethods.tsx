@@ -1,4 +1,5 @@
 import {
+  BaseBlock,
   ElementType,
   HorizontalAlignType,
   ImageBlock,
@@ -300,76 +301,6 @@ const removeElement = (page: Page) => {
   }
 }
 
-const onHeightChange = (page: Page, height: string) => {
-  const slideCur =
-    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
-    null
-
-  if (slideCur != null) {
-    const slideCurEl =
-      slideCur.slideObjects.find(
-        (slideOb) => slideOb.id === page.selection.elementID,
-      ) || null
-
-    if (slideCurEl != null) {
-      const newSize = {
-        width: slideCurEl.size.width,
-        height: Number(height),
-      }
-      slideCurEl.size = newSize
-      slideCurEl.data.size = newSize
-
-      const updatedSlides = page.slides.map((slide) => {
-        if (slide.slideID === slideCur.slideID) {
-          return slideCur
-        } else {
-          return slide
-        }
-      })
-
-      return {
-        ...page,
-        slides: updatedSlides,
-      }
-    }
-  }
-}
-
-const onWidthChange = (page: Page, width: string) => {
-  const slideCur =
-    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
-    null
-
-  if (slideCur != null) {
-    const slideCurEl =
-      slideCur.slideObjects.find(
-        (slideOb) => slideOb.id === page.selection.elementID,
-      ) || null
-
-    if (slideCurEl) {
-      const newSize = {
-        width: Number(width),
-        height: slideCurEl.size.height, // сохраняем текущую высоту
-      }
-      slideCurEl.size = newSize
-      slideCurEl.data.size = newSize
-
-      const updatedSlides = page.slides.map((slide) => {
-        if (slide.slideID === slideCur.slideID) {
-          return slideCur
-        } else {
-          return slide
-        }
-      })
-
-      return {
-        ...page,
-        slides: updatedSlides,
-      }
-    }
-  }
-}
-
 const onColorChange = (page: Page, newColor: string) => {
   const slideCur = page.slides.find(
     (slide) => slide.slideID === page.selection.slideID,
@@ -436,6 +367,54 @@ const onElemChange = (page: Page, newColor: string) => {
   }
 }
 
+type ObjectData = {
+  objectId: string
+  newRect: BaseBlock
+}
+
+function updateObjectRect(page: Page, id: string, rect: BaseBlock) {
+  const newObjectData: ObjectData = {
+    objectId: id,
+    newRect: rect,
+  }
+
+  const slideCur =
+    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+    null
+
+  const updatedSlides = page.slides
+
+  if (slideCur !== null) {
+    const selectedIndex = slideCur.slideObjects.findIndex(function (obj) {
+      if (obj.id === id) {
+        return obj
+      }
+    })
+
+    const selectedIndexSlide = page.slides.findIndex(function (slide) {
+      if (slide.slideID === page.selection.slideID) {
+        return slide
+      }
+    })
+
+    slideCur.slideObjects[selectedIndex].startDot = {
+      ...newObjectData.newRect.startDot,
+    }
+    slideCur.slideObjects[selectedIndex].size = {
+      ...newObjectData.newRect.size,
+    }
+
+    updatedSlides[selectedIndexSlide] = slideCur
+
+    return {
+      ...page,
+      slides: updatedSlides,
+    }
+  }
+
+  return page
+}
+
 export {
   selectElement,
   addTextElement,
@@ -444,8 +423,7 @@ export {
   addRectangleElement,
   addTriangleElement,
   removeElement,
-  onHeightChange,
-  onWidthChange,
   onColorChange,
   onElemChange,
+  updateObjectRect,
 }

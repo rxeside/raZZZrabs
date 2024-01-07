@@ -1,4 +1,5 @@
 import { ImageTypeVariation } from '../../../model/main'
+import classes from './ImageBlock.module.css'
 
 type ImageProps = {
   data: {
@@ -8,6 +9,14 @@ type ImageProps = {
 }
 
 function Image({ data }: ImageProps) {
-  return <img src={data.data} alt={data.data} />
+  return (
+    <img
+      src={data.data}
+      alt={data.data}
+      draggable={'false'}
+      className={classes.picture}
+    />
+  )
 }
+
 export default Image

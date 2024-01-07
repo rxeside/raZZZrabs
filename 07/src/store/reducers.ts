@@ -9,8 +9,6 @@ import {
   ADD_TRIANGLE,
   BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
-  CHANGE_ELEMENT_HEIGHT,
-  CHANGE_ELEMENT_WIDTH,
   CHANGE_FONT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
@@ -22,6 +20,7 @@ import {
   SUB_FONT_SIZE,
   UNDERLINE_TEXT,
   UPDATE_PAGE,
+  UPDATE_RECT,
   UPDATE_SLIDE,
   GO_TO_LAST_STATE,
   GO_TO_NEXT_STATE,
@@ -42,10 +41,9 @@ import {
   addTriangleElement,
   onColorChange,
   onElemChange,
-  onHeightChange,
-  onWidthChange,
   removeElement,
   selectElement,
+  updateObjectRect,
 } from '../methods/elementsMethods'
 import {
   onBigger,
@@ -115,12 +113,6 @@ const pageReducers = (state = defaultApplication, action: any) => {
     case CHANGE_SLIDE_COLOR:
       addToHistory(state)
       return onColorChange(state, action.newColor)
-    case CHANGE_ELEMENT_HEIGHT:
-      addToHistory(state)
-      return onHeightChange(state, action.height)
-    case CHANGE_ELEMENT_WIDTH:
-      addToHistory(state)
-      return onWidthChange(state, action.width)
     case BOLD_TEXT:
       addToHistory(state)
       return onBold(state)
@@ -139,6 +131,8 @@ const pageReducers = (state = defaultApplication, action: any) => {
     case SUB_FONT_SIZE:
       addToHistory(state)
       return onLower(state)
+    case UPDATE_RECT:
+      return updateObjectRect(state, action.id, action.newRect)
     case GO_TO_LAST_STATE:
       return undo(state)
     case GO_TO_NEXT_STATE:

@@ -1,5 +1,3 @@
-import { pageReducers } from '../store/reducers'
-
 enum ImageTypeVariation {
   BASE64 = 'base64',
   URL = 'url',
