@@ -1,16 +1,15 @@
 import React, { MutableRefObject, useRef } from 'react'
-import { Rect, Selection } from '../../model/main'
-import styles from './RectView.module.css'
-import { Dispatch } from 'redux'
+import { BaseBlock } from '../../model/main'
+import classes from './CornerView.module.css'
 import store from '../../store/store'
-import { updateObjectRect } from '../../model/SlidesMaker'
 import { useResize } from '../../hooks/useResize'
+import { updateObjectRectAction } from '../../store/actionCreators'
 
 export type CornerType = 'LeftTop' | 'LeftBottom' | 'RightTop' | 'RightBottom'
 
 interface CornerViewProps {
-  rect: Rect
-  objectId: Selection
+  rect: BaseBlock
+  objectId: string
   visibility: boolean
   type: CornerType
   parentRef: MutableRefObject<HTMLDivElement | null>
@@ -20,13 +19,13 @@ export function CornerView(props: CornerViewProps) {
   const cornerRef = useRef<HTMLDivElement>(HTMLDivElement.prototype)
   let style
   if (props.type === 'LeftTop') {
-    style = styles.rectDotLeftTop
+    style = classes.rectDotLeftTop
   } else if (props.type === 'LeftBottom') {
-    style = styles.rectDotLeftBottom
+    style = classes.rectDotLeftBottom
   } else if (props.type === 'RightTop') {
-    style = styles.rectDotRightTop
+    style = classes.rectDotRightTop
   } else if (props.type === 'RightBottom') {
-    style = styles.rectDotRightBottom
+    style = classes.rectDotRightBottom
   }
   useResize(
     {
@@ -36,11 +35,8 @@ export function CornerView(props: CornerViewProps) {
       cornerType: props.type,
     },
     props.rect,
-    (newRect: Rect) => {
-      store.dispatch(updateObjectRect, {
-        objectId: props.objectId,
-        newRect: newRect,
-      })
+    (newRect: BaseBlock) => {
+      store.dispatch(updateObjectRectAction(props.objectId, newRect))
     },
   )
 

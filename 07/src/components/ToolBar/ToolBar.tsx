@@ -22,6 +22,7 @@ import {
   removeSlideAction,
   subFontSizeTextAction,
 } from '../../store/actionCreators'
+
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
 }
@@ -173,22 +174,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
             onClick={() => store.dispatch(removeElementAction())}
             title={'Удалить элемент'}
           />
-          <input
-            type={'number'}
-            className={classes.numberInput}
-            value={selectedObject?.size.height}
-            onChange={(event) =>
-              store.dispatch(changeElementHeightAction(event.target.value))
-            }
-          ></input>
-          <input
-            type={'number'}
-            className={classes.numberInput}
-            value={selectedObject?.size.width}
-            onChange={(event) =>
-              store.dispatch(changeElementWidthAction(event.target.value))
-            }
-          ></input>
         </>
       )}
       {isNull(selectedObject) && (

@@ -39,7 +39,7 @@ const shapeBlockRectangle: ShapeBlock = {
     y: 24,
   },
   scale: 1,
-  id: '1',
+  id: '9af9bde6-c9a1-4033-9f10-06f74bfd5f0d',
   size: {
     width: 30,
     height: 30,
@@ -70,8 +70,8 @@ const shapeBlockTriangle: ShapeBlock = {
     width: 100,
     height: 150,
   },
-  scale: 1.5,
-  id: '2',
+  scale: 1,
+  id: '9c1ffae7-5f2c-42bc-a678-b661e500d670',
   data: {
     primitiveType: PrimitiveType.TRIANGLE,
     color: triangleColor,
@@ -107,7 +107,7 @@ const shapeBlockCircle: ShapeBlock = {
     height: 100,
   },
   scale: 1,
-  id: '1',
+  id: 'fcf3ce4d-3220-4591-802e-7fb54f46b681',
   data: {
     primitiveType: PrimitiveType.CIRCLE,
     color: circleColor,
@@ -152,7 +152,7 @@ const textBlock: TextBlock = {
       height: 100,
     },
   },
-  id: '2',
+  id: 'f20b202c-fb6d-41f0-b58f-c224c69bd4f0',
   elementType: ElementType.TEXT,
 }
 
@@ -181,7 +181,7 @@ const imageBase64Block: ImageBlock = {
     height: 480,
   },
   scale: 1,
-  id: '1',
+  id: 'f6f35d3f-ad4a-4390-8e65-0a03dc092d86',
   data: {
     image: imageBase64BlockDataType,
     border: imageBase64BlockBorder,
@@ -217,8 +217,8 @@ const imageUrlBlock: ImageBlock = {
     width: 1920,
     height: 1080,
   },
-  scale: 0.4,
-  id: '2',
+  scale: 1,
+  id: 'b73d90d8-e9f6-470b-b36a-132b50b5352a',
   data: {
     image: imageUrlBlockDataType,
     border: imageUrlBlockBorder,
@@ -239,7 +239,7 @@ const firstSlideBackground: BackgroundType = {
 
 const firstSlide: Slide = {
   slideObjects: [shapeBlockRectangle, imageUrlBlock],
-  slideID: '1',
+  slideID: '9630f888-9048-4993-b3b4-b94b4c7dfc15',
   slideBackground: firstSlideBackground,
 }
 
@@ -252,7 +252,7 @@ const secondSlideBackground: BackgroundType = {
 
 const secondSlide: Slide = {
   slideObjects: [shapeBlockCircle, shapeBlockTriangle],
-  slideID: '2',
+  slideID: '674c2025-6310-491f-a455-8ebd03befaae',
   slideBackground: secondSlideBackground,
 }
 
@@ -264,7 +264,7 @@ const thirdSlideBackground: BackgroundType = {
 }
 const thirdSlide: Slide = {
   slideObjects: [imageBase64Block, textBlock],
-  slideID: '3',
+  slideID: 'da16a3dd-114b-4b6b-a786-9b913ca3a76f',
   slideBackground: thirdSlideBackground,
 }
 
@@ -274,7 +274,7 @@ const maxPage: Page = {
     lastSave: [firstSlide, secondSlide, thirdSlide],
   },
   selection: {
-    slideID: '1',
+    slideID: '9630f888-9048-4993-b3b4-b94b4c7dfc15',
     elementID: '',
   },
   title: 'Sample Presentation',
