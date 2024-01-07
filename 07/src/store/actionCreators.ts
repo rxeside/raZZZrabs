@@ -25,6 +25,8 @@ import {
   UNDERLINE_TEXT,
   UPDATE_PAGE,
   UPDATE_SLIDE,
+  GO_TO_LAST_STATE,
+  GO_TO_NEXT_STATE,
 } from './actions'
 import { Slide } from '../model/main'
 
@@ -195,6 +197,18 @@ function subFontSizeTextAction() {
   }
 }
 
+function goToLastState() {
+  return {
+    type: GO_TO_LAST_STATE,
+  }
+}
+
+function goToNextState() {
+  return {
+    type: GO_TO_NEXT_STATE,
+  }
+}
+
 export {
   addSlideAction,
   removeSlideAction,
@@ -222,4 +236,6 @@ export {
   changeFontFamilyAction,
   addFontSizeAction,
   subFontSizeTextAction,
+  goToLastState,
+  goToNextState,
 }

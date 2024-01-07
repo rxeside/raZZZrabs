@@ -15,9 +15,6 @@ const defaultSlideInfo: Slide = {
 
 const minPage: Page = {
   slides: [defaultSlideInfo],
-  slideHistory: {
-    lastSave: [defaultSlideInfo],
-  },
   selection: {
     slideID: '1',
     elementID: null,
