@@ -62,7 +62,7 @@ import {
   redo,
   undo,
   // undoStack,
-} from '../components/History/History'
+} from '../methods/History'
 
 const initialState: Page = maxPage
 
