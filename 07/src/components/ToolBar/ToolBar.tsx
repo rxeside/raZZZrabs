@@ -21,6 +21,9 @@ import {
   removeElementAction,
   removeSlideAction,
   subFontSizeTextAction,
+  changeTextAlignCenterAction,
+  changeTextAlignLeftAction,
+  changeTextAlignRightAction,
 } from '../../store/actionCreators'
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -79,9 +82,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <div className={classes.v1}></div>
       <Button icon={'prev-arrow'} />
       <Button icon={'next-arrow'} />
-      <Button icon={'zoom'} />
       <div className={classes.v1}></div>
-      <Button icon={'cursor'} />
       <Button
         icon={'text-align'}
         onClick={() => store.dispatch(addTextElementAction())}
@@ -109,16 +110,27 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {(isText(selectedObject) || isShape(selectedObject)) && (
         <>
           <div className={classes.v1}></div>
-          <Button icon={'fillcolor'} />
           <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
-          <Button icon={'borderstyle'} />
           <div className={classes.v1}></div>
           <ColorPicker isElement={true} className={classes.colorInput} />
         </>
       )}
       {isText(selectedObject) && (
         <>
+          <div className={classes.v1}></div>
+          <Button
+            icon={'alignLeft'}
+            onClick={() => store.dispatch(changeTextAlignLeftAction())}
+          />
+          <Button
+            icon={'alignCenter'}
+            onClick={() => store.dispatch(changeTextAlignCenterAction())}
+          />
+          <Button
+            icon={'alignRight'}
+            onClick={() => store.dispatch(changeTextAlignRightAction())}
+          />
           <div className={classes.v1}></div>
           <Button
             icon={'minus'}

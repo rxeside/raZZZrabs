@@ -13,6 +13,9 @@ import {
   CHANGE_FONT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
+  CHANGE_TEXT_ALIGN_LEFT,
+  CHANGE_TEXT_ALIGN_CENTER,
+  CHANGE_TEXT_ALIGN_RIGHT,
   DELETE_SLIDE,
   ITALIC_TEXT,
   REMOVE_OBJECT,
@@ -155,6 +158,24 @@ function onUnderlineTextAction() {
   }
 }
 
+function changeTextAlignCenterAction() {
+  return {
+    type: CHANGE_TEXT_ALIGN_CENTER,
+  }
+}
+
+function changeTextAlignLeftAction() {
+  return {
+    type: CHANGE_TEXT_ALIGN_LEFT,
+  }
+}
+
+function changeTextAlignRightAction() {
+  return {
+    type: CHANGE_TEXT_ALIGN_RIGHT,
+  }
+}
+
 function changeFontFamilyAction(fontName: string) {
   return {
     type: CHANGE_FONT,
@@ -195,6 +216,9 @@ export {
   onBoldTextAction,
   onItalicTextAction,
   onUnderlineTextAction,
+  changeTextAlignCenterAction,
+  changeTextAlignLeftAction,
+  changeTextAlignRightAction,
   changeFontFamilyAction,
   addFontSizeAction,
   subFontSizeTextAction,

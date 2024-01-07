@@ -1,4 +1,4 @@
-import { ElementType, Page } from '../model/main'
+import { ElementType, Page, HorizontalAlignType } from '../model/main'
 
 const onBold = (page: Page) => {
   const slideCur =
@@ -73,6 +73,99 @@ const onUnderline = (page: Page) => {
 
     if (elemCur && elemCur.elementType === ElementType.TEXT) {
       elemCur.data.outline.underline = !elemCur.data.outline.underline
+
+      const updatedObjects = slideCur.slideObjects.map((elem) =>
+        elem.id === elemCur.id ? elemCur : elem,
+      )
+
+      const updatedSlides = page.slides.map((slide) =>
+        slide.slideID === slideCur.slideID
+          ? { ...slide, slideObjects: updatedObjects }
+          : slide,
+      )
+
+      return {
+        ...page,
+        slides: updatedSlides,
+      }
+    }
+  }
+}
+
+const onCenterAlign = (page: Page) => {
+  const slideCur =
+    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+    null
+
+  if (slideCur != null) {
+    const elemCur = slideCur?.slideObjects.find(
+      (elem) => elem.id === page.selection.elementID,
+    )
+
+    if (elemCur && elemCur.elementType === ElementType.TEXT) {
+      elemCur.data.horizontalAlign = 'center' as HorizontalAlignType
+
+      const updatedObjects = slideCur.slideObjects.map((elem) =>
+        elem.id === elemCur.id ? elemCur : elem,
+      )
+
+      const updatedSlides = page.slides.map((slide) =>
+        slide.slideID === slideCur.slideID
+          ? { ...slide, slideObjects: updatedObjects }
+          : slide,
+      )
+
+      return {
+        ...page,
+        slides: updatedSlides,
+      }
+    }
+  }
+}
+
+const onRightAlign = (page: Page) => {
+  const slideCur =
+    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+    null
+
+  if (slideCur != null) {
+    const elemCur = slideCur?.slideObjects.find(
+      (elem) => elem.id === page.selection.elementID,
+    )
+
+    if (elemCur && elemCur.elementType === ElementType.TEXT) {
+      elemCur.data.horizontalAlign = 'right' as HorizontalAlignType
+
+      const updatedObjects = slideCur.slideObjects.map((elem) =>
+        elem.id === elemCur.id ? elemCur : elem,
+      )
+
+      const updatedSlides = page.slides.map((slide) =>
+        slide.slideID === slideCur.slideID
+          ? { ...slide, slideObjects: updatedObjects }
+          : slide,
+      )
+
+      return {
+        ...page,
+        slides: updatedSlides,
+      }
+    }
+  }
+}
+
+const onLeftAlign = (page: Page) => {
+  const slideCur =
+    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+    null
+
+  if (slideCur != null) {
+    const elemCur = slideCur?.slideObjects.find(
+      (elem) => elem.id === page.selection.elementID,
+    )
+
+    if (elemCur && elemCur.elementType === ElementType.TEXT) {
+      elemCur.data.horizontalAlign = 'left' as HorizontalAlignType
 
       const updatedObjects = slideCur.slideObjects.map((elem) =>
         elem.id === elemCur.id ? elemCur : elem,
@@ -185,4 +278,14 @@ const onLower = (page: Page) => {
   }
 }
 
-export { onBold, onItalic, onUnderline, onFontfamily, onBigger, onLower }
+export {
+  onBold,
+  onItalic,
+  onUnderline,
+  onFontfamily,
+  onBigger,
+  onLower,
+  onCenterAlign,
+  onRightAlign,
+  onLeftAlign,
+}

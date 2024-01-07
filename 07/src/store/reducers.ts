@@ -12,6 +12,9 @@ import {
   CHANGE_ELEMENT_HEIGHT,
   CHANGE_ELEMENT_WIDTH,
   CHANGE_FONT,
+  CHANGE_TEXT_ALIGN_LEFT,
+  CHANGE_TEXT_ALIGN_CENTER,
+  CHANGE_TEXT_ALIGN_RIGHT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
   DELETE_SLIDE,
@@ -52,6 +55,9 @@ import {
   onItalic,
   onLower,
   onUnderline,
+  onCenterAlign,
+  onLeftAlign,
+  onRightAlign,
 } from '../methods/textMethods'
 
 const initialState: Page = maxPage
@@ -96,6 +102,12 @@ const pageReducers = (state = defaultApplication, action: any) => {
       return onWidthChange(state, action.width)
     case BOLD_TEXT:
       return onBold(state)
+    case CHANGE_TEXT_ALIGN_CENTER:
+      return onCenterAlign(state)
+    case CHANGE_TEXT_ALIGN_LEFT:
+      return onLeftAlign(state)
+    case CHANGE_TEXT_ALIGN_RIGHT:
+      return onRightAlign(state)
     case ITALIC_TEXT:
       return onItalic(state)
     case UNDERLINE_TEXT:

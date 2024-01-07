@@ -145,7 +145,7 @@ const textBlock: TextBlock = {
     fontSize: 16,
     fontFamily: 'Arial',
     verticalAlign: VerticalAlignType.TOP,
-    horizontalAlign: HorizontalAlignType.RIGHT,
+    horizontalAlign: HorizontalAlignType.LEFT,
     outline: textBolockOutline,
     size: {
       width: 250,

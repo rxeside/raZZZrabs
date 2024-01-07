@@ -31,6 +31,14 @@ function Text({ data }: TextProps) {
     fontWeight: data.outline.bold ? 'bold' : '',
     textDecoration: data.outline.underline ? 'underline' : '',
     fontFamily: data.fontFamily,
+    textAlign:
+      data.horizontalAlign === 'left'
+        ? 'left'
+        : data.horizontalAlign === 'center'
+        ? 'center'
+        : data.horizontalAlign === 'right'
+        ? 'right'
+        : undefined,
   }
   return (
     <TextAria
