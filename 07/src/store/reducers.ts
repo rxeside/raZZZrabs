@@ -68,7 +68,7 @@ import {
 
 import {
   addToHistory,
-  // clearRedo,
+  clearRedo,
   redo,
   undo,
   // undoStack,
@@ -80,6 +80,9 @@ const initialState: Page = maxPage
 const defaultApplication: Page = initialState
 
 const pageReducers = (state = defaultApplication, action: any) => {
+  if (action.type !== GO_TO_LAST_STATE && action.type !== GO_TO_NEXT_STATE) {
+    clearRedo()
+  }
   switch (action.type) {
     case ADD_SLIDE:
       addToHistory(state)
