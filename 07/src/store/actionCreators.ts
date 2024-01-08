@@ -9,6 +9,7 @@ import {
   BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
   CHANGE_SHAPE_STROKE_WIDTH,
+  CHANGE_SHAPE_STROKE_COLOR,
   CHANGE_FONT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
@@ -117,6 +118,13 @@ function addCircleElementAction() {
 function changeElementColorAction(newColor: string) {
   return {
     type: CHANGE_ELEMENT_COLOR,
+    newColor: newColor,
+  }
+}
+
+function changeShapeStrokeColorAction(newColor: string) {
+  return {
+    type: CHANGE_SHAPE_STROKE_COLOR,
     newColor: newColor,
   }
 }
@@ -233,6 +241,7 @@ export {
   changeTextAlignLeftAction,
   changeTextAlignRightAction,
   changeShapeStrokeWidth,
+  changeShapeStrokeColorAction,
   changeFontFamilyAction,
   addFontSizeAction,
   subFontSizeTextAction,

@@ -10,6 +10,7 @@ import {
   BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
   CHANGE_SHAPE_STROKE_WIDTH,
+  CHANGE_SHAPE_STROKE_COLOR,
   CHANGE_FONT,
   CHANGE_TEXT_ALIGN_LEFT,
   CHANGE_TEXT_ALIGN_CENTER,
@@ -49,6 +50,7 @@ import {
   selectElement,
   updateObjectRect,
   onStrokeWidthChange,
+  onStrokeColorChange,
 } from '../methods/elementsMethods'
 import {
   onBigger,
@@ -122,6 +124,9 @@ const pageReducers = (state = defaultApplication, action: any) => {
     case CHANGE_SHAPE_STROKE_WIDTH:
       addToHistory(state)
       return onStrokeWidthChange(state, action.strokeWidth)
+    case CHANGE_SHAPE_STROKE_COLOR:
+      addToHistory(state)
+      return onStrokeColorChange(state, action.newColor)
     case CHANGE_SLIDE_COLOR:
       addToHistory(state)
       return onColorChange(state, action.newColor)

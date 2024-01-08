@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Last changes">
+    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Удалил папку context">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07/src/components/ColorPicker/ColorPicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/components/ColorPicker/ColorPicker.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/components/ToolBar/ToolBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/components/ToolBar/ToolBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07/src/components/common/ShapeBlock/ShapeBlock.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/components/common/ShapeBlock/ShapeBlock.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/methods/elementsMethods.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/methods/elementsMethods.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07/src/model/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/model/main.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/store/actionCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/store/actionCreators.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/store/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/store/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/store/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/store/reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07/src/tests/maxTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/tests/maxTests.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +181,23 @@
       <option name="project" value="LOCAL" />
       <updated>1698308769875</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Сделал изменение ширины stroke">
+      <option name="closed" value="true" />
+      <created>1704685673997</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1704685673997</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Удалил папку context">
+      <option name="closed" value="true" />
+      <created>1704685786663</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1704685786663</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +220,9 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Delete all" />
     <MESSAGE value="Add labs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add labs" />
+    <MESSAGE value="Сделал изменение ширины stroke" />
+    <MESSAGE value="Удалил папку context" />
+    <option name="LAST_COMMIT_MESSAGE" value="Удалил папку context" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

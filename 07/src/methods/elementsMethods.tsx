@@ -415,6 +415,55 @@ const onElemChange = (page: Page, newColor: string) => {
   }
 }
 
+const onStrokeColorChange = (page: Page, newColor: string) => {
+  const slideCur = page.slides.find(
+    (slide) => slide.slideID === page.selection.slideID,
+  )
+
+  if (slideCur) {
+    const elemCur = slideCur?.slideObjects.find(
+      (elem) => elem.id === page.selection.elementID,
+    )
+
+    if (elemCur && elemCur.elementType === ElementType.SHAPE) {
+      console.log(elemCur)
+      elemCur.data.strokeColor = newColor
+
+      const updatedElemCur = {
+        ...elemCur,
+        data: {
+          ...elemCur.data,
+          strokeColor: newColor,
+        },
+      }
+
+      const updatedObjects = slideCur.slideObjects.map((elem) =>
+        elem.id === page.selection.elementID ? updatedElemCur : elem,
+      )
+
+      const updatedSlides = page.slides.map((slide) =>
+        slide.slideID === slideCur.slideID
+          ? { ...slide, slideObjects: updatedObjects }
+          : slide,
+      )
+
+      return {
+        ...page,
+        slides: updatedSlides,
+      }
+    } else {
+      const updatedSlides = page.slides.map((slide) =>
+        slide.slideID === slideCur.slideID ? { ...slide, slideCur } : slide,
+      )
+
+      return {
+        ...page,
+        slides: updatedSlides,
+      }
+    }
+  }
+}
+
 type ObjectData = {
   objectId: string
   newRect: BaseBlock
@@ -473,6 +522,7 @@ export {
   onStrokeWidthChange,
   removeElement,
   onColorChange,
+  onStrokeColorChange,
   onElemChange,
   updateObjectRect,
 }

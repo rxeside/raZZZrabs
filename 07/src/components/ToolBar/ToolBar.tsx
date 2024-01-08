@@ -140,9 +140,21 @@ function ToolBar({ selectedObject }: ToolBarProps) {
               store.dispatch(changeShapeStrokeWidth(event.target.value))
             }
           ></input>
+          <div className={classes.fileInputContainer}>
+            <ColorPicker
+              isElement={true}
+              isStroke={true}
+              className={classes.customFileInput}
+            />
+            <Button icon={'bordercolor'} />
+          </div>
           <div className={classes.v1}></div>
           <div className={classes.fileInputContainer}>
-            <ColorPicker isElement={true} className={classes.customFileInput} />
+            <ColorPicker
+              isElement={true}
+              isStroke={false}
+              className={classes.customFileInput}
+            />
             <Button icon={'fillcolor'} />
           </div>
         </>
@@ -215,6 +227,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <div className={classes.fileInputContainer}>
             <ColorPicker
               isElement={false}
+              isStroke={false}
               className={classes.customFileInput}
             />
             <Button icon={'fillcolor'} />
