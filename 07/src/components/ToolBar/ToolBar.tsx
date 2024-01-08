@@ -25,6 +25,8 @@ import {
   goToLastState,
   goToNextState,
 } from '../../store/actionCreators'
+import { useEffect, useState } from 'react'
+import { AddImage } from '../AddImage/AddImage'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -73,6 +75,36 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     return false
   }
 
+  const [popupProps, setPopupProps] = useState({
+    x: 100,
+    y: 100,
+    isHidden: true,
+  })
+
+  const handleClosePopup = () => {
+    setPopupProps({ ...popupProps, isHidden: true })
+  }
+
+  useEffect(() => {
+    const elem = document.getElementById('popup')
+
+    if (elem) {
+      const handleOpenPopup = () => {
+        setPopupProps({
+          x: elem.offsetLeft ? elem.offsetLeft : 100,
+          y: elem.offsetTop ? elem.offsetTop + 28 : 100,
+          isHidden: !popupProps.isHidden,
+        })
+      }
+
+      elem.addEventListener('click', handleOpenPopup)
+
+      return () => {
+        elem.removeEventListener('click', handleOpenPopup)
+      }
+    }
+  }, [popupProps])
+
   return (
     <div className={classes.toolBar}>
       <Button icon={'plus'} onClick={() => store.dispatch(addSlideAction())} />
@@ -84,7 +116,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button
         icon={'prev-arrow'}
         onClick={() => {
-          console.log('SUKAAAAA')
           store.dispatch(goToLastState())
         }}
       />
@@ -96,7 +127,10 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       />
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
-      <Button icon={'cursor'} />
+      <div>
+        <Button icon={'images'} id={'popup'} />
+        <AddImage {...popupProps} onClose={handleClosePopup} />
+      </div>
       <Button
         icon={'text-align'}
         onClick={() => store.dispatch(addTextElementAction())}

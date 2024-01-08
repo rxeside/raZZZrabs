@@ -132,7 +132,7 @@ function SlideForSlideBar({
           ref={dndControlRef}
         >
           {slide.slideObjects.map((object, index) => (
-            <BaseBlock key={object.id} {...object} index={index} />
+            <BaseBlock key={object.id} {...object} index={index} isBar={true} />
           ))}
         </div>
       </div>
