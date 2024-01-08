@@ -46,7 +46,6 @@ function BaseBlock({
     transform: 'scale(' + scale + ')',
     outline:
       page.selection.elementID === id ? '2px solid rgb(0 146 192 / 100%)' : 0,
-    overflow: 'hidden',
   }
 
   const slideCur =

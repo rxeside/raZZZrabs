@@ -20,17 +20,17 @@ export function useResize(view: ViewParams, rect: BaseBlock, onEnd: Function) {
   ) => {
     if (ref.current)
       if (cornerType === 'LeftTop') {
-        ref.current.style.left = '-8px'
-        ref.current.style.top = '-8px'
+        ref.current.style.left = '-4px'
+        ref.current.style.top = '-4px'
       } else if (cornerType === 'LeftBottom') {
-        ref.current.style.left = '-8px'
-        ref.current.style.bottom = '-8px'
+        ref.current.style.left = '-4px'
+        ref.current.style.bottom = '-4px'
       } else if (cornerType === 'RightTop') {
-        ref.current.style.right = '-8px'
-        ref.current.style.top = '-8px'
+        ref.current.style.right = '-4px'
+        ref.current.style.top = '-4px'
       } else if (cornerType === 'RightBottom') {
-        ref.current.style.right = '-8px'
-        ref.current.style.bottom = '-8px'
+        ref.current.style.right = '-4px'
+        ref.current.style.bottom = '-4px'
       }
   }
 
