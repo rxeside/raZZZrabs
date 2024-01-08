@@ -8,8 +8,6 @@ import {
   ADD_TRIANGLE,
   BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
-  CHANGE_ELEMENT_HEIGHT,
-  CHANGE_ELEMENT_WIDTH,
   CHANGE_FONT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
@@ -124,13 +122,6 @@ function changeSlideColorAction(newColor: string) {
   }
 }
 
-function changeElementHeightAction(height: string) {
-  return {
-    type: CHANGE_ELEMENT_HEIGHT,
-    height: height,
-  }
-}
-
 function onBoldTextAction() {
   return {
     type: BOLD_TEXT,
@@ -192,7 +183,6 @@ export {
   addTriangleElementAction,
   changeElementColorAction,
   changeSlideColorAction,
-  changeElementHeightAction,
   onBoldTextAction,
   onItalicTextAction,
   onUnderlineTextAction,

@@ -3,7 +3,6 @@ import { Page, Slide, BackgroundType } from '../model/main'
 const defaultSlideBackground: BackgroundType = {
   color: {
     hex: '#FFFFFF',
-    opacity: 1,
   },
 }
 
@@ -24,7 +23,5 @@ const minPage: Page = {
   },
   title: 'Sample Presentation',
 }
-
-//  сделать url как отдельный блок
 
 console.log(minPage)

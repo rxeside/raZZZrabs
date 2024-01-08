@@ -12,8 +12,6 @@ import {
   addSlideAction,
   addTextElementAction,
   addTriangleElementAction,
-  changeElementHeightAction,
-  changeElementWidthAction,
   changeFontFamilyAction,
   onBoldTextAction,
   onItalicTextAction,
@@ -82,7 +80,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       <Button icon={'next-arrow'} />
       <Button icon={'zoom'} />
       <div className={classes.v1}></div>
-      <Button icon={'cursor'} />
       <Button
         icon={'text-align'}
         onClick={() => store.dispatch(addTextElementAction())}
@@ -110,12 +107,13 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {(isText(selectedObject) || isShape(selectedObject)) && (
         <>
           <div className={classes.v1}></div>
-          <Button icon={'fillcolor'} />
+          <div className={classes.fileInputContainer}>
+            <ColorPicker isElement={true} className={classes.customFileInput} />
+            <Button icon={'fillcolor'} />
+          </div>
           <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
           <Button icon={'borderstyle'} />
-          <div className={classes.v1}></div>
-          <ColorPicker isElement={true} className={classes.colorInput} />
         </>
       )}
       {isText(selectedObject) && (
@@ -179,7 +177,13 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {isNull(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <ColorPicker isElement={false} className={classes.colorInput} />
+          <div className={classes.fileInputContainer}>
+            <ColorPicker
+              isElement={false}
+              className={classes.customFileInput}
+            />
+            <Button icon={'fillcolor'} />
+          </div>
         </>
       )}
     </div>

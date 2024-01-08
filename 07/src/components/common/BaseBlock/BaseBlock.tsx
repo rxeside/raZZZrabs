@@ -10,7 +10,6 @@ import {
 import Image from '../ImageBlock/ImageBlock'
 import Shape from '../ShapeBlock/ShapeBlock'
 import Text from '../TextBlock/TextBlock'
-import { RegisterDndItemFn } from '../../../hooks/useDraggableElement'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import { DefaultRootState, useSelector } from 'react-redux'
@@ -23,7 +22,6 @@ import { CornerView } from '../../CornerView/CornerView'
 import { useDragAndDrop } from '../../../hooks/useDragAndDrop'
 
 type BlockProps = (TextBlock | ImageBlock | ShapeBlock) & {
-  registerDndItem?: RegisterDndItemFn | null
   index: number
 }
 
@@ -51,55 +49,6 @@ function BaseBlock({
     overflow: 'hidden',
   }
 
-  //const ref = useRef<HTMLDivElement>(null)
-
-  // useEffect(() => {
-  //   if (page.selection.elementID === id) {
-  //     if (registerDndItem) {
-  //       const { onDragStart } = registerDndItem(
-  //         {
-  //           elementRef: ref,
-  //           controlRef: ref,
-  //         },
-  //         startDot.y,
-  //         startDot.x,
-  //       )
-  //       const stopDefAction = (evt: MouseEvent) => {
-  //         evt.preventDefault()
-  //       }
-  //
-  //       const onMouseDown = (mouseDownEvent: MouseEvent) => {
-  //         onDragStart({
-  //           onDrag: (dragEvent: MouseEvent) => {
-  //             stopDefAction(dragEvent)
-  //             stopDefAction(mouseDownEvent)
-  //             ref.current!.style.position = 'relative'
-  //             ref.current!.style.zIndex = '1'
-  //             ref.current!.style.boxShadow = 'black 2px 2px 4px'
-  //             ref.current!.style.top = `${
-  //               dragEvent.clientY - mouseDownEvent.clientY + startDot.y
-  //             }px`
-  //             ref.current!.style.left = `${
-  //               dragEvent.clientX - mouseDownEvent.clientX + startDot.x
-  //             }px`
-  //           },
-  //           onDrop: () => {
-  //             ref.current!.style.position = ''
-  //             ref.current!.style.zIndex = ''
-  //             ref.current!.style.boxShadow = ''
-  //             ref.current!.style.top = ''
-  //             ref.current!.style.left = ''
-  //           },
-  //         })
-  //       }
-  //
-  //       const control = ref.current!
-  //       control.addEventListener('mousedown', onMouseDown)
-  //       return () => control.removeEventListener('mousedown', onMouseDown)
-  //     }
-  //   }
-  // }, [id, page.selection.elementID, registerDndItem, startDot.x, startDot.y])
-
   const slideCur =
     page.slides.find(
       (slide: { slideID: any }) => slide.slideID === page.selection.slideID,
@@ -112,8 +61,6 @@ function BaseBlock({
     ) || null
 
   const isSelected = selected != null
-
-  console.log(id, isSelected)
 
   const rectRef = useRef<HTMLDivElement>(null)
   const [rectCoords, setRectCoords] = useState({
@@ -133,12 +80,6 @@ function BaseBlock({
       x: startDot.x * scale,
       y: startDot.y * scale,
     })
-    // store.dispatch(
-    //   updateObjectRectAction(id, {
-    //     ...rect,
-    //     startDot: { x: startDot.x * scale, y: startDot.y * scale },
-    //   }),
-    // )
   }, [startDot, scale])
 
   useDragAndDrop(

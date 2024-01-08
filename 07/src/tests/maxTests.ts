@@ -19,13 +19,11 @@ import {
 
 const rectanglecolor: ColorType = {
   hex: '#FF03AB',
-  opacity: 0.7,
 }
 
 const rectangleBorder: BorderType = {
   color: {
     hex: '#4F4F4F',
-    opacity: 0.4,
   },
 
   width: 4,
@@ -58,7 +56,6 @@ const shapeBlockRectangle: ShapeBlock = {
 
 const triangleColor: ColorType = {
   hex: '#00FF00',
-  opacity: 1,
 }
 
 const shapeBlockTriangle: ShapeBlock = {
@@ -85,13 +82,11 @@ const shapeBlockTriangle: ShapeBlock = {
 
 const circleColor: ColorType = {
   hex: '#FF03AB',
-  opacity: 0.7,
 }
 
 const circleBorder: BorderType = {
   color: {
     hex: '#4F4F4F',
-    opacity: 0.4,
   },
   width: 4,
   borderStyle: BorderStyleType.DOUBLED,
@@ -140,7 +135,6 @@ const textBlock: TextBlock = {
     value: 'Съешь ещё этих мягких французских булок, да выпей чаю',
     color: {
       hex: '#FF0000',
-      opacity: 0,
     },
     fontSize: 16,
     fontFamily: 'Arial',
@@ -164,7 +158,6 @@ const imageBase64BlockDataType: ImageType = {
 const imageBase64BlockBorder: BorderType = {
   color: {
     hex: '#000000',
-    opacity: 0,
   },
   width: 5,
   round: 3,
@@ -201,7 +194,6 @@ const imageUrlBlockDataType: ImageType = {
 const imageUrlBlockBorder: BorderType = {
   color: {
     hex: '#B7B7B7',
-    opacity: 0.98,
   },
   width: 3,
   round: 10,
@@ -233,7 +225,6 @@ const imageUrlBlock: ImageBlock = {
 const firstSlideBackground: BackgroundType = {
   color: {
     hex: '#FF00FF',
-    opacity: 0.1,
   },
 }
 
@@ -246,7 +237,6 @@ const firstSlide: Slide = {
 const secondSlideBackground: BackgroundType = {
   color: {
     hex: '#F2BAFF',
-    opacity: 0.3,
   },
 }
 
@@ -259,7 +249,6 @@ const secondSlide: Slide = {
 const thirdSlideBackground: BackgroundType = {
   color: {
     hex: '#FFF000',
-    opacity: 0.3,
   },
 }
 const thirdSlide: Slide = {
