@@ -23,6 +23,7 @@ import { useDragAndDrop } from '../../../hooks/useDragAndDrop'
 
 type BlockProps = (TextBlock | ImageBlock | ShapeBlock) & {
   index: number
+  isBar?: boolean
 }
 
 function BaseBlock({
@@ -32,6 +33,7 @@ function BaseBlock({
   data,
   scale = 1,
   id,
+  isBar = false,
 }: BlockProps) {
   const page: DefaultRootState = useSelector((state) => state)
 
@@ -81,26 +83,27 @@ function BaseBlock({
     })
   }, [startDot, scale])
 
-  useDragAndDrop(
-    {
-      coords: rectCoords,
-      setNewCoords: setRectCoords,
-    },
-    {
-      ref: rectRef,
-      isSelected: isSelected,
-      needUpdate: true,
-    },
-    (newX: number, newY: number) => {
-      store.dispatch(
-        updateObjectRectAction(id, {
-          ...rect,
-          startDot: { x: newX, y: newY },
-        }),
-      )
-    },
-  )
-
+  if (!isBar) {
+    useDragAndDrop(
+      {
+        coords: rectCoords,
+        setNewCoords: setRectCoords,
+      },
+      {
+        ref: rectRef,
+        isSelected: isSelected,
+        needUpdate: true,
+      },
+      (newX: number, newY: number) => {
+        store.dispatch(
+          updateObjectRectAction(id, {
+            ...rect,
+            startDot: { x: newX, y: newY },
+          }),
+        )
+      },
+    )
+  }
   data.size = size
 
   return (

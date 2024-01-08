@@ -126,35 +126,10 @@ type SlideSelection = {
   elementID: string | null
 }
 
-// type SlideHistory = {
-//   lastSave: Slide[]
-//
-// }
-
 type Page = {
   slides: Slide[]
-  // slideHistory: SlideHistory | null
   selection: SlideSelection
   title: string
-}
-
-type Selection = {
-  slideID: string | null
-  elementID: string | null
-}
-
-type ApplicationState = {
-  presentation: Page
-  selection: Selection
-}
-
-export type CornerType = 'LeftTop' | 'LeftBottom' | 'RightTop' | 'RightBottom'
-
-export type Rect = {
-  x: number
-  y: number
-  width: number
-  height: number
 }
 
 export {
@@ -164,7 +139,6 @@ export {
   HorizontalAlignType,
   ElementType,
   BorderStyleType,
-  type ApplicationState,
   type SlideSelection,
   type Slide,
   type Size,
@@ -179,5 +153,4 @@ export {
   type Dot,
   type ColorType,
   type Page,
-  type Selection,
 }
