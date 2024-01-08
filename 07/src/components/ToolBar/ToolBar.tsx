@@ -226,6 +226,15 @@ function ToolBar({ selectedObject }: ToolBarProps) {
             title={'Выравнивание справа'}
           />
           <div className={classes.v1}></div>
+          <div className={classes.fileInputContainer}>
+            <ColorPicker
+              isElement={true}
+              isStroke={false}
+              className={classes.customFileInput}
+            />
+            <Button icon={'fillcolor'} />
+          </div>
+          <div className={classes.v1}></div>
           <Button
             icon={'minus'}
             onClick={() => store.dispatch(subFontSizeTextAction())}

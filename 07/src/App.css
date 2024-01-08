@@ -5,7 +5,7 @@
 }
 
 .editor {
-  height: 770px;
+  /*height: 770px;*/
   display: flex;
   flex-direction: row;
   gap: 0;

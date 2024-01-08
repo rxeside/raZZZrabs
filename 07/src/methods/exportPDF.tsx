@@ -3,56 +3,44 @@ import { Slide, ShapeBlock, ImageBlock, TextBlock } from '../model/main'
 import store from '../store/store'
 import CanvasTextWrapper from 'canvas-text-wrapper'
 
-// function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
-//   if (selectedObject?.elementType === 'text' && selectedObject != null) {
-//     return true
-//   }
-//   return false
-// }
+function setBackgroundImage(doc: jsPDF, image: string) {
+  doc.addImage(image, 'jpg', 0, 0, 1200, 674)
+}
 
-// function isImage(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
-//   if (selectedObject?.elementType === 'image' && selectedObject != null) {
-//     return true
-//   }
-//   return false
-// }
-//
-// function isShape(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
-//   if (selectedObject?.elementType === 'shape' && selectedObject != null) {
-//     return true
-//   }
-//   return false
-// }
-
-// function setBackgroundImage(doc: jsPDF, image: string) {
-//   doc.addImage(image, 'jpg', 0, 0, 1200, 674)
-// }
-
-function setBackgroundColor(doc: jsPDF, color: string) {
-  doc.setFillColor(color)
+function setBackgroundColor(doc: jsPDF, color: string, slide: Slide) {
+  doc.setFillColor(slide.slideBackground.color.hex)
   doc.rect(0, 0, 1200, 674, 'FD')
 }
 
 function addTextBox(doc: jsPDF, object: TextBlock) {
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
+
   if (ctx) {
     const text = object.data.value
     const width = object.data.size.width
     const height = object.data.size.height
+
     canvas.width = width
     canvas.height = height
+
     ctx.fillStyle = object.data.color.hex
     ctx.strokeStyle = ctx.fillStyle
     ctx.lineWidth = 4
+
     CanvasTextWrapper.CanvasTextWrapper(canvas, text, {
-      font: `${object.size.height}px ${object.size.height}px ${object.data.fontFamily}`,
+      font: `${object.data.outline.italic ? 'italic ' : ''}${
+        object.data.outline.bold ? 'bold ' : ''
+      }${object.data.fontSize}px ${object.data.fontFamily}`,
+      textDecoration: object.data.outline.underline ? 'underline' : 'none',
       textAlign: object.data.horizontalAlign,
     })
+
     const base64 = canvas.toDataURL()
+
     doc.addImage(
       base64,
-      'PNG',
+      'JPEG',
       object.startDot.x,
       object.startDot.y,
       width,
@@ -111,7 +99,6 @@ async function addObjectOnPage(
   doc: jsPDF,
   object: TextBlock | ImageBlock | ShapeBlock,
 ) {
-  // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve) => {
     if (object.elementType === 'text') {
       addTextBox(doc, object)
@@ -130,7 +117,7 @@ async function addObjectOnPage(
 function addImage(doc: jsPDF, object: ImageBlock, base64: string) {
   doc.addImage(
     base64,
-    'PNG',
+    'JPEG',
     object.startDot.x,
     object.startDot.y,
     object.size.width,
@@ -151,8 +138,8 @@ async function addObjectsOnPage(
 async function addSlides(doc: jsPDF, slides: Array<Slide>) {
   for (let i = 0; i < slides.length; i++) {
     const slide = slides[i]
-    if (typeof slide.slideBackground.color === 'string') {
-      setBackgroundColor(doc, slide.slideBackground.color)
+    if (typeof slide.slideBackground.color.hex === 'string') {
+      setBackgroundColor(doc, slide.slideBackground.color.hex, slide)
     }
     await addObjectsOnPage(doc, slide.slideObjects)
     doc.addPage()

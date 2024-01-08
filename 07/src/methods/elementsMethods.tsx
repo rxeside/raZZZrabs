@@ -37,7 +37,7 @@ const addTextElement = (page: Page) => {
         fontSize: 16,
         fontFamily: 'Arial',
         verticalAlign: VerticalAlignType.TOP,
-        horizontalAlign: HorizontalAlignType.RIGHT,
+        horizontalAlign: HorizontalAlignType.LEFT,
         outline: {
           bold: false,
           italic: false,
@@ -355,6 +355,8 @@ const onStrokeWidthChange = (page: Page, width: string) => {
     )
     if (elemCur && elemCur.elementType === ElementType.SHAPE) {
       const newWidth = Number(width)
+      elemCur.data.size.width -= newWidth / 25
+      elemCur.data.size.height -= newWidth / 25
       elemCur.data.strokeWidth = newWidth
 
       const updatedObjects = slideCur.slideObjects.map((elem) =>

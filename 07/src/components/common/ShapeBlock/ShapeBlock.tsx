@@ -11,7 +11,7 @@ type PrimitiveProps = {
   }
 }
 
-const scale = 1.5
+const scale = 1.2
 const baseGap = 15
 
 function calculateTriangleCoordinates(width: number, height: number): string {

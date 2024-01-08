@@ -191,7 +191,7 @@ const imageBase64Block: ImageBlock = {
 }
 
 const imageUrlBlockDataType: ImageType = {
-  data: 'https://i.pinimg.com/originals/5a/5d/80/5a5d80a47be07cc0a7ae51d036e3c1d5.jpg',
+  data: 'https://i.imgur.com/PnziTAn.jpeg',
   type: ImageTypeVariation.URL,
 }
 
@@ -210,8 +210,8 @@ const imageUrlBlock: ImageBlock = {
     y: 100,
   },
   size: {
-    width: 1920,
-    height: 1080,
+    width: 500,
+    height: 300,
   },
   scale: 1,
   id: 'b73d90d8-e9f6-470b-b36a-132b50b5352a',
@@ -219,8 +219,8 @@ const imageUrlBlock: ImageBlock = {
     image: imageUrlBlockDataType,
     border: imageUrlBlockBorder,
     size: {
-      width: 1920,
-      height: 1080,
+      width: 500,
+      height: 300,
     },
   },
   elementType: ElementType.IMAGE,
