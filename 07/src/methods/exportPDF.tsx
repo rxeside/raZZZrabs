@@ -1,34 +1,32 @@
 import jsPDF from 'jspdf'
 import { Slide, ShapeBlock, ImageBlock, TextBlock } from '../model/main'
-import { ISlideObject } from '../model/types/presentationTypes/slideObjects/ISlideObject'
 import store from '../store/store'
 import CanvasTextWrapper from 'canvas-text-wrapper'
-import shapeBlock from '../components/common/ShapeBlock/ShapeBlock'
 
-function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
-  if (selectedObject?.elementType === 'text' && selectedObject != null) {
-    return true
-  }
-  return false
-}
+// function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
+//   if (selectedObject?.elementType === 'text' && selectedObject != null) {
+//     return true
+//   }
+//   return false
+// }
 
-function isImage(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
-  if (selectedObject?.elementType === 'image' && selectedObject != null) {
-    return true
-  }
-  return false
-}
+// function isImage(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
+//   if (selectedObject?.elementType === 'image' && selectedObject != null) {
+//     return true
+//   }
+//   return false
+// }
+//
+// function isShape(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
+//   if (selectedObject?.elementType === 'shape' && selectedObject != null) {
+//     return true
+//   }
+//   return false
+// }
 
-function isShape(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
-  if (selectedObject?.elementType === 'shape' && selectedObject != null) {
-    return true
-  }
-  return false
-}
-
-function setBackgroundImage(doc: jsPDF, image: string) {
-  doc.addImage(image, 'jpg', 0, 0, 1200, 674)
-}
+// function setBackgroundImage(doc: jsPDF, image: string) {
+//   doc.addImage(image, 'jpg', 0, 0, 1200, 674)
+// }
 
 function setBackgroundColor(doc: jsPDF, color: string) {
   doc.setFillColor(color)
@@ -52,37 +50,50 @@ function addTextBox(doc: jsPDF, object: TextBlock) {
       textAlign: object.data.horizontalAlign,
     })
     const base64 = canvas.toDataURL()
-    doc.addImage(base64, 'PNG', object.x, object.y, width, height)
+    doc.addImage(
+      base64,
+      'PNG',
+      object.startDot.x,
+      object.startDot.y,
+      width,
+      height,
+    )
   }
 }
 
 function addRect(doc: jsPDF, object: ShapeBlock, mode: string) {
-  doc.rect(object.x, object.y, object.width, object.height, mode)
+  doc.rect(
+    object.startDot.x,
+    object.startDot.y,
+    object.size.width,
+    object.size.height,
+    mode,
+  )
 }
 
 function addTriangle(doc: jsPDF, object: ShapeBlock, mode: string) {
   doc.triangle(
-    object.x + object.width / 2,
-    object.y,
-    object.x,
-    object.y + object.height,
-    object.x + object.width,
-    object.y + object.height,
+    object.startDot.x + object.size.width / 2,
+    object.startDot.y,
+    object.startDot.x,
+    object.startDot.y + object.size.height,
+    object.startDot.x + object.size.width,
+    object.startDot.y + object.size.height,
     mode,
   )
 }
 
 function addEllipse(doc: jsPDF, object: ShapeBlock, mode: string) {
   doc.ellipse(
-    object.x + object.width / 2,
-    object.y + object.height / 2,
-    object.width / 2,
-    object.height / 2,
+    object.startDot.x + object.size.width / 2,
+    object.startDot.y + object.size.height / 2,
+    object.size.width / 2,
+    object.size.height / 2,
     mode,
   )
 }
 
-function addFigure(doc: jsPDF, object: ShapeBlock) {
+function addShape(doc: jsPDF, object: ShapeBlock) {
   // doc.setDrawColor(object.strokeColor)
   doc.setFillColor(object.data.color.hex)
   const drawingMode = 'FD' //DrawFill
@@ -96,16 +107,19 @@ function addFigure(doc: jsPDF, object: ShapeBlock) {
   }
 }
 
-async function addObjectOnPage(doc: jsPDF, object: ISlideObject) {
+async function addObjectOnPage(
+  doc: jsPDF,
+  object: TextBlock | ImageBlock | ShapeBlock,
+) {
   // eslint-disable-next-line no-async-promise-executor
   return new Promise(async (resolve) => {
-    if (isText(object)) {
+    if (object.elementType === 'text') {
       addTextBox(doc, object)
     }
-    if (isShape(object)) {
-      addFigure(doc, object)
-    } else if (isImage(object)) {
-      const base64 = object.src
+    if (object.elementType === 'shape') {
+      addShape(doc, object)
+    } else if (object.elementType === 'image') {
+      const base64 = object.data.image.data
       addImage(doc, object, base64)
     }
 
@@ -113,11 +127,21 @@ async function addObjectOnPage(doc: jsPDF, object: ISlideObject) {
   })
 }
 
-function addImage(doc: jsPDF, object: Image, base64: string) {
-  doc.addImage(base64, 'PNG', object.x, object.y, object.width, object.height)
+function addImage(doc: jsPDF, object: ImageBlock, base64: string) {
+  doc.addImage(
+    base64,
+    'PNG',
+    object.startDot.x,
+    object.startDot.y,
+    object.size.width,
+    object.size.height,
+  )
 }
 
-async function addObjectsOnPage(doc: jsPDF, objects: Array<ISlideObject>) {
+async function addObjectsOnPage(
+  doc: jsPDF,
+  objects: Array<TextBlock | ImageBlock | ShapeBlock>,
+) {
   const promises = objects.map(async (slideObject) => {
     return addObjectOnPage(doc, slideObject)
   })
@@ -127,12 +151,10 @@ async function addObjectsOnPage(doc: jsPDF, objects: Array<ISlideObject>) {
 async function addSlides(doc: jsPDF, slides: Array<Slide>) {
   for (let i = 0; i < slides.length; i++) {
     const slide = slides[i]
-    if (typeof slide.background === 'string') {
-      setBackgroundColor(doc, slide.background)
-    } else {
-      await setBackgroundImage(doc, slide.background.src)
+    if (typeof slide.slideBackground.color === 'string') {
+      setBackgroundColor(doc, slide.slideBackground.color)
     }
-    await addObjectsOnPage(doc, slide.objects)
+    await addObjectsOnPage(doc, slide.slideObjects)
     doc.addPage()
   }
 }
@@ -144,7 +166,7 @@ export async function exportPDF() {
     orientation: 'l',
     format: slideSize,
   })
-  await addSlides(doc, store.getState().presentation.slides)
+  await addSlides(doc, store.getState().slides)
   doc.deletePage(doc.getNumberOfPages())
-  doc.save(`${store.getState().presentation.name}.pdf`)
+  doc.save(`${store.getState().title}.pdf`)
 }
