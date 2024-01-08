@@ -12,8 +12,6 @@ import {
   addSlideAction,
   addTextElementAction,
   addTriangleElementAction,
-  changeElementHeightAction,
-  changeElementWidthAction,
   changeFontFamilyAction,
   onBoldTextAction,
   onItalicTextAction,
@@ -27,6 +25,7 @@ import {
   goToLastState,
   goToNextState,
 } from '../../store/actionCreators'
+
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
 }
@@ -128,7 +127,10 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
           <div className={classes.v1}></div>
-          <ColorPicker isElement={true} className={classes.colorInput} />
+          <div className={classes.fileInputContainer}>
+            <ColorPicker isElement={true} className={classes.customFileInput} />
+            <Button icon={'fillcolor'} />
+          </div>
         </>
       )}
       {isText(selectedObject) && (
@@ -200,22 +202,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
             onClick={() => store.dispatch(removeElementAction())}
             title={'Удалить элемент'}
           />
-          <input
-            type={'number'}
-            className={classes.numberInput}
-            value={selectedObject?.size.height}
-            onChange={(event) =>
-              store.dispatch(changeElementHeightAction(event.target.value))
-            }
-          ></input>
-          <input
-            type={'number'}
-            className={classes.numberInput}
-            value={selectedObject?.size.width}
-            onChange={(event) =>
-              store.dispatch(changeElementWidthAction(event.target.value))
-            }
-          ></input>
         </>
       )}
       {isNull(selectedObject) && (
