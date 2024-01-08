@@ -1,4 +1,5 @@
 import { Page } from '../model/main'
+import cloneDeep from 'lodash/cloneDeep'
 
 export const undoStack: Array<Page> = []
 export const redoStack: Array<Page> = []
@@ -10,7 +11,9 @@ function clearRedo() {
 }
 
 function addToHistory(page: Page) {
-  undoStack.push(page)
+  const ban = cloneDeep({ page })
+  undoStack.push(ban.page)
+  console.log(undoStack)
 }
 
 function undo(currentState: Page): Page {
@@ -21,6 +24,7 @@ function undo(currentState: Page): Page {
 
   const slideState: Page = undoStack.pop()!
   redoStack.push(currentState)
+  console.log(slideState)
 
   return slideState
 }
