@@ -44,7 +44,6 @@ type Size = {
 
 type ColorType = {
   hex: string
-  opacity: number
 }
 
 type ImageType = {

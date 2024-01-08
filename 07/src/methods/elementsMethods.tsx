@@ -17,6 +17,7 @@ import {
   rectanglecolor,
   triangleColor,
 } from '../tests/maxTests'
+import { v4 as uuidv4 } from 'uuid'
 
 const addTextElement = (page: Page) => {
   const slideCur =
@@ -38,7 +39,6 @@ const addTextElement = (page: Page) => {
         value: 'MotoMoto',
         color: {
           hex: '#FF0000',
-          opacity: 0,
         },
         fontSize: 16,
         fontFamily: 'Arial',
@@ -54,7 +54,7 @@ const addTextElement = (page: Page) => {
           height: 100,
         },
       },
-      id: String(Date.now()),
+      id: String(uuidv4()),
       elementType: ElementType.TEXT,
     }
 
@@ -91,7 +91,7 @@ const addImageElement = (page: Page, newElement: string) => {
         height: 480,
       },
       scale: 1,
-      id: String(Date.now()),
+      id: String(uuidv4()),
       data: {
         image: { data: newElement, type: ImageTypeVariation.BASE64 },
         size: {
@@ -338,10 +338,22 @@ const onElemChange = (page: Page, newColor: string) => {
       (elemCur.elementType === ElementType.SHAPE ||
         elemCur.elementType === ElementType.TEXT)
     ) {
-      elemCur.data.color.hex = newColor
+      console.log(elemCur)
+
+      // Создаем новый объект с обновленным цветом
+      const updatedElemCur = {
+        ...elemCur,
+        data: {
+          ...elemCur.data,
+          color: {
+            ...elemCur.data.color,
+            hex: newColor,
+          },
+        },
+      }
 
       const updatedObjects = slideCur.slideObjects.map((elem) =>
-        elem.id === elemCur.id ? elemCur : elem,
+        elem.id === page.selection.elementID ? updatedElemCur : elem,
       )
 
       const updatedSlides = page.slides.map((slide) =>

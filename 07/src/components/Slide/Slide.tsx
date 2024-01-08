@@ -1,12 +1,6 @@
 import { CSSProperties } from 'react'
 import BaseBlock from '../common/BaseBlock/BaseBlock'
-import { Dot, Slide as TSlide } from '../../model/main'
-import { useDraggableElement } from '../../hooks/useDraggableElement'
-import store from '../../store/store'
-import { updateSlideAction } from '../../store/actionCreators'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import { DefaultRootState, useSelector } from 'react-redux'
+import { Slide as TSlide } from '../../model/main'
 
 type SlideProps = {
   slide: TSlide
@@ -27,70 +21,21 @@ function Slide({ slide, className }: SlideProps) {
     return ''
   }
 
-  function hex2rgb(c: string, o: number) {
+  function hex2rgb(c: string) {
     const bigint = parseInt(c.substring(1), 16)
     const r = (bigint >> 16) & 255
     const g = (bigint >> 8) & 255
     const b = bigint & 255
-    const x = o * 100
 
-    return 'rgb(' + r + ' ' + g + ' ' + b + ' / ' + x + '%' + ')'
+    return 'rgb(' + r + ' ' + g + ' ' + b + ')'
   }
 
   function setBackground(slide: TSlide, style: CSSProperties) {
-    if (
-      slide.slideBackground.color.hex &&
-      !slide.slideBackground.color.opacity
-    ) {
-      style.backgroundColor = slide.slideBackground.color.hex
-    } else if (
-      slide.slideBackground.color.opacity &&
-      slide.slideBackground.color.hex
-    ) {
-      style.backgroundColor = hex2rgb(
-        slide.slideBackground.color.hex,
-        slide.slideBackground.color.opacity,
-      )
+    if (slide.slideBackground.color.hex) {
+      style.backgroundColor = hex2rgb(slide.slideBackground.color.hex)
     }
     return style
   }
-
-  //const { page, setPage } = useContext(PageContext)
-
-  const page: DefaultRootState = useSelector((state) => state)
-
-  const slideCur =
-    page.slides.find(
-      (s: { slideID: any }): any => s.slideID === page.selection.slideID,
-    ) || undefined
-
-  const elCur =
-    slideCur?.slideObjects.find(
-      (element: { id: any }) => element.id === page.selection.elementID,
-    ) || undefined
-
-  const { registerDndItem } = useDraggableElement({
-    onOrderChange: (toY, toX) => {
-      if (elCur) {
-        const newDot: Dot = {
-          x: toX,
-          y: toY,
-        }
-        const newEl = { ...elCur, startDot: newDot }
-        const index = slideCur?.slideObjects.indexOf(elCur) ?? -1
-        if (index !== -1 && slideCur) {
-          const newObjects = [...slideCur.slideObjects]
-          newObjects[index] = newEl
-          const newSlide = { ...slideCur, slideObjects: newObjects }
-          const updatedSlides = page.slides.map((s: { slideID: any }) =>
-            s.slideID === slideCur.slideID ? newSlide : s,
-          )
-          //setPage({ ...page, slides: updatedSlides })
-          store.dispatch(updateSlideAction(updatedSlides))
-        }
-      }
-    },
-  })
 
   return (
     <div
@@ -102,7 +47,6 @@ function Slide({ slide, className }: SlideProps) {
           key={object.id}
           {...object}
           startDot={object.startDot}
-          registerDndItem={registerDndItem}
           index={index}
         />
       ))}

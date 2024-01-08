@@ -11,13 +11,11 @@ import {
 
 const shapeBlockColor: ColorType = {
   hex: '#FF032A',
-  opacity: 0,
 }
 
 const shapeBlockBorder: BorderType = {
   color: {
     hex: '#000000',
-    opacity: 0,
   },
   width: 1,
   borderStyle: BorderStyleType.SOLID,
@@ -52,7 +50,6 @@ const midSlide: Slide = {
   slideBackground: {
     color: {
       hex: '#FF00FF',
-      opacity: 0.1,
     },
   },
 }
