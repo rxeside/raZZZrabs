@@ -137,14 +137,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         icon={'text-align'}
         onClick={() => store.dispatch(addTextElementAction())}
       />
-      <div className={classes.fileInputContainer}>
-        <input
-          type="file"
-          onChange={handleImageUpload}
-          className={classes.customFileInput}
-        />
-        <Button icon={'images'} />
-      </div>
       <Button
         icon={'circle'}
         onClick={() => store.dispatch(addCircleElementAction())}
