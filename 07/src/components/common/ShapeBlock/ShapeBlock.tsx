@@ -11,13 +11,16 @@ type PrimitiveProps = {
   }
 }
 
+const scale = 1.5
+const baseGap = 15
+
 function calculateTriangleCoordinates(width: number, height: number): string {
-  const x1 = (width + 3) / 2
-  const y1 = 0 + 3
-  const x2 = 0 + 3
-  const y2 = height + 3
-  const x3 = width + 3
-  const y3 = height + 3
+  const x1 = (width + baseGap) / 2
+  const y1 = baseGap
+  const x2 = baseGap
+  const y2 = height + baseGap
+  const x3 = width + baseGap
+  const y3 = height + baseGap
 
   return `${x1},${y1} ${x2},${y2} ${x3},${y3}`
 }
@@ -29,14 +32,14 @@ function Primitive({ data }: PrimitiveProps) {
 
   return (
     <svg
-      width={size.width + data.strokeWidth + 10}
-      height={size.height + data.strokeWidth + 10}
+      width={(size.width + data.strokeWidth) * scale}
+      height={(size.height + data.strokeWidth) * scale}
     >
       <g>
         {primitiveType === 'circle' && (
           <ellipse
-            cx={centerX}
-            cy={centerY}
+            cx={centerX + data.strokeWidth}
+            cy={centerY + data.strokeWidth}
             rx={size.width / 2}
             ry={size.height / 2}
             fill={data.color.hex}
@@ -46,8 +49,8 @@ function Primitive({ data }: PrimitiveProps) {
         )}
         {primitiveType === 'rectangle' && (
           <rect
-            x={0}
-            y={0}
+            x={data.strokeWidth}
+            y={data.strokeWidth}
             width={size.width}
             height={size.height}
             fill={data.color.hex}
@@ -57,7 +60,10 @@ function Primitive({ data }: PrimitiveProps) {
         )}
         {primitiveType === 'triangle' && (
           <polygon
-            points={calculateTriangleCoordinates(size.width, size.height)}
+            points={calculateTriangleCoordinates(
+              size.width + data.strokeWidth,
+              size.height + data.strokeWidth,
+            )}
             fill={data.color.hex}
             stroke={data.strokeColor}
             strokeWidth={data.strokeWidth}

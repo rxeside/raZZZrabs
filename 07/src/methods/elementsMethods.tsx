@@ -10,13 +10,7 @@ import {
   TextBlock,
   VerticalAlignType,
 } from '../model/main'
-import {
-  circleBorder,
-  circleColor,
-  rectangleBorder,
-  rectanglecolor,
-  triangleColor,
-} from '../tests/maxTests'
+import { circleColor, rectanglecolor, triangleColor } from '../tests/maxTests'
 import { v4 as uuidv4 } from 'uuid'
 
 const addTextElement = (page: Page) => {
