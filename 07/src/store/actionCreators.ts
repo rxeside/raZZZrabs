@@ -8,8 +8,6 @@ import {
   ADD_TRIANGLE,
   BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
-  CHANGE_ELEMENT_HEIGHT,
-  CHANGE_ELEMENT_WIDTH,
   CHANGE_FONT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
@@ -24,11 +22,12 @@ import {
   SUB_FONT_SIZE,
   UNDERLINE_TEXT,
   UPDATE_PAGE,
+  UPDATE_RECT,
   UPDATE_SLIDE,
   GO_TO_LAST_STATE,
   GO_TO_NEXT_STATE,
 } from './actions'
-import { Slide } from '../model/main'
+import { BaseBlock, Slide } from '../model/main'
 
 function addSlideAction() {
   return {
@@ -128,20 +127,6 @@ function changeSlideColorAction(newColor: string) {
   }
 }
 
-function changeElementHeightAction(height: string) {
-  return {
-    type: CHANGE_ELEMENT_HEIGHT,
-    height: height,
-  }
-}
-
-function changeElementWidthAction(width: string) {
-  return {
-    type: CHANGE_ELEMENT_WIDTH,
-    width: width,
-  }
-}
-
 function onBoldTextAction() {
   return {
     type: BOLD_TEXT,
@@ -197,6 +182,14 @@ function subFontSizeTextAction() {
   }
 }
 
+function updateObjectRectAction(id: string, newRect: BaseBlock) {
+  return {
+    type: UPDATE_RECT,
+    id: id,
+    newRect: newRect,
+  }
+}
+
 function goToLastState() {
   return {
     type: GO_TO_LAST_STATE,
@@ -225,8 +218,6 @@ export {
   addTriangleElementAction,
   changeElementColorAction,
   changeSlideColorAction,
-  changeElementWidthAction,
-  changeElementHeightAction,
   onBoldTextAction,
   onItalicTextAction,
   onUnderlineTextAction,
@@ -236,6 +227,7 @@ export {
   changeFontFamilyAction,
   addFontSizeAction,
   subFontSizeTextAction,
+  updateObjectRectAction,
   goToLastState,
   goToNextState,
 }

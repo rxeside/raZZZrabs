@@ -102,30 +102,18 @@ function SlideForSlideBar({
     return ''
   }
 
-  function hex2rgb(c: string, o: number) {
+  function hex2rgb(c: string) {
     const bigint = parseInt(c.substring(1), 16)
     const r = (bigint >> 16) & 255
     const g = (bigint >> 8) & 255
     const b = bigint & 255
-    const x = o * 100
 
-    return 'rgb(' + r + ' ' + g + ' ' + b + ' / ' + x + '%' + ')'
+    return 'rgb(' + r + ' ' + g + ' ' + b + ')'
   }
 
   function setBackground(slide: TSlide, style: CSSProperties) {
-    if (
-      slide.slideBackground.color.hex &&
-      !slide.slideBackground.color.opacity
-    ) {
-      style.backgroundColor = slide.slideBackground.color.hex
-    } else if (
-      slide.slideBackground.color.opacity &&
-      slide.slideBackground.color.hex
-    ) {
-      style.backgroundColor = hex2rgb(
-        slide.slideBackground.color.hex,
-        slide.slideBackground.color.opacity,
-      )
+    if (slide.slideBackground.color.hex) {
+      style.backgroundColor = hex2rgb(slide.slideBackground.color.hex)
     }
     return style
   }
@@ -144,12 +132,7 @@ function SlideForSlideBar({
           ref={dndControlRef}
         >
           {slide.slideObjects.map((object, index) => (
-            <BaseBlock
-              key={object.id}
-              {...object}
-              registerDndItem={null}
-              index={index}
-            />
+            <BaseBlock key={object.id} {...object} index={index} />
           ))}
         </div>
       </div>

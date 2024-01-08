@@ -1,4 +1,4 @@
-import { Page } from '../../model/main'
+import { Page } from '../model/main'
 
 export const undoStack: Array<Page> = []
 export const redoStack: Array<Page> = []

@@ -1,5 +1,6 @@
 import React, { MutableRefObject, useState } from 'react'
-import { Rect, CornerType } from '../model/main'
+import { BaseBlock } from '../model/main'
+import { CornerType } from '../components/CornerView/CornerView'
 import { Coords, useDragAndDrop } from './useDragAndDrop'
 
 interface ViewParams {
@@ -9,7 +10,7 @@ interface ViewParams {
   cornerType: CornerType
 }
 
-export function useResize(view: ViewParams, rect: Rect, onEnd: Function) {
+export function useResize(view: ViewParams, rect: BaseBlock, onEnd: Function) {
   const [cornerCoords, setCornerCoords] = useState({ x: 0, y: 0 })
   const [newRect, setNewRect] = useState({ ...rect })
 
@@ -33,46 +34,75 @@ export function useResize(view: ViewParams, rect: Rect, onEnd: Function) {
       }
   }
 
-  const calcFromLeftTopCorner = (oldRect: Rect, delta: Coords): Rect => {
-    return {
-      x: oldRect.x + delta.x,
-      y: oldRect.y + delta.y,
-      width: oldRect.width - delta.x,
-      height: oldRect.height - delta.y,
-    }
-  }
-
-  const calcFromLeftBottomCorner = (oldRect: Rect, delta: Coords): Rect => {
-    return {
-      x: oldRect.x + delta.x,
-      y: oldRect.y,
-      width: oldRect.width - delta.x,
-      height: oldRect.height + delta.y,
-    }
-  }
-
-  const calcFromRightTopCorner = (oldRect: Rect, delta: Coords): Rect => {
-    return {
-      x: oldRect.x,
-      y: oldRect.y + delta.y,
-      width: oldRect.width + delta.x,
-      height: oldRect.height - delta.y,
-    }
-  }
-
-  const calcFromRightBottomCorner = (oldRect: Rect, delta: Coords): Rect => {
+  const calcFromLeftTopCorner = (
+    oldRect: BaseBlock,
+    delta: Coords,
+  ): BaseBlock => {
     return {
       ...oldRect,
-      width: oldRect.width + delta.x,
-      height: oldRect.height + delta.y,
+      startDot: {
+        x: oldRect.startDot.x + delta.x,
+        y: oldRect.startDot.y + delta.y,
+      },
+      size: {
+        width: oldRect.size.width - delta.x,
+        height: oldRect.size.height - delta.y,
+      },
+    }
+  }
+
+  const calcFromLeftBottomCorner = (
+    oldRect: BaseBlock,
+    delta: Coords,
+  ): BaseBlock => {
+    return {
+      ...oldRect,
+      startDot: {
+        x: oldRect.startDot.x + delta.x,
+        y: oldRect.startDot.y,
+      },
+      size: {
+        width: oldRect.size.width - delta.x,
+        height: oldRect.size.height + delta.y,
+      },
+    }
+  }
+
+  const calcFromRightTopCorner = (
+    oldRect: BaseBlock,
+    delta: Coords,
+  ): BaseBlock => {
+    return {
+      ...oldRect,
+      startDot: {
+        x: oldRect.startDot.x,
+        y: oldRect.startDot.y + delta.y,
+      },
+      size: {
+        width: oldRect.size.width + delta.x,
+        height: oldRect.size.height - delta.y,
+      },
+    }
+  }
+
+  const calcFromRightBottomCorner = (
+    oldRect: BaseBlock,
+    delta: Coords,
+  ): BaseBlock => {
+    return {
+      ...oldRect,
+      size: {
+        width: oldRect.size.width + delta.x,
+        height: oldRect.size.height + delta.y,
+      },
     }
   }
 
   const calculateNewRect = (
     cornerType: CornerType,
-    oldRect: Rect,
+    oldRect: BaseBlock,
     delta: Coords,
-  ): Rect => {
+  ): BaseBlock => {
     if (cornerType === 'LeftTop') {
       return calcFromLeftTopCorner(oldRect, delta)
     } else if (cornerType === 'LeftBottom') {
@@ -105,10 +135,10 @@ export function useResize(view: ViewParams, rect: Rect, onEnd: Function) {
   React.useLayoutEffect(() => {
     if (view.objectRef.current && view.cornerRef.current) {
       updateCornerStyle(view.cornerRef, view.cornerType)
-      view.objectRef.current.style.left = `${newRect.x}px`
-      view.objectRef.current.style.top = `${newRect.y}px`
-      view.objectRef.current.style.width = `${newRect.width}px`
-      view.objectRef.current.style.height = `${newRect.height}px`
+      view.objectRef.current.style.left = `${newRect.startDot.x}px`
+      view.objectRef.current.style.top = `${newRect.startDot.y}px`
+      view.objectRef.current.style.width = `${newRect.size.width}px`
+      view.objectRef.current.style.height = `${newRect.size.height}px`
     }
   }, [newRect, setNewRect])
 

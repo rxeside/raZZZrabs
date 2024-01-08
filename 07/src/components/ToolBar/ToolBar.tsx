@@ -21,14 +21,11 @@ import {
   removeElementAction,
   removeSlideAction,
   subFontSizeTextAction,
-<<<<<<< HEAD
   changeTextAlignCenterAction,
   changeTextAlignLeftAction,
   changeTextAlignRightAction,
-=======
   goToLastState,
   goToNextState,
->>>>>>> f4d51d9262d36da33bb3299861e99fd5b4adecdd
 } from '../../store/actionCreators'
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
@@ -85,10 +82,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         onClick={() => store.dispatch(removeSlideAction())}
       />
       <div className={classes.v1}></div>
-<<<<<<< HEAD
-      <Button icon={'prev-arrow'} />
-      <Button icon={'next-arrow'} />
-=======
       <Button
         icon={'prev-arrow'}
         onClick={() => {
@@ -103,8 +96,8 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         }}
       />
       <Button icon={'zoom'} />
->>>>>>> f4d51d9262d36da33bb3299861e99fd5b4adecdd
       <div className={classes.v1}></div>
+      <Button icon={'cursor'} />
       <Button
         icon={'text-align'}
         onClick={() => store.dispatch(addTextElementAction())}
@@ -228,7 +221,13 @@ function ToolBar({ selectedObject }: ToolBarProps) {
       {isNull(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <ColorPicker isElement={false} className={classes.colorInput} />
+          <div className={classes.fileInputContainer}>
+            <ColorPicker
+              isElement={false}
+              className={classes.customFileInput}
+            />
+            <Button icon={'fillcolor'} />
+          </div>
         </>
       )}
     </div>

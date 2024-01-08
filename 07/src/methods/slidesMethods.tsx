@@ -7,7 +7,6 @@ const addSlide = (page: Page) => {
     slideBackground: {
       color: {
         hex: '#FFFFFF',
-        opacity: 1,
       },
     },
     slideObjects: [],

@@ -1,4 +1,5 @@
 import {
+  BaseBlock,
   ElementType,
   HorizontalAlignType,
   ImageBlock,
@@ -16,6 +17,7 @@ import {
   rectanglecolor,
   triangleColor,
 } from '../tests/maxTests'
+import { v4 as uuidv4 } from 'uuid'
 
 const addTextElement = (page: Page) => {
   const slideCur =
@@ -37,7 +39,6 @@ const addTextElement = (page: Page) => {
         value: 'MotoMoto',
         color: {
           hex: '#FF0000',
-          opacity: 0,
         },
         fontSize: 16,
         fontFamily: 'Arial',
@@ -53,7 +54,7 @@ const addTextElement = (page: Page) => {
           height: 100,
         },
       },
-      id: String(Date.now()),
+      id: String(uuidv4()),
       elementType: ElementType.TEXT,
     }
 
@@ -90,7 +91,7 @@ const addImageElement = (page: Page, newElement: string) => {
         height: 480,
       },
       scale: 1,
-      id: String(Date.now()),
+      id: String(uuidv4()),
       data: {
         image: { data: newElement, type: ImageTypeVariation.BASE64 },
         size: {
@@ -300,76 +301,6 @@ const removeElement = (page: Page) => {
   }
 }
 
-const onHeightChange = (page: Page, height: string) => {
-  const slideCur =
-    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
-    null
-
-  if (slideCur != null) {
-    const slideCurEl =
-      slideCur.slideObjects.find(
-        (slideOb) => slideOb.id === page.selection.elementID,
-      ) || null
-
-    if (slideCurEl != null) {
-      const newSize = {
-        width: slideCurEl.size.width,
-        height: Number(height),
-      }
-      slideCurEl.size = newSize
-      slideCurEl.data.size = newSize
-
-      const updatedSlides = page.slides.map((slide) => {
-        if (slide.slideID === slideCur.slideID) {
-          return slideCur
-        } else {
-          return slide
-        }
-      })
-
-      return {
-        ...page,
-        slides: updatedSlides,
-      }
-    }
-  }
-}
-
-const onWidthChange = (page: Page, width: string) => {
-  const slideCur =
-    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
-    null
-
-  if (slideCur != null) {
-    const slideCurEl =
-      slideCur.slideObjects.find(
-        (slideOb) => slideOb.id === page.selection.elementID,
-      ) || null
-
-    if (slideCurEl) {
-      const newSize = {
-        width: Number(width),
-        height: slideCurEl.size.height, // сохраняем текущую высоту
-      }
-      slideCurEl.size = newSize
-      slideCurEl.data.size = newSize
-
-      const updatedSlides = page.slides.map((slide) => {
-        if (slide.slideID === slideCur.slideID) {
-          return slideCur
-        } else {
-          return slide
-        }
-      })
-
-      return {
-        ...page,
-        slides: updatedSlides,
-      }
-    }
-  }
-}
-
 const onColorChange = (page: Page, newColor: string) => {
   const slideCur = page.slides.find(
     (slide) => slide.slideID === page.selection.slideID,
@@ -407,10 +338,22 @@ const onElemChange = (page: Page, newColor: string) => {
       (elemCur.elementType === ElementType.SHAPE ||
         elemCur.elementType === ElementType.TEXT)
     ) {
-      elemCur.data.color.hex = newColor
+      console.log(elemCur)
+
+      // Создаем новый объект с обновленным цветом
+      const updatedElemCur = {
+        ...elemCur,
+        data: {
+          ...elemCur.data,
+          color: {
+            ...elemCur.data.color,
+            hex: newColor,
+          },
+        },
+      }
 
       const updatedObjects = slideCur.slideObjects.map((elem) =>
-        elem.id === elemCur.id ? elemCur : elem,
+        elem.id === page.selection.elementID ? updatedElemCur : elem,
       )
 
       const updatedSlides = page.slides.map((slide) =>
@@ -436,6 +379,54 @@ const onElemChange = (page: Page, newColor: string) => {
   }
 }
 
+type ObjectData = {
+  objectId: string
+  newRect: BaseBlock
+}
+
+function updateObjectRect(page: Page, id: string, rect: BaseBlock) {
+  const newObjectData: ObjectData = {
+    objectId: id,
+    newRect: rect,
+  }
+
+  const slideCur =
+    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+    null
+
+  const updatedSlides = page.slides
+
+  if (slideCur !== null) {
+    const selectedIndex = slideCur.slideObjects.findIndex(function (obj) {
+      if (obj.id === id) {
+        return obj
+      }
+    })
+
+    const selectedIndexSlide = page.slides.findIndex(function (slide) {
+      if (slide.slideID === page.selection.slideID) {
+        return slide
+      }
+    })
+
+    slideCur.slideObjects[selectedIndex].startDot = {
+      ...newObjectData.newRect.startDot,
+    }
+    slideCur.slideObjects[selectedIndex].size = {
+      ...newObjectData.newRect.size,
+    }
+
+    updatedSlides[selectedIndexSlide] = slideCur
+
+    return {
+      ...page,
+      slides: updatedSlides,
+    }
+  }
+
+  return page
+}
+
 export {
   selectElement,
   addTextElement,
@@ -444,8 +435,7 @@ export {
   addRectangleElement,
   addTriangleElement,
   removeElement,
-  onHeightChange,
-  onWidthChange,
   onColorChange,
   onElemChange,
+  updateObjectRect,
 }
