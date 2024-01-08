@@ -9,6 +9,7 @@ import {
   ADD_TRIANGLE,
   BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
+  CHANGE_SHAPE_STROKE_WIDTH,
   CHANGE_FONT,
   CHANGE_TEXT_ALIGN_LEFT,
   CHANGE_TEXT_ALIGN_CENTER,
@@ -47,6 +48,7 @@ import {
   removeElement,
   selectElement,
   updateObjectRect,
+  onStrokeWidthChange,
 } from '../methods/elementsMethods'
 import {
   onBigger,
@@ -67,6 +69,7 @@ import {
   undo,
   // undoStack,
 } from '../methods/History'
+import { changeShapeStrokeWidth } from './actionCreators'
 
 const initialState: Page = maxPage
 
@@ -116,6 +119,9 @@ const pageReducers = (state = defaultApplication, action: any) => {
     case CHANGE_ELEMENT_COLOR:
       addToHistory(state)
       return onElemChange(state, action.newColor)
+    case CHANGE_SHAPE_STROKE_WIDTH:
+      addToHistory(state)
+      return onStrokeWidthChange(state, action.strokeWidth)
     case CHANGE_SLIDE_COLOR:
       addToHistory(state)
       return onColorChange(state, action.newColor)
@@ -123,10 +129,13 @@ const pageReducers = (state = defaultApplication, action: any) => {
       addToHistory(state)
       return onBold(state)
     case CHANGE_TEXT_ALIGN_CENTER:
+      addToHistory(state)
       return onCenterAlign(state)
     case CHANGE_TEXT_ALIGN_LEFT:
+      addToHistory(state)
       return onLeftAlign(state)
     case CHANGE_TEXT_ALIGN_RIGHT:
+      addToHistory(state)
       return onRightAlign(state)
     case ITALIC_TEXT:
       addToHistory(state)

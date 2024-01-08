@@ -139,7 +139,8 @@ const addCircleElement = (page: Page) => {
       data: {
         primitiveType: PrimitiveType.CIRCLE,
         color: circleColor,
-        border: circleBorder,
+        strokeColor: '#000000',
+        strokeWidth: 0,
         size: {
           width: 175,
           height: 100,
@@ -185,7 +186,8 @@ const addRectangleElement = (page: Page) => {
       data: {
         primitiveType: PrimitiveType.RECTANGLE,
         color: rectanglecolor,
-        border: rectangleBorder,
+        strokeColor: '#000000',
+        strokeWidth: 0,
         size: {
           width: 175,
           height: 100,
@@ -231,6 +233,8 @@ const addTriangleElement = (page: Page) => {
       data: {
         primitiveType: PrimitiveType.TRIANGLE,
         color: triangleColor,
+        strokeColor: '#000000',
+        strokeWidth: 0,
         size: {
           width: 175,
           height: 100,
@@ -319,6 +323,38 @@ const onColorChange = (page: Page, newColor: string) => {
     return {
       ...page,
       slides: updatedSlides,
+    }
+  }
+}
+const onStrokeWidthChange = (page: Page, width: string) => {
+  const slideCur =
+    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+    null
+
+  if (slideCur != null) {
+    const elemCur = slideCur?.slideObjects.find(
+      (elem) => elem.id === page.selection.elementID,
+    )
+    if (elemCur && elemCur.elementType === ElementType.SHAPE) {
+      const newWidth = Number(width)
+      elemCur.data.strokeWidth = newWidth
+
+      const updatedObjects = slideCur.slideObjects.map((elem) =>
+        elem.id === page.selection.elementID ? elemCur : elem,
+      )
+
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === page.selection.slideID) {
+          return { ...slide, slideObjects: updatedObjects }
+        } else {
+          return slide
+        }
+      })
+      console.log(elemCur.data.strokeWidth)
+      return {
+        ...page,
+        slides: updatedSlides,
+      }
     }
   }
 }
@@ -434,6 +470,7 @@ export {
   addCircleElement,
   addRectangleElement,
   addTriangleElement,
+  onStrokeWidthChange,
   removeElement,
   onColorChange,
   onElemChange,

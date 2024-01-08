@@ -108,7 +108,8 @@ type ShapeBlock = BaseBlock & {
   data: {
     primitiveType: PrimitiveType
     color: ColorType
-    border?: BorderType
+    strokeColor: string
+    strokeWidth: number
     size: Size
   }
   elementType: ElementType.SHAPE

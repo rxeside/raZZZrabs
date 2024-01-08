@@ -8,6 +8,7 @@ import {
   ADD_TRIANGLE,
   BOLD_TEXT,
   CHANGE_ELEMENT_COLOR,
+  CHANGE_SHAPE_STROKE_WIDTH,
   CHANGE_FONT,
   CHANGE_PRESENTATION_TITLE,
   CHANGE_SLIDE_COLOR,
@@ -182,6 +183,13 @@ function subFontSizeTextAction() {
   }
 }
 
+function changeShapeStrokeWidth(strokeWidth: string) {
+  return {
+    type: CHANGE_SHAPE_STROKE_WIDTH,
+    strokeWidth: strokeWidth,
+  }
+}
+
 function updateObjectRectAction(id: string, newRect: BaseBlock) {
   return {
     type: UPDATE_RECT,
@@ -224,6 +232,7 @@ export {
   changeTextAlignCenterAction,
   changeTextAlignLeftAction,
   changeTextAlignRightAction,
+  changeShapeStrokeWidth,
   changeFontFamilyAction,
   addFontSizeAction,
   subFontSizeTextAction,

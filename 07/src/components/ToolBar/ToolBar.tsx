@@ -21,13 +21,16 @@ import {
   subFontSizeTextAction,
   changeTextAlignCenterAction,
   changeTextAlignLeftAction,
+  changeShapeStrokeWidth,
   changeTextAlignRightAction,
   goToLastState,
   goToNextState,
 } from '../../store/actionCreators'
+import * as events from 'events'
 
 interface ToolBarProps {
   selectedObject: TextBlock | ImageBlock | ShapeBlock | null
+  strokeWidth: ShapeBlock
 }
 
 function ToolBar({ selectedObject }: ToolBarProps) {
@@ -121,11 +124,22 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         icon={'rectangle'}
         onClick={() => store.dispatch(addRectangleElementAction())}
       />
-      {(isText(selectedObject) || isShape(selectedObject)) && (
+      {isShape(selectedObject) && (
         <>
           <div className={classes.v1}></div>
-          <Button icon={'bordercolor'} />
           <Button icon={'borderwidth'} />
+          <input
+            type={'number'}
+            className={classes.numberInput}
+            value={
+              isShape(selectedObject)
+                ? (selectedObject as ShapeBlock).data.strokeWidth
+                : ''
+            }
+            onChange={(event) =>
+              store.dispatch(changeShapeStrokeWidth(event.target.value))
+            }
+          ></input>
           <div className={classes.v1}></div>
           <div className={classes.fileInputContainer}>
             <ColorPicker isElement={true} className={classes.customFileInput} />
@@ -183,15 +197,6 @@ function ToolBar({ selectedObject }: ToolBarProps) {
             icon={'underline'}
             onClick={() => store.dispatch(onUnderlineTextAction())}
           />
-        </>
-      )}
-
-      {isImage(selectedObject) && (
-        <>
-          <div className={classes.v1}></div>
-          <Button icon={'bordercolor'} />
-          <Button icon={'borderwidth'} />
-          <Button icon={'borderstyle'} />
         </>
       )}
       {!isNull(selectedObject) && (
