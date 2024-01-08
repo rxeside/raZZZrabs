@@ -158,6 +158,7 @@ const pageReducers = (state = defaultApplication, action: any) => {
       addToHistory(state)
       return onLower(state)
     case UPDATE_RECT:
+      addToHistory(state)
       return updateObjectRect(state, action.id, action.newRect)
     case GO_TO_LAST_STATE:
       return undo(state)
