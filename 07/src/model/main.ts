@@ -53,6 +53,7 @@ type ImageType = {
 
 type BackgroundType = {
   color: ColorType
+  url: string
 }
 
 type OutlineType = {

@@ -119,6 +119,30 @@ const addImageElement = (page: Page, newElement: string) => {
   }
 }
 
+const addBackImageElement = (page: Page, newImage: string) => {
+  const slideCur =
+    page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
+    null
+
+  if (slideCur != null) {
+    slideCur.slideBackground.url = newImage
+    slideCur.slideBackground.color.hex = ''
+
+    const updatedSlides = page.slides.map((slide) => {
+      if (slide.slideID === page.selection.slideID) {
+        return slideCur
+      } else {
+        return slide
+      }
+    })
+
+    return {
+      ...page,
+      slides: updatedSlides,
+    }
+  }
+}
+
 const addCircleElement = (page: Page) => {
   const slideCur =
     page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
@@ -516,6 +540,7 @@ export {
   selectElement,
   addTextElement,
   addImageElement,
+  addBackImageElement,
   addCircleElement,
   addRectangleElement,
   addTriangleElement,

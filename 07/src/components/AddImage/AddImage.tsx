@@ -1,17 +1,28 @@
 import { CSSProperties, useEffect, useState } from 'react'
 import classes from './AddImage.module.css'
 import store from '../../store/store'
-import { addImageElementAction } from '../../store/actionCreators'
+import {
+  addBackImageElementAction,
+  addImageElementAction,
+} from '../../store/actionCreators'
 import Button from '../common/Button/Button'
+import ColorPicker from '../ColorPicker/ColorPicker'
 
 interface AddImageProps {
   x: number
   y: number
   isHidden: boolean
+  isBack?: boolean
   onClose: () => void
 }
 
-export function AddImage({ isHidden, x, y, onClose }: AddImageProps) {
+export function AddImage({
+  isHidden,
+  x,
+  y,
+  onClose,
+  isBack = false,
+}: AddImageProps) {
   const [position, setPosition] = useState({ top: 0, left: 0 })
 
   useEffect(() => {
@@ -40,7 +51,11 @@ export function AddImage({ isHidden, x, y, onClose }: AddImageProps) {
       const reader = new FileReader()
       reader.onloadend = () => {
         const imageData = reader.result as string
-        store.dispatch(addImageElementAction(imageData))
+        if (!isBack) {
+          store.dispatch(addImageElementAction(imageData))
+        } else {
+          store.dispatch(addBackImageElementAction(imageData))
+        }
       }
 
       reader.readAsDataURL(file)
@@ -52,12 +67,28 @@ export function AddImage({ isHidden, x, y, onClose }: AddImageProps) {
   const [url, setUrl] = useState({ data: '' })
 
   const handleImageURLUpload = () => {
-    store.dispatch(addImageElementAction(url.data))
+    if (!isBack) {
+      store.dispatch(addImageElementAction(url.data))
+    } else {
+      store.dispatch(addBackImageElementAction(url.data))
+    }
     onClose()
   }
 
   return (
     <div style={style}>
+      {isBack && (
+        <div>
+          <div className={classes.fileInputContainer}>
+            <ColorPicker
+              isElement={false}
+              isStroke={false}
+              className={classes.customFileInput}
+            />
+            <p className={classes.titleUpload}>Задать цвет</p>
+          </div>
+        </div>
+      )}
       <div className={classes.fileInputContainer}>
         <input
           type="file"

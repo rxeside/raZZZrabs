@@ -28,6 +28,7 @@ import {
   UPDATE_SLIDE,
   GO_TO_LAST_STATE,
   GO_TO_NEXT_STATE,
+  ADD_BACK_IMAGE,
 } from './actions'
 import { BaseBlock, Slide } from '../model/main'
 
@@ -100,6 +101,13 @@ function addImageElementAction(image: string) {
   return {
     type: ADD_IMAGE,
     image: image,
+  }
+}
+
+function addBackImageElementAction(backimage: string) {
+  return {
+    type: ADD_BACK_IMAGE,
+    backImage: backimage,
   }
 }
 
@@ -248,4 +256,5 @@ export {
   updateObjectRectAction,
   goToLastState,
   goToNextState,
+  addBackImageElementAction,
 }

@@ -230,6 +230,7 @@ const firstSlideBackground: BackgroundType = {
   color: {
     hex: '#FF00FF',
   },
+  url: '',
 }
 
 const firstSlide: Slide = {
@@ -242,6 +243,7 @@ const secondSlideBackground: BackgroundType = {
   color: {
     hex: '#F2BAFF',
   },
+  url: '',
 }
 
 const secondSlide: Slide = {
@@ -254,6 +256,7 @@ const thirdSlideBackground: BackgroundType = {
   color: {
     hex: '#FFF000',
   },
+  url: '',
 }
 const thirdSlide: Slide = {
   slideObjects: [imageBase64Block, textBlock],

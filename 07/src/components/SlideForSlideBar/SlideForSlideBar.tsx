@@ -111,11 +111,16 @@ function SlideForSlideBar({
     return 'rgb(' + r + ' ' + g + ' ' + b + ')'
   }
 
-  function setBackground(slide: TSlide, style: CSSProperties) {
-    if (slide.slideBackground.color.hex) {
-      style.backgroundColor = hex2rgb(slide.slideBackground.color.hex)
-    }
-    return style
+  const style: CSSProperties = {
+    backgroundColor:
+      slide.slideBackground.color.hex != '' && slide.slideBackground.url == ''
+        ? hex2rgb(slide.slideBackground.color.hex)
+        : undefined,
+    backgroundImage:
+      slide.slideBackground.color.hex == '' && slide.slideBackground.url != ''
+        ? 'url(' + slide.slideBackground.url + ')'
+        : undefined,
+    backgroundSize: 'cover',
   }
 
   return (
@@ -128,7 +133,7 @@ function SlideForSlideBar({
       >
         <div
           className={setClassName(slide, className)}
-          style={setBackground(slide, styleVar)}
+          style={style}
           ref={dndControlRef}
         >
           {slide.slideObjects.map((object, index) => (

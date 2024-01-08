@@ -35,29 +35,8 @@ interface ToolBarProps {
 }
 
 function ToolBar({ selectedObject }: ToolBarProps) {
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-
-    if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        const imageData = reader.result as string
-        store.dispatch(addImageElementAction(imageData))
-      }
-
-      reader.readAsDataURL(file)
-    }
-  }
-
   function isText(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
     if (selectedObject?.elementType === 'text' && selectedObject != null) {
-      return true
-    }
-    return false
-  }
-
-  function isImage(selectedObject: TextBlock | ImageBlock | ShapeBlock | null) {
-    if (selectedObject?.elementType === 'image' && selectedObject != null) {
       return true
     }
     return false
@@ -107,12 +86,50 @@ function ToolBar({ selectedObject }: ToolBarProps) {
     }
   }, [popupProps])
 
+  const [popupPropsColor, setPopupPropsColor] = useState({
+    x: 100,
+    y: 100,
+    isHidden: true,
+    isBack: true,
+  })
+
+  const handleCloseColorPopup = () => {
+    setPopupPropsColor({ ...popupPropsColor, isHidden: true })
+  }
+
+  useEffect(() => {
+    const elemColor = document.getElementById('popupcolor')
+
+    if (elemColor) {
+      const handleOpenPopupColor = () => {
+        console.log(elemColor)
+        setPopupPropsColor({
+          x: elemColor.offsetLeft ? elemColor.offsetLeft : 100,
+          y: elemColor.offsetTop ? elemColor.offsetTop + 28 : 100,
+          isHidden: !popupPropsColor.isHidden,
+          isBack: true,
+        })
+      }
+
+      elemColor.addEventListener('click', handleOpenPopupColor)
+
+      return () => {
+        elemColor.removeEventListener('click', handleOpenPopupColor)
+      }
+    }
+  }, [popupPropsColor])
+
   return (
     <div className={classes.toolBar}>
-      <Button icon={'plus'} onClick={() => store.dispatch(addSlideAction())} />
+      <Button
+        icon={'plus'}
+        onClick={() => store.dispatch(addSlideAction())}
+        title={'Добавить слайд'}
+      />
       <Button
         icon={'trash'}
         onClick={() => store.dispatch(removeSlideAction())}
+        title={'Удалить слайд'}
       />
       <div className={classes.v1}></div>
       <Button
@@ -120,34 +137,39 @@ function ToolBar({ selectedObject }: ToolBarProps) {
         onClick={() => {
           store.dispatch(goToLastState())
         }}
+        title={'Назад'}
       />
       <Button
         icon={'next-arrow'}
         onClick={() => {
           store.dispatch(goToNextState())
         }}
+        title={'Вперед'}
       />
-      <Button icon={'zoom'} />
       <div className={classes.v1}></div>
       <div>
-        <Button icon={'images'} id={'popup'} />
+        <Button icon={'images'} id={'popup'} title={'Изображения'} />
         <AddImage {...popupProps} onClose={handleClosePopup} />
       </div>
       <Button
         icon={'text-align'}
         onClick={() => store.dispatch(addTextElementAction())}
+        title={'Текст'}
       />
       <Button
         icon={'circle'}
         onClick={() => store.dispatch(addCircleElementAction())}
+        title={'Круг'}
       />
       <Button
         icon={'triangle'}
         onClick={() => store.dispatch(addTriangleElementAction())}
+        title={'Треугольник'}
       />
       <Button
         icon={'rectangle'}
         onClick={() => store.dispatch(addRectangleElementAction())}
+        title={'Прямоугольник'}
       />
       {isShape(selectedObject) && (
         <>
@@ -155,7 +177,8 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button icon={'borderwidth'} />
           <input
             type={'number'}
-            className={classes.numberInput}
+            className={classes.list}
+            style={{ width: '7%', fontSize: undefined }}
             value={
               isShape(selectedObject)
                 ? (selectedObject as ShapeBlock).data.strokeWidth
@@ -174,7 +197,7 @@ function ToolBar({ selectedObject }: ToolBarProps) {
             <Button icon={'bordercolor'} />
           </div>
           <div className={classes.v1}></div>
-          <div className={classes.fileInputContainer}>
+          <div className={classes.fileInputContainer} title={'Цвет фигуры'}>
             <ColorPicker
               isElement={true}
               isStroke={false}
@@ -190,19 +213,23 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button
             icon={'alignLeft'}
             onClick={() => store.dispatch(changeTextAlignLeftAction())}
+            title={'Выравнивание слева'}
           />
           <Button
             icon={'alignCenter'}
             onClick={() => store.dispatch(changeTextAlignCenterAction())}
+            title={'Выравнивание по центру'}
           />
           <Button
             icon={'alignRight'}
             onClick={() => store.dispatch(changeTextAlignRightAction())}
+            title={'Выравнивание справа'}
           />
           <div className={classes.v1}></div>
           <Button
             icon={'minus'}
             onClick={() => store.dispatch(subFontSizeTextAction())}
+            title={'Уменьшить шрифт'}
           />
           <List
             className={classes.list}
@@ -220,19 +247,23 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           <Button
             icon={'plus'}
             onClick={() => store.dispatch(addFontSizeAction())}
+            title={'Увеличить шрифт'}
           />
           <div className={classes.v1}></div>
           <Button
             icon={'bold'}
             onClick={() => store.dispatch(onBoldTextAction())}
+            title={'Жирный'}
           />
           <Button
             icon={'italic'}
             onClick={() => store.dispatch(onItalicTextAction())}
+            title={'Курсив'}
           />
           <Button
             icon={'underline'}
             onClick={() => store.dispatch(onUnderlineTextAction())}
+            title={'Подчеркнуть'}
           />
         </>
       )}
@@ -246,19 +277,17 @@ function ToolBar({ selectedObject }: ToolBarProps) {
           />
         </>
       )}
-      {isNull(selectedObject) && (
-        <>
-          <div className={classes.v1}></div>
-          <div className={classes.fileInputContainer}>
-            <ColorPicker
-              isElement={false}
-              isStroke={false}
-              className={classes.customFileInput}
-            />
-            <Button icon={'fillcolor'} />
-          </div>
-        </>
-      )}
+      <div className={classes.v1}></div>
+      <div>
+        <button
+          id={'popupcolor'}
+          className={classes.list}
+          style={{ background: 'none' }}
+        >
+          Фон{' '}
+        </button>
+        <AddImage {...popupPropsColor} onClose={handleCloseColorPopup} />
+      </div>
     </div>
   )
 }
