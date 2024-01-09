@@ -499,8 +499,6 @@ function updateObjectRect(page: Page, id: string, rect: BaseBlock) {
     page.slides.find((slide) => slide.slideID === page.selection.slideID) ||
     null
 
-  const updatedSlides = page.slides
-
   if (slideCur !== null) {
     const selectedIndex = slideCur.slideObjects.findIndex(function (obj) {
       if (obj.id === id) {
@@ -514,14 +512,22 @@ function updateObjectRect(page: Page, id: string, rect: BaseBlock) {
       }
     })
 
-    slideCur.slideObjects[selectedIndex].startDot = {
-      ...newObjectData.newRect.startDot,
-    }
-    slideCur.slideObjects[selectedIndex].size = {
-      ...newObjectData.newRect.size,
-    }
+    slideCur.slideObjects[selectedIndex].startDot =
+      newObjectData.newRect.startDot
 
-    updatedSlides[selectedIndexSlide] = slideCur
+    slideCur.slideObjects[selectedIndex].size = newObjectData.newRect.size
+
+    let updatedSlides
+
+    if (selectedIndex !== -1) {
+      updatedSlides = [
+        ...page.slides.slice(0, selectedIndexSlide),
+        slideCur,
+        ...page.slides.slice(selectedIndexSlide + 1),
+      ]
+    } else {
+      updatedSlides = [slideCur]
+    }
 
     return {
       ...page,
