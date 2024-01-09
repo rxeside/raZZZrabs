@@ -30,6 +30,7 @@ import {
   GO_TO_LAST_STATE,
   GO_TO_NEXT_STATE,
   ADD_BACK_IMAGE,
+  CHANGE_TEXT,
 } from './actions'
 import {
   addSlide,
@@ -53,6 +54,7 @@ import {
   onStrokeWidthChange,
   onStrokeColorChange,
   addBackImageElement,
+  onText,
 } from '../methods/elementsMethods'
 import {
   onBigger,
@@ -87,6 +89,9 @@ const pageReducers = (state = defaultApplication, action: any) => {
     case ADD_SLIDE:
       addToHistory(state)
       return addSlide(state)
+    case CHANGE_TEXT:
+      addToHistory(state)
+      return onText(state, action.newText)
     case DELETE_SLIDE:
       addToHistory(state)
       return removeSlide(state)

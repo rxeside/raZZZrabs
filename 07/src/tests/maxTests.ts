@@ -46,7 +46,7 @@ const shapeBlockRectangle: ShapeBlock = {
     primitiveType: PrimitiveType.RECTANGLE,
     color: rectanglecolor,
     strokeColor: '#000000',
-    strokeWidth: 4,
+    strokeWidth: 0,
     size: {
       width: 30,
       height: 30,
@@ -74,7 +74,7 @@ const shapeBlockTriangle: ShapeBlock = {
     primitiveType: PrimitiveType.TRIANGLE,
     color: triangleColor,
     strokeColor: '#000000',
-    strokeWidth: 4,
+    strokeWidth: 0,
     size: {
       width: 100,
       height: 150,
@@ -110,7 +110,7 @@ const shapeBlockCircle: ShapeBlock = {
     primitiveType: PrimitiveType.CIRCLE,
     color: circleColor,
     strokeColor: '#000000',
-    strokeWidth: 3,
+    strokeWidth: 0,
     size: {
       width: 175,
       height: 100,

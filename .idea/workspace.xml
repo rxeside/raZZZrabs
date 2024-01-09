@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="Удалил папку context">
+    <list default="true" id="f401e006-cc2d-4680-adf7-e86bd2c83320" name="Changes" comment="fix pdfExport">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07/src/components/ColorPicker/ColorPicker.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/components/ColorPicker/ColorPicker.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/07/src/components/ToolBar/ToolBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/components/ToolBar/ToolBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07/src/components/WorkSpace/Workspace.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/components/WorkSpace/Workspace.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07/src/components/common/TextAria/TextAria.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/components/common/TextAria/TextAria.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/methods/elementsMethods.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/methods/elementsMethods.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07/src/methods/slidesMethods.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/methods/slidesMethods.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/store/actionCreators.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/store/actionCreators.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/store/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/store/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/07/src/store/reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/store/reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/07/src/tests/maxTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/07/src/tests/maxTests.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +38,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,30 +54,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/iSpring/Frontend/raZZZrabs/actual_project",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.stylelint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.stylelint": "C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\stylelint",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettier.import.notification.dismissed": "true",
-    "prettierjs.PrettierConfiguration.Package": "C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "D:\\Frontend\\raZZZrabs\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/iSpring/Frontend/raZZZrabs/actual_project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.stylelint&quot;: &quot;C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\stylelint&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettier.import.notification.dismissed&quot;: &quot;true&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\iSpring\\Frontend\\raZZZrabs\\04\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Frontend\\raZZZrabs\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\iSpring\Frontend\raZZZrabs\actual_project\src\components\common" />
@@ -108,6 +111,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-php-predefined-ba97393d7c68-b4dcf6bb9de9-com.jetbrains.php.sharedIndexes-PS-233.13135.108" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -132,6 +142,8 @@
       <workItem from="1700063451598" duration="1921000" />
       <workItem from="1703367607282" duration="5323000" />
       <workItem from="1703797609725" duration="4876000" />
+      <workItem from="1704722252955" duration="17570000" />
+      <workItem from="1704805667483" duration="1918000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена 2 лаба">
       <option name="closed" value="true" />
@@ -197,7 +209,31 @@
       <option name="project" value="LOCAL" />
       <updated>1704685786663</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Сделал ColorPicker для stroke">
+      <option name="closed" value="true" />
+      <created>1704688876179</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704688876179</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Пофиксил цвет фона слайда">
+      <option name="closed" value="true" />
+      <created>1704733407010</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704733407010</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix pdfExport">
+      <option name="closed" value="true" />
+      <created>1704791272554</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704791272554</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +258,21 @@
     <MESSAGE value="Add labs" />
     <MESSAGE value="Сделал изменение ширины stroke" />
     <MESSAGE value="Удалил папку context" />
-    <option name="LAST_COMMIT_MESSAGE" value="Удалил папку context" />
+    <MESSAGE value="Сделал ColorPicker для stroke" />
+    <MESSAGE value="Пофиксил цвет фона слайда" />
+    <MESSAGE value="fix pdfExport" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix pdfExport" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/07/src/methods/exportPDF.tsx</url>
+          <line>101</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

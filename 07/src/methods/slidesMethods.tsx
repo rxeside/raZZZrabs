@@ -8,6 +8,7 @@ const addSlide = (page: Page) => {
       color: {
         hex: '#FFFFFF',
       },
+      url: '',
     },
     slideObjects: [],
   }

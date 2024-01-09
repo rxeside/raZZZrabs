@@ -30,9 +30,9 @@ const addTextElement = (page: Page) => {
         height: 100,
       },
       data: {
-        value: 'MotoMoto',
+        value: 'Text',
         color: {
-          hex: '#FF0000',
+          hex: '#000000',
         },
         fontSize: 16,
         fontFamily: 'Arial',
@@ -324,9 +324,13 @@ const removeElement = (page: Page) => {
 }
 
 const onColorChange = (page: Page, newColor: string) => {
-  const slideCur = page.slides.find(
-    (slide) => slide.slideID === page.selection.slideID,
-  )
+  const slideCur = page.slides.find(function (slide) {
+    if (slide.slideID === page.selection.slideID) {
+      return slide
+    }
+  })
+
+  console.log(slideCur)
 
   if (slideCur) {
     slideCur.slideBackground.color.hex = newColor
@@ -341,6 +345,41 @@ const onColorChange = (page: Page, newColor: string) => {
     return {
       ...page,
       slides: updatedSlides,
+    }
+  }
+}
+
+const onText = (page: Page, newText: string) => {
+  const slideCur = page.slides.find(function (slide) {
+    if (slide.slideID === page.selection.slideID) {
+      return slide
+    }
+  })
+
+  console.log(slideCur)
+
+  if (slideCur) {
+    const elemCur = slideCur?.slideObjects.find(
+      (elem) => elem.id === page.selection.elementID,
+    )
+    if (elemCur && elemCur.elementType === ElementType.TEXT) {
+      elemCur.data.value = newText
+      const updatedObjects = slideCur.slideObjects.map((elem) =>
+        elem.id === page.selection.elementID ? elemCur : elem,
+      )
+
+      const updatedSlides = page.slides.map((slide) => {
+        if (slide.slideID === page.selection.slideID) {
+          return { ...slide, slideObjects: updatedObjects }
+        } else {
+          return slide
+        }
+      })
+
+      return {
+        ...page,
+        slides: updatedSlides,
+      }
     }
   }
 }
@@ -540,6 +579,7 @@ function updateObjectRect(page: Page, id: string, rect: BaseBlock) {
 
 export {
   selectElement,
+  onText,
   addTextElement,
   addImageElement,
   addBackImageElement,

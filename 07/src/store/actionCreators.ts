@@ -29,6 +29,7 @@ import {
   GO_TO_LAST_STATE,
   GO_TO_NEXT_STATE,
   ADD_BACK_IMAGE,
+  CHANGE_TEXT,
 } from './actions'
 import { BaseBlock, Slide } from '../model/main'
 
@@ -127,6 +128,12 @@ function changeElementColorAction(newColor: string) {
   return {
     type: CHANGE_ELEMENT_COLOR,
     newColor: newColor,
+  }
+}
+function changeTextAction(newText: string) {
+  return {
+    type: CHANGE_TEXT,
+    newText: newText,
   }
 }
 
@@ -228,6 +235,7 @@ function goToNextState() {
 
 export {
   addSlideAction,
+  changeTextAction,
   removeSlideAction,
   onSelectSlideAction,
   updateSlideAction,
