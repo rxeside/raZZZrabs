@@ -4,7 +4,7 @@ import store from '../store/store'
 import CanvasTextWrapper from 'canvas-text-wrapper'
 
 function setBackgroundImage(doc: jsPDF, image: string) {
-  doc.addImage(image, 'jpg', 0, 0, 1200, 674)
+  doc.addImage(image, 'JPEG', 0, 0, 1200, 674)
 }
 
 function setBackgroundColor(doc: jsPDF, color: string, slide: Slide) {
@@ -134,13 +134,17 @@ async function addObjectsOnPage(
   })
   await Promise.all(promises)
 }
-
 async function addSlides(doc: jsPDF, slides: Array<Slide>) {
   for (let i = 0; i < slides.length; i++) {
     const slide = slides[i]
+
     if (typeof slide.slideBackground.color.hex === 'string') {
       setBackgroundColor(doc, slide.slideBackground.color.hex, slide)
     }
+    if (typeof slide.slideBackground.url === 'string') {
+      setBackgroundImage(doc, slide.slideBackground.url)
+    }
+
     await addObjectsOnPage(doc, slide.slideObjects)
     doc.addPage()
   }
