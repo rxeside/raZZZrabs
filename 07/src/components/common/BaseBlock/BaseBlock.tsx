@@ -110,7 +110,9 @@ function BaseBlock({
     <div
       className="block"
       style={style}
-      onClick={() => store.dispatch(selectElementAction(id))}
+      onClick={
+        isBar ? undefined : () => store.dispatch(selectElementAction(id))
+      }
       draggable={'false'}
       ref={rectRef}
     >
